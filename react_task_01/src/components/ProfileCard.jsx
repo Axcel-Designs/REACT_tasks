@@ -1,17 +1,21 @@
 import React from "react";
+import excel from "../assets/excel.jpg"; // Assuming the image is in the assets folder
 
 function Profile({ profileData, src }) {
   return (
     <>
-      <div className="flex flex-col bg-blue-200 p-4 w-max h-max gap-4 place-items-center place-content-center hover:shadow-lg">
-        <img src={src}
-          className="w-[50px] rounded-full cursor-pointer animate-pulse "
-        />
-        <div className="">
-          <h3 className="text-lg font-bold text-center hover:text-blue-800 mt-4">
+      <div className="flex flex-col bg-blue-200 p-6 w-4/5 max-w-lg h-max gap-4 place-items-center place-content-center hover:shadow-lg">
+        <div className="bg-blue-300 hover:bg-blue-400 p-2 rounded-full ease-in-out delay-100 ">
+          <img
+            src={src}
+            className="w-[100px] rounded-full cursor-pointer transition-transform duration-200 hover:scale-110"
+          />
+        </div>
+        <div className="hover:bg-white rounded-lg p-4 shadow-md w-full max-w-lg bg-purple-200">
+          <h3 className="text-lg font-bold text-center text-gray-900 ">
             {profileData.name}
           </h3>
-          <p className="text-center hover:text-yellow-800">{profileData.bio}</p>
+          <p className="text-center text-gray-700 mt-3">{profileData.bio}</p>
         </div>
       </div>
     </>
@@ -22,12 +26,10 @@ export default function ProfileCard() {
   return (
     <>
       <Profile
-        src={
-          "https://cdn-om.cdnpk.net/users/212/21251840/uploads/09cd5a44-e9f0-4f91-932c-f5b47fe04297/09cd5a44-e9f0-4f91-932c-f5b47fe04297-thumb.jpg?token=exp=1749649183~hmac=80f4edb63bc4f6a68ae5d80b5526e437"
-        }
+        src={excel}
         profileData={{
           name: "Acha Excel",
-          bio: "Front-End Developer",
+          bio: "Passionate Front-End Developer learning how to build responsive and user-friendly web applications using React and modern web technologies. Dedicated to creating seamless digital experiences and continuously learning new tools.",
         }}
       />
     </>
