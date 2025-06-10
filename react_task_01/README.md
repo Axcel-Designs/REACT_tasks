@@ -4,9 +4,9 @@ This is the one task for the KodeCamp React course.
 
 ### Create a ProfileCard Component that shows:
 
-    - Your name
-    - Your picture
-    - A short bio about you
+- Your name
+- Your picture
+- A short bio about you
 
 Your component should receive all this content as props.
 
