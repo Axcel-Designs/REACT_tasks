@@ -15,7 +15,7 @@ function Profile({ profileData, src }) {
           <h3 className="text-lg font-bold text-center text-gray-900 ">
             {profileData.name}
           </h3>
-          <p className="text-center text-gray-700 mt-3">{profileData.bio}</p>
+          <p className="text-center text-gray-700 mt-3 cursor-default">{profileData.bio}</p>
         </div>
       </div>
     </>
