@@ -1,7 +1,7 @@
 # KodeCamp React Tasks
  This contains all the react tasks
 ### Tasks
-<!-- - [Task 00](./react_task_00/README.md) -->
+- [Task 00](./react_task_00/README.md)
 - [Task 01](./react_task_01/README.md)
 - [Task 02](./react_task_02/README.md)
 - [Task 03](./react_task_03/README.md)
