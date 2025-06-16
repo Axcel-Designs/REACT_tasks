@@ -1,5 +1,5 @@
 import React from "react";
-import excel from "../assets/excel.jpg"; // Assuming the image is in the assets folder
+import excel from "../assets/excel.jpg"; 
 
 function Profile({ profileData, src }) {
   return (
