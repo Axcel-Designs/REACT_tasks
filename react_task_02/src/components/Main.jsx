@@ -13,13 +13,13 @@ import ContactUs from "./ContactUs";
 export function About() {
   return (
     <>
-      <section className="w-4/5 bg-gray-100 m-auto p-6 lg:p-8 flex">
-        <div className="gap-4 flex flex-wrap items-center justify-around">
-          <img src={about1} alt="About 1" className="w-fit" />
-          <img src={about3} alt="About 3" className="w-fit" />
-          <img src={about2} alt="About 2" className="w-fit" />
+      <section className="w-4/5 bg-gray-100 m-auto p-2 lg:p-8 flex">
+        <div className="gap-2 space-x-6 grid grid-cols-2 grid-flow-row items-center align-middle p-2 lg:p-8">
+          <img src={about1} alt="About 1" className="" />
+          <img src={about3} alt="About 3" className="" />
+          <img src={about2} alt="About 2" className="" />
         </div>
-        <div className="w-4/5 m-auto p-6">
+        <div className="w-3/5 m-auto p-2 lg:p-8">
           <h2 className="text-gray-500 text-4xl mb-4">About</h2>
           <p className="text-gray-700">
             We are a team dedicated to making a difference in our community
@@ -59,19 +59,35 @@ export function MissionStatement() {
 export function TheProjects() {
   return (
     <>
-      <section className="w-4/5  m-auto p-6 lg:p-8">
+      <section className="w-4/5 m-auto  lg:p-8">
         <h2 className="text-gray-500 text-4xl mb-4">Our Project</h2>
-        <div className="gap-2 grid grid-rows-2 grid-flow-row-dense grid-cols-4">
-          <img src={image12} alt="About 1" className="w-full" />
-          <img src={image15} alt="About 3" className="w-full" />
-          <img src={image16} alt="About 2" className="w-full" />
-          <img src={image17} alt="About 2" className="w-screen" />
-          <img src={image18} alt="About 2" className="w-fit" />
-        </div>
-        <div className="flex justify-end ">
-          <ButtonDark label="All Projects" onClick={() => {}} />
+        <div className="gap-2 grid grid-rows-2 grid-flow-row-dense grid-cols-4  justify-center p-2 lg:p-8">
+          <div className={`col-span-2 bg-[url(${image12})] bg-cover bg-center`}>
+            <div className="flex items-center p-4 h-full">
+              <h3 className="text-white text-2xl font-bold">
+                Sample <br /> Project
+              </h3>
+            </div>
+            <div className="bg-white z-20 ">
+              <h3 className="">Project Description</h3>
+              <Button label="View More" onClick={() => {}} />
+            </div>
+          </div>
+          <div
+            className={`col-span-2 bg-[url(${image15})] bg-cover bg-center`}
+          ></div>
+          <div className={`bg-[url(${image16})] bg-cover bg-center`}></div>
+          <div className="col-span-2">
+            <img src={image17} alt="About 2" className="w-full" />
+          </div>
+          <div>
+            <img src={image18} alt="About 2" className="w-fit h-full" />
+          </div>
         </div>
       </section>
+      <div className="flex justify-end w-4/5">
+        <ButtonDark label="All Projects" onClick={() => {}} />
+      </div>
     </>
   );
 }
