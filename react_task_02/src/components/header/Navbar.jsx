@@ -36,8 +36,8 @@ export default function Navbar() {
           </button>
         </div>
         {!open && (
-          <div className="bg-gree">
-            <ul className="lg:hidden flex flex-col bg-red-500">
+          <div className="w-full p-4">
+            <ul className="lg:hidden flex flex-col font-semibold ">
               <Navlinks />
             </ul>
           </div>
