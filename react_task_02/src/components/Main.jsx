@@ -36,19 +36,31 @@ export function MissionStatement() {
     <>
       <section className="w-4/5 m-auto p-6 lg:p-8">
         <h2 className="text-gray-500 text-4xl mb-4">Mission Statement</h2>
-        <div className="grid lg:grid-cols-2 justify-around">
-          <div className="">
-            <div></div>
-            <p className="text-gray-700">
+        <div className="grid lg:grid-cols-2 justify-around gap-6">
+          <div className="flex gap-4 ">
+            <div>
+              <h1 className="text-7xl lg:text-8xl font-bold text-gray-200">
+                1
+              </h1>
+            </div>
+            <p className="text-gray-900">
               We are a team dedicated to making a difference in our community
-              through innovative projects and initiatives.
+              through innovative projects and initiatives. We are a team
+              dedicated to making a difference in our community through
+              innovative projects and initiatives.
             </p>
           </div>
-          <div className="">
-            <div></div>
-            <p className="text-gray-700">
+          <div className="flex gap-4 justify-center">
+            <div>
+              <h1 className="text-7xl lg:text-8xl font-bold text-gray-200">
+                2
+              </h1>
+            </div>
+            <p className="text-gray-900">
               We are a team dedicated to making a difference in our community
-              through innovative projects and initiatives.
+              through innovative projects and initiatives. We are a team
+              dedicated to making a difference in our community through
+              innovative projects and initiatives.
             </p>
           </div>
         </div>
@@ -70,7 +82,7 @@ export function TheProjects() {
                 Sample <br /> Project
               </h3>
             </div>
-            <div >
+            <div>
               <ButtonTransparent label="View More" onClick={() => {}} />
             </div>
           </div>
