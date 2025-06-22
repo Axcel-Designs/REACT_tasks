@@ -13,7 +13,7 @@ import ContactUs from "./ContactUs";
 export function About() {
   return (
     <>
-      <section className="w-4/5 bg-gray-100 m-auto p-2 lg:p-8 flex">
+      <section className="w-4/5 bg-gray-100 m-auto p-2 lg:p-8 grid grid-cols-1 md:grid-cols-2 gap-4">
         <div className="gap-2 space-x-6 grid grid-cols-2 grid-flow-row items-center align-middle p-2 lg:p-8">
           <img src={about1} alt="About 1" className="" />
           <img src={about3} alt="About 3" className="" />
@@ -36,7 +36,7 @@ export function MissionStatement() {
     <>
       <section className="w-4/5 m-auto p-6 lg:p-8">
         <h2 className="text-gray-500 text-4xl mb-4">Mission Statement</h2>
-        <div className="flex justify-around">
+        <div className="grid lg:grid-cols-2 justify-around">
           <div className="">
             <div></div>
             <p className="text-gray-700">
@@ -61,7 +61,7 @@ export function TheProjects() {
     <>
       <section className="w-4/5 m-auto  lg:p-8">
         <h2 className="text-gray-500 text-4xl mb-4">Our Project</h2>
-        <div className="gap-2 grid grid-rows-2 grid-flow-row-dense grid-cols-4  justify-center p-2 lg:p-8">
+        <div className="gap-2 grid auto-rows-auto md:grid-rows-2 grid-flow-row-dense grid-cols-1 md:grid-cols-4   justify-center p-2 lg:p-8">
           <div
             className={`col-span-2 bg-[url(${image12})] bg-cover bg-center bg-gray-900/50 bg-blend-multiply flex flex-col justify-between text-white p-4`}
           >

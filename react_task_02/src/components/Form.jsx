@@ -35,7 +35,7 @@ export default function Form() {
       <form
         action=""
         onSubmit={(e) => e.preventDefault()}
-        className="flex flex-col gap-4 w-3/5 m-auto p-6 lg:p-8"
+        className="flex flex-col gap-4 w-full m-auto p-2 lg:p-8"
       >
         <h2 className="text-gray-500 text-4xl mb-4">Contact Us</h2>
 
