@@ -32,11 +32,11 @@ export default function Navbar() {
         </ul>
         <div className="lg:hidden flex justify-end pointer">
           <button onClick={burger} className="pointer bg" >
-            {!open ?<h1 className="font-bold text-4xl">X</h1>  : <i className="fa-solid fa-bars fa-2xl"></i>}
+            {open ?<h1 className="font-bold text-4xl">X</h1>  : <i className="fa-solid fa-bars fa-2xl"></i>}
             {/* <i className="fa-solid fa-bars fa-2xl"></i> */}
           </button>
         </div>
-        {!open && (
+        {open && (
           <div className="w-full p-4">
             <ul className="lg:hidden flex flex-col font-semibold ">
               <Navlinks />
