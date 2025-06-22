@@ -33,11 +33,15 @@ export default function Navbar() {
         <div className="lg:hidden flex justify-end pointer">
           <button onClick={burger}>
             <i className="fa-solid fa-bars fa-2xl"></i>
-            </button>
+          </button>
         </div>
-      {!open && <ul className="lg:hidden flex flex-col basis-full">
-        <Navlinks/>
-        </ul>}
+        {!open && (
+          <div className="bg-gree">
+            <ul className="lg:hidden flex flex-col bg-red-500">
+              <Navlinks />
+            </ul>
+          </div>
+        )}
       </nav>
     </>
   );
