@@ -62,13 +62,15 @@ export function TheProjects() {
       <section className="w-4/5 m-auto  lg:p-8">
         <h2 className="text-gray-500 text-4xl mb-4">Our Project</h2>
         <div className="gap-2 grid grid-rows-2 grid-flow-row-dense grid-cols-4  justify-center p-2 lg:p-8">
-          <div className={`col-span-2 bg-[url(${image12})] bg-cover bg-center`}>
+          <div
+            className={`col-span-2 bg-[url(${image12})] bg-cover bg-center bg-gray-900/50 bg-blend-multiply `}
+          >
             <div className="flex items-center p-4 h-full">
               <h3 className="text-white text-2xl font-bold">
                 Sample <br /> Project
               </h3>
             </div>
-            <div className="bg-white z-20 ">
+            <div className="absolute">
               <h3 className="">Project Description</h3>
               <Button label="View More" onClick={() => {}} />
             </div>

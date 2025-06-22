@@ -2,7 +2,7 @@ export default function Button({ label, onClick }) {
   return (
     <button
       onClick={onClick}
-      className="mt-4 bg-white hover:bg-gray-200 text-gray-500 py-2 px-4 shadow cursor-pointer transition-colors duration-300"
+      className="z-40 mt-4 bg-white hover:bg-gray-200 text-gray-500 py-2 px-4 shadow cursor-pointer transition-colors duration-300"
     >
       {label}
       <i className="fa-solid fa-arrow-right ml-2"></i>
