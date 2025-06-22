@@ -71,9 +71,10 @@ export function MissionStatement() {
 export function TheProjects() {
   return (
     <>
+      {/* auto-rows-fr to* show all rows automatically */}
       <section className="w-4/5 m-auto  lg:p-8">
         <h2 className="text-gray-500 text-4xl mb-4">Our Project</h2>
-        <div className="gap-2 grid auto-rows-auto md:grid-rows-2 grid-flow-row-dense grid-cols-1 md:grid-cols-4   justify-center p-2 lg:p-8">
+        <div className="gap-2 grid md:grid-rows-2  grid-cols-1 md:grid-cols-4 p-2 lg:p-8">
           <div
             className={`col-span-2 bg-[url(${image12})] bg-cover bg-center bg-gray-900/50 bg-blend-multiply flex flex-col justify-between text-white p-4`}
           >
@@ -90,11 +91,14 @@ export function TheProjects() {
             className={`col-span-2 bg-[url(${image15})] bg-cover bg-center`}
           ></div>
           <div className={`bg-[url(${image16})] bg-cover bg-center`}></div>
-          <div className="col-span-2">
+          <div
+            className={`col-span-2 bg-[url(${image17})] bg-cover bg-center`}
+          ></div>
+          {/* <div className="col-span-2">
             <img src={image17} alt="About 2" className="w-full" />
-          </div>
-          <div>
-            <img src={image18} alt="About 2" className="w-fit h-full" />
+          </div> */}
+          <div className={`bg-[url(${image18})] bg-cover bg-center`}>
+            {/* <img src={image18} alt="About 2" className="w-fit h-full" /> */}
           </div>
         </div>
       </section>
