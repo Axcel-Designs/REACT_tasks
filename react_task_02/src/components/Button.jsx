@@ -20,3 +20,14 @@ export function ButtonDark({ label, onClick }) {
       </button>
     );
   }
+export function ButtonTransparent({ label, onClick }) {
+    return (
+      <button
+        onClick={onClick}
+        className="transparent mt-4 bg-neutral-800/50 hover:bg-neutral-600 text-white py-2 px-4 shadow cursor-pointer"
+      >
+        {label}
+        <i className="fa-solid fa-arrow-right ml-2"></i>
+      </button>
+    );
+  }

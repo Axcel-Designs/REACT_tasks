@@ -7,7 +7,7 @@ import image15 from "../assets/picLandingPage/image15.png";
 import image16 from "../assets/picLandingPage/image16.png";
 import image17 from "../assets/picLandingPage/image17.png";
 import image18 from "../assets/picLandingPage/image18.png";
-import Button, { ButtonDark } from "./Button";
+import Button, { ButtonDark, ButtonTransparent } from "./Button";
 import ContactUs from "./ContactUs";
 
 export function About() {
@@ -63,16 +63,15 @@ export function TheProjects() {
         <h2 className="text-gray-500 text-4xl mb-4">Our Project</h2>
         <div className="gap-2 grid grid-rows-2 grid-flow-row-dense grid-cols-4  justify-center p-2 lg:p-8">
           <div
-            className={`col-span-2 bg-[url(${image12})] bg-cover bg-center bg-gray-900/50 bg-blend-multiply `}
+            className={`col-span-2 bg-[url(${image12})] bg-cover bg-center bg-gray-900/50 bg-blend-multiply flex flex-col justify-between text-white p-4`}
           >
             <div className="flex items-center p-4 h-full">
               <h3 className="text-white text-2xl font-bold">
                 Sample <br /> Project
               </h3>
             </div>
-            <div className="absolute">
-              <h3 className="">Project Description</h3>
-              <Button label="View More" onClick={() => {}} />
+            <div >
+              <ButtonTransparent label="View More" onClick={() => {}} />
             </div>
           </div>
           <div
