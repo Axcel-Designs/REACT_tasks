@@ -3,9 +3,9 @@ import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import OurProject from "./pages/OurProject";
 import Home from "./pages/Home";
 import PhotoGallery from "./pages/PhotoGallery";
-import Footer from "./components/Footer";
-import "./index.css"; 
-import Header from "./components/Header";
+import Footer from "./components/footer/Footer";
+import "./index.css";
+import Header from "./components/header/Header";
 
 function App() {
   return (
@@ -20,6 +20,5 @@ function App() {
     </>
   );
 }
-
 
 export default App;

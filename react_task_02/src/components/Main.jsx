@@ -7,7 +7,8 @@ import image15 from "../assets/picLandingPage/image15.png";
 import image16 from "../assets/picLandingPage/image16.png";
 import image17 from "../assets/picLandingPage/image17.png";
 import image18 from "../assets/picLandingPage/image18.png";
-import Button from "./Button";
+import Button, { ButtonDark } from "./Button";
+import ContactUs from "./ContactUs";
 
 export function About() {
   return (
@@ -33,7 +34,7 @@ export function About() {
 export function MissionStatement() {
   return (
     <>
-      <section className="w-4/5 bg-gray-100 m-auto p-6 lg:p-8">
+      <section className="w-4/5 m-auto p-6 lg:p-8">
         <h2 className="text-gray-500 text-4xl mb-4">Mission Statement</h2>
         <div className="flex justify-around">
           <div className="">
@@ -55,10 +56,10 @@ export function MissionStatement() {
     </>
   );
 }
-export function ContactUs() {
+export function TheProjects() {
   return (
     <>
-      <section className="w-4/5 bg-gray-100 m-auto p-6 lg:p-8">
+      <section className="w-4/5  m-auto p-6 lg:p-8">
         <h2 className="text-gray-500 text-4xl mb-4">Our Project</h2>
         <div className="gap-2 grid grid-rows-2 grid-flow-row-dense grid-cols-4">
           <img src={image12} alt="About 1" className="w-full" />
@@ -67,18 +68,17 @@ export function ContactUs() {
           <img src={image17} alt="About 2" className="w-screen" />
           <img src={image18} alt="About 2" className="w-fit" />
         </div>
-        <div className="w-4/5 m-auto p-6"></div>
-        <div className="flex justify-end mt-6">
-          <Button label="All Projects" onClick={() => {}} />
+        <div className="flex justify-end ">
+          <ButtonDark label="All Projects" onClick={() => {}} />
         </div>
       </section>
     </>
   );
 }
 
-export function TheProjects() {
-  return <></>;
-}
+// export function ContactUs() {
+//   return <></>;
+// }
 
 export default function Main() {
   return (

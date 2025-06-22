@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { navbarLinks } from "../data/DataList";
+import { navbarLinks } from "../../data/DataList";
 
 export default function FootInformation() {
   return (
