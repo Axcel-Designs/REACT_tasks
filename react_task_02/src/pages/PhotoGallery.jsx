@@ -15,7 +15,7 @@ export default function PhotoGallery() {
             <hr className="my-2 text-gray-300" />
             <section className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-5 gap-6">
               {galleryData.map((gallery) => (
-                <img key={gallery.id} src={gallery.src} alt={gallery.text} />
+                <img src={gallery.src} key={gallery.id} alt={gallery.text} />
               ))}
             </section>
           </div>
