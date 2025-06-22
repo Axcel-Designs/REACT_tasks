@@ -19,7 +19,7 @@ export default function OurProject() {
               className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6  bg-gray-100"
             >
               <div>
-                <img src={project.src} alt={project.title} />
+                <img src={project.src} alt={project.title} key={project.id}/>
               </div>
               <div key={project.id} className="p-4">
                 <div>
