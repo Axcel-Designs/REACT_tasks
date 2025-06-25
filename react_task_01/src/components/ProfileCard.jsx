@@ -17,6 +17,7 @@ function Profile({ profileData, src }) {
           </h3>
           <p className="text-center text-gray-700 mt-3 cursor-default">{profileData.bio}</p>
         </div>
+        <p>Hello World</p>
       </div>
     </>
   );
