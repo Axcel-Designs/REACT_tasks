@@ -1,26 +1,19 @@
-import { Link, Navigate, Outlet, useLocation } from "react-router-dom";
+import { Link, Outlet, useLocation } from "react-router-dom";
 import Button from "../components/Button";
 import { useState } from "react";
 import Input from "../components/Input";
 import Checkbox from "../components/Checkbox";
-import { doSignInWithGoogle,
-  dosignInWithEmailAndPassword,
-} from "../firebase/auth";
-import { useAuth } from "../contexts/authContext/AuthProvider";
 
 export default function Login() {
-  const { userLoggIn } = useAuth();
-
   const location = useLocation();
   const hideAuth =
-    location.pathname.startsWith("/login") && location.pathname !== "/login";
+    location.pathname.startsWith("/login") && 
+    location.pathname !== "/login";
 
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
-  const [isSigningIn, setIsSigningIn] = useState(false);
-  const [errMessage, setErrMessage] = useState();
 
-  const [emailCheck, setEmailCheck] = useState(false);
+  const [emailCheck, setemailCheck] = useState(false);
   const [psswrdCheck, setPasswordCheck] = useState(false);
 
   const [psswrdVisible, setpsswrdVisible] = useState(false);
@@ -30,25 +23,9 @@ export default function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!isSigningIn) {
-      setIsSigningIn(true);
-      await dosignInWithEmailAndPassword(email, password);
-    }
   };
-
-  function onGoogleSignIn(e) {
-    e.preventDefault();
-    if (!isSigningIn) {
-      setIsSigningIn(true);
-      doSignInWithGoogle().catch((err) => {
-        setIsSigningIn(false);
-      });
-    }
-  }
-
   return (
     <>
-      {userLoggIn && <Navigate to="/login/dashboard" replace={true} />}
       {!hideAuth ? (
         <>
           <form action="" onSubmit={handleSubmit} autoCompletete="on">
@@ -88,12 +65,12 @@ export default function Login() {
             />
             <p>8+ characters</p>
             <Link to="/login/dashboard">
-              <Button label="Login to Dashboard" type={"submit"} />
+              <Button label="Login to Dashboard" type={"submit"}  />
             </Link>
             <Checkbox label={"Remember Me"} />
           </form>
 
-          <div className="p-4">
+              <div className="p-4">
             <p className="text-center">
               By continuing I aggree with{" "}
               <a href="http://">

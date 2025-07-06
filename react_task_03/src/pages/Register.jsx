@@ -3,8 +3,6 @@ import Button from "../components/Button";
 import Input from "../components/Input";
 import { useState } from "react";
 import Checkbox from "../components/Checkbox";
-import { useAuth } from "../contexts/authContext/AuthProvider";
-import { doCreateUserWithEmailAndPassword, dosignInWithEmailAndPassword } from "../firebase/auth";
 
 export default function Register() {
   const location = useLocation();
@@ -12,10 +10,8 @@ export default function Register() {
     location.pathname.startsWith("/register") &&
     location.pathname !== "/register";
 
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
-  const [isRegistering, setisRegistering] = useState(false);
-  const [errMessage, setErrMessage] = useState();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const [emailCheck, setEmailCheck] = useState(false);
   const [psswrdCheck, setPasswordCheck] = useState(false);
@@ -27,10 +23,6 @@ export default function Register() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!isRegistering) {
-      setisRegistering(true);
-      await dosignInWithEmailAndPassword(email, password);
-    }
   };
   return (
     <>
@@ -72,6 +64,7 @@ export default function Register() {
               showEye={showPassword}
             />
             <p>8+ characters</p>
+
             <Link to={"register/personalinfo"}>
               <Button label="Create Account" type={"submit"} />
             </Link>
