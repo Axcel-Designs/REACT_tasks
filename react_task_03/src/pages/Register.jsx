@@ -1,4 +1,4 @@
-import { Link, Outlet, useLocation } from "react-router-dom";
+import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
 import Button from "../components/Button";
 import Input from "../components/Input";
 import { useState } from "react";
@@ -7,6 +7,7 @@ import { auth } from "../firebase/firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 
 export default function Register() {
+  const navigate = useNavigate();
   const location = useLocation();
   const hideAuth =
     location.pathname.startsWith("/register") &&
@@ -14,10 +15,8 @@ export default function Register() {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
   const [emailCheck, setEmailCheck] = useState(false);
   const [psswrdCheck, setPasswordCheck] = useState(false);
-
   const [psswrdVisible, setpsswrdVisible] = useState(false);
   function showPassword() {
     setpsswrdVisible(!psswrdVisible);
@@ -47,6 +46,7 @@ export default function Register() {
     try {
       await createUserWithEmailAndPassword(auth, email, password);
       const user = auth.currentUser;
+      navigate("/register/successfulregistration");
       console.log(user);
     } catch (error) {
       console.log(error.message);
@@ -101,9 +101,7 @@ export default function Register() {
             />
             <p>8+ characters</p>
 
-            {/* <Link to={"register/personalinfo"}> */}
             <Button label="Create Account" type={"submit"} />
-            {/* </Link> */}
             <Checkbox label={" Send me news and promotions"} />
           </form>
           <div className="p-4">
