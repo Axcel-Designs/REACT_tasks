@@ -1,14 +1,10 @@
 .customersInfoTable {
-    /* width: 80vw; */
-    /* width: 100%; */
-    /* width: 100vw; */
     height: 100%;
     padding: 2vw;
     table-layout: fixed;
-    /* table-layout: auto; */
     border-collapse: collapse;
     overflow: hidden;
-    
+
 }
 
 .customersInfoTable thead tr th {
@@ -20,9 +16,10 @@
 .customersInfoTable tbody tr {
     border-top: 1px solid gray;
 }
+
 .customersInfoTable tbody tr:hover {
     border-top: 1px solid gray;
-    background-color:#B9F8CF ;
+    background-color: #B9F8CF;
 }
 
 .customersInfoTable tbody td {
