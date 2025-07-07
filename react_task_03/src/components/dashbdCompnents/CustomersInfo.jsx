@@ -1,9 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { customersData } from "../../data/customersData";
 import "./customersInfo.css";
 
 export default function CustomersInfo() {
+  const [search, setSearch] = useState("");
   const headers = Object.keys(customersData[0]);
+  // Filter only by customerName
+  const filteredCustomers = customersData.filter((customer) =>
+    customer.customerName.toLowerCase().includes(search.toLowerCase())
+  );
 
   return (
     <>
@@ -19,10 +24,13 @@ export default function CustomersInfo() {
             <div className="flex gap-2 items-center ">
               <div className="border-gray-300 px-2 py-1 border-2 rounded-2xl  ">
                 <li className="fa-solid fa-search"></li>
+                {/* search */}
                 <input
                   type="text"
-                  placeholder="Search"
+                  placeholder="Search by name"
                   className="outline-none bg-white px-2"
+                  value={search}
+                  onChange={(e) => setSearch(e.target.value)}
                   width="w-1/5"
                 />
               </div>
@@ -49,7 +57,7 @@ export default function CustomersInfo() {
                 </tr>
               </thead>
               <tbody className="text-left">
-                {customersData.map((customer, i) => (
+                {filteredCustomers.map((customer, i) => (
                   <tr key={i + 1}>
                     <td>{customer.customerName}</td>
                     <td>{customer.company}</td>
