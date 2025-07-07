@@ -22,7 +22,7 @@ export default function Input({
         >
           {label}
         </label>
-        <div className="flex flex-row justify-between">
+        <div className="flex flex-row grow items-center justify-between ">
           <input
             type={type}
             name={name}
@@ -31,7 +31,7 @@ export default function Input({
             value={value}
             onChange={onChange}
             className={`
-              text-gray-900 placeholder:text-gray-400 focus:outline-none `}
+              text-gray-900 placeholder:text-gray-400 focus:outline-none w-7/8`}
             required
           />
           <div className="flex gap-2 justify-around items-center">
