@@ -7,7 +7,7 @@ import PersonalInfo from "./pages/PersonalInfo";
 import AddAdress from "./pages/AddAddress";
 import AddAdressFill from "./pages/AddAddressFill";
 import SuccessRegister from "./pages/SucessRegister";
-import Dashboard from "./pages/Dashboard";
+import Dashboard from "./pages/Dashboardll";
 
 function App() {
   return (
