@@ -1,4 +1,4 @@
-.tableContianer {
+.tableContainer {
     width: 800px;
     overflow-x: scroll;
     margin: auto;
@@ -18,14 +18,16 @@
 
 .customersInfoTable thead tr {
     position: sticky;
-    top:0;
+    top: 0;
     background-color: white;
-th {
+}
+
+.customersInfoTable thead th {
     padding-bottom: 20px;
     color: gray;
     text-align: left;
 }
-}
+
 .customersInfoTable tbody tr {
     border-top: 1px solid gray;
 }

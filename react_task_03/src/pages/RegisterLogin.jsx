@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, Outlet } from "react-router-dom";
-import { socialLinks } from "../data/SocialLinks";
+import { socialLinks } from "../data/socialLinks";
 import Register from "./Register";
 import Login from "./Login";
 
@@ -45,9 +45,10 @@ export default function RegisterLogin() {
             {socialLinks.map((social, i) => (
               <div
                 key={i}
-                className="bg-gray-200 p-2 rounded-full text-xl h-10 w-10 flex justify-around items-center" onClick={social.url}
+                className="bg-gray-200 p-2 rounded-full text-xl h-10 w-10 flex justify-around items-center"
+                onClick={social.url}
               >
-                <a  target="_blank" rel="noopener noreferrer">
+                <a target="_blank" rel="noopener noreferrer">
                   <li
                     className={`${social.class} ${social.color} cursor-pointer`}
                   ></li>

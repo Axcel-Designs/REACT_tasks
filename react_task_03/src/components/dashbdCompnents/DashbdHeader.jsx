@@ -6,12 +6,11 @@ export default function DashbdHeader() {
           <p>Hello {}</p>
           <span>
             <li className="fa-solid fa-hand"></li>
-          </span>
+          </span><input type="text" />
         </div>
         <div className="bg-white px-2 py-1 rounded-2xl  ">
           <li className="fa-solid fa-search"></li>
           <input
-            type="text"
             placeholder="Search"
             typeof="search"
             className="outline-none px-2"

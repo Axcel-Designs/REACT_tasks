@@ -9,7 +9,7 @@ export default function CustomersInfo() {
     <>
       <div
         className="bg-white grow rounded-2xl p-2 w-full"
-        style={{ "box-shadow": "0 0 20px rgba(0,0, 0,0.15)" }}
+        style={{ boxShadow: "0 0 20px rgba(0,0, 0,0.15)" }}
       >
         <div className="gap-4 px-6">
           <div className="flex justify-between items-center ">
@@ -39,7 +39,7 @@ export default function CustomersInfo() {
           </div>
         </div>
         <div>
-          <div className="tableContianer">
+          <div className="tableContainer">
             <table className="customersInfoTable text-sm">
               <thead>
                 <tr>
