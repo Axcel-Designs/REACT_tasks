@@ -5,7 +5,7 @@ import img from "../assets/Saly-10.svg";
 export default function SuccessRegister() {
   return (
     <>
-      <main className="flex justify-center items-center h-screen">
+      <main className="flex justify-center items-center h-screen bg-white">
         <section className="shadow  rounded-lg w-4/5 md:w-4/5 lg:w-2/5">
           <img src={img} alt="" className="bg-red-50 w-full" />
           <div className="p-4">

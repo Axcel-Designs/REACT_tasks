@@ -8,16 +8,13 @@ import AddAdress from "./pages/AddAddress";
 import AddAdressFill from "./pages/AddAddressFill";
 import SuccessRegister from "./pages/SucessRegister";
 import Dashboard from "./pages/Dashboard";
-import MiniMenu from "./components/MiniMenu";
 
 function App() {
   return (
     <>
-      <main className="flex justify-center items-center w-full h-screen">
+      <main className="flex justify-around items-center w-full h-full bg-amber-100 ">
         <Routes>
           <Route path="/" element={<RegisterLogin />} />
-          {/* <Route index element={<Register />} /> */}
-          <Route path="/mini" element={<MiniMenu />} />
           <Route path="/register" element={<Register />}>
             <Route path="personalinfo" element={<PersonalInfo />} />
             <Route path="address" element={<AddAdress />} />

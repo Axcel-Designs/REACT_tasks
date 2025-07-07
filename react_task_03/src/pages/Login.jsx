@@ -13,12 +13,29 @@ export default function Login() {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
 
-  const [emailCheck, setemailCheck] = useState(false);
+  const [emailCheck, setEmailCheck] = useState(false);
   const [psswrdCheck, setPasswordCheck] = useState(false);
 
   const [psswrdVisible, setpsswrdVisible] = useState(false);
   function showPassword() {
     setpsswrdVisible(!psswrdVisible);
+  }
+
+  function validatePassword(e) {
+    setPassword(e.target.value);
+    if (e.target.value.length >= 8) {
+      setPasswordCheck(true);
+    } else {
+      setPasswordCheck(false);
+    }
+  }
+  function validateEmail(e) {
+    setEmail(e.target.value);
+    if (email.includes("@")) {
+      setEmailCheck(true);
+    } else {
+      setEmailCheck(false);
+    }
   }
 
   const handleSubmit = async (e) => {
@@ -35,7 +52,7 @@ export default function Login() {
               id="email"
               label={"Email"}
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={validateEmail}
               check={
                 emailCheck && (
                   <i className="fa-solid fa-check text-green-400"></i>
@@ -48,7 +65,7 @@ export default function Login() {
               id="password"
               label={"Password"}
               value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={validatePassword}
               check={
                 psswrdCheck && (
                   <i className="fa-solid fa-check text-green-400"></i>
@@ -65,12 +82,12 @@ export default function Login() {
             />
             <p>8+ characters</p>
             <Link to="/login/dashboard">
-              <Button label="Login to Dashboard" type={"submit"}  />
+              <Button label="Login to Dashboard" type={"submit"} />
             </Link>
             <Checkbox label={"Remember Me"} />
           </form>
 
-              <div className="p-4">
+          <div className="p-4">
             <p className="text-center">
               By continuing I aggree with{" "}
               <a href="http://">

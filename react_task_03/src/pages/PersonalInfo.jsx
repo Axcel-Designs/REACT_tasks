@@ -7,7 +7,7 @@ import { countryCode } from "../data/countryCodes";
 export default function PersonalInfo() {
   return (
     <>
-      <section className="shadow p-6 rounded-lg w-7/8 md:w-4/5 min-h-[400px] h-fit lg:w-2/5">
+      <section className="shadow p-6 rounded-lg w-7/8 md:w-4/5 min-h-[400px] h-fit lg:w-2/5 bg-white">
         <div className="flex flex-row justify-between items-center text-lg font-semibold">
           <div>
             <h1 className="">Personal Information</h1>

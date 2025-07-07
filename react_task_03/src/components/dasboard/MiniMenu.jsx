@@ -1,5 +1,5 @@
-import { dashboardMenu } from "../data/dashboardMenu";
-import profilePic from "../assets/profilePic.png";
+import { dashboardMenu } from "../../data/dashboardMenu";
+import profilePic from "../../assets/profilePic.png";
 
 export default function MiniMenu({ onToggle }) {
   return (
@@ -7,7 +7,10 @@ export default function MiniMenu({ onToggle }) {
       <aside className="md:flex max-w-fit p-4 md:p-6 flex justify-between flex-col">
         <header className="">
           <nav>
-            <button className="flex justify-around mb-8 cursor-pointer" onClick={onToggle}>
+            <button
+              className="flex justify-around mb-8 cursor-pointer"
+              onClick={onToggle}
+            >
               <i className="fa-solid fa-gear"></i>
             </button>
             <ul className="flex flex-col gap-2 text-gray-700 ">

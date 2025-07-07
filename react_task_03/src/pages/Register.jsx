@@ -3,6 +3,8 @@ import Button from "../components/Button";
 import Input from "../components/Input";
 import { useState } from "react";
 import Checkbox from "../components/Checkbox";
+import { auth } from "../firebase/firebase";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 
 export default function Register() {
   const location = useLocation();
@@ -21,9 +23,36 @@ export default function Register() {
     setpsswrdVisible(!psswrdVisible);
   }
 
+  function validatePassword(e) {
+    setPassword(e.target.value);
+    if (e.target.value.length >= 8) {
+      setPasswordCheck(true);
+    } else {
+      setPasswordCheck(false);
+    }
+  }
+  function validateEmail(e) {
+    const re =
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    setEmail(e.target.value);
+    if (re.test(e.target.value)) {
+      setEmailCheck(true);
+    } else {
+      setEmailCheck(false);
+    }
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    try {
+      await createUserWithEmailAndPassword(auth, email, password);
+      const user = auth.currentUser;
+      console.log(user);
+    } catch (error) {
+      console.log(error.message);
+    }
   };
+
   return (
     <>
       {!hideAuth ? (
@@ -40,7 +69,14 @@ export default function Register() {
                   <i className="fa-solid fa-check text-green-400"></i>
                 )
               }
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={validateEmail}
+              onKeyUp={(e) => {
+                if (e.target.value.includes("@")) {
+                  setEmailCheck(true);
+                } else {
+                  setEmailCheck(false);
+                }
+              }}
             />
             <Input
               placeholder="Password"
@@ -48,7 +84,7 @@ export default function Register() {
               id="password"
               label={"Password"}
               value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={validatePassword}
               check={
                 psswrdCheck && (
                   <i className="fa-solid fa-check text-green-400"></i>
@@ -65,9 +101,9 @@ export default function Register() {
             />
             <p>8+ characters</p>
 
-            <Link to={"register/personalinfo"}>
-              <Button label="Create Account" type={"submit"} />
-            </Link>
+            {/* <Link to={"register/personalinfo"}> */}
+            <Button label="Create Account" type={"submit"} />
+            {/* </Link> */}
             <Checkbox label={" Send me news and promotions"} />
           </form>
           <div className="p-4">
