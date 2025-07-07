@@ -1,18 +1,31 @@
+.tableContianer {
+    width: 800px;
+    overflow-x: scroll;
+    margin: auto;
+    overflow-y: scroll;
+    height: 80vw;
+}
+
 .customersInfoTable {
     height: 100%;
+    width: 100%;
     padding: 2vw;
-    table-layout: fixed;
+    /* table-layout: fixed; */
     border-collapse: collapse;
     overflow: hidden;
 
 }
 
-.customersInfoTable thead tr th {
+.customersInfoTable thead tr {
+    position: sticky;
+    top:0;
+    background-color: white;
+th {
     padding-bottom: 20px;
     color: gray;
     text-align: left;
 }
-
+}
 .customersInfoTable tbody tr {
     border-top: 1px solid gray;
 }
