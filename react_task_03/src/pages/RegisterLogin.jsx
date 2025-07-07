@@ -26,7 +26,7 @@ export default function RegisterLogin() {
 
   return (
     <>
-      <main className="">
+      <main className="home">
         <section className="shadow p-6 rounded-lg min-w-fit w-7/8 md:w-4/5 min-h-[400px] lg:w-2/5 bg-white text-gray-700 ">
           <div className="flex flex-row justify-between items-center text-lg">
             <nav className="flex gap-4">

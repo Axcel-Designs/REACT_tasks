@@ -1,10 +1,13 @@
-import { Link, Outlet, useLocation } from "react-router-dom";
+import {  Outlet, useLocation, useNavigate } from "react-router-dom";
 import Button from "../components/Button";
 import { useState } from "react";
 import Input from "../components/Input";
 import Checkbox from "../components/Checkbox";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../firebase/firebase";
 
 export default function Login() {
+  const navigate = useNavigate();
   const location = useLocation();
   const hideAuth =
     location.pathname.startsWith("/login") && 
@@ -12,11 +15,10 @@ export default function Login() {
 
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
-
   const [emailCheck, setEmailCheck] = useState(false);
   const [psswrdCheck, setPasswordCheck] = useState(false);
-
   const [psswrdVisible, setpsswrdVisible] = useState(false);
+
   function showPassword() {
     setpsswrdVisible(!psswrdVisible);
   }
@@ -40,6 +42,13 @@ export default function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      navigate("/login/dashboard");
+      console.log('sucessfully logged in');
+    } catch (error) {
+      console.log(error.message);
+    }
   };
   return (
     <>
@@ -81,9 +90,9 @@ export default function Login() {
               showEye={showPassword}
             />
             <p>8+ characters</p>
-            <Link to="/login/dashboard">
+            {/* <Link to="/login/dashboard"> */}
               <Button label="Login to Dashboard" type={"submit"} />
-            </Link>
+            {/* </Link> */}
             <Checkbox label={"Remember Me"} />
           </form>
 

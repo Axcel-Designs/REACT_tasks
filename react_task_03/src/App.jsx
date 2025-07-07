@@ -12,7 +12,7 @@ import Dashboard from "./pages/Dashboard";
 function App() {
   return (
     <>
-      <main className="flex justify-around items-center w-full h-full bg-amber-100 ">
+      <main className="flex justify-around items-center w-full h-screen  bg-amber-100 ">
         <Routes>
           <Route path="/" element={<RegisterLogin />} />
           <Route path="/register" element={<Register />}>

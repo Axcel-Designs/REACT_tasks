@@ -1,12 +1,13 @@
 import React from "react";
 import { customersData } from "../../data/customersData";
+import './customersInfo.css'
 
 export default function CustomersInfo() {
   const headers = Object.keys(customersData[0]);
 
   return (
     <>
-      <div className="bg-white grow rounded-2xl p-2">
+      <div className="bg-white grow rounded-2xl p-2 w-full" style={{'box-shadow': '0 0 20px rgba(0,0, 0,0.15)'}}>
         <div className="flex justify-between items-center gap-4">
           <div>
             <p className="font-bold text-lg">All Customers</p>
@@ -27,17 +28,20 @@ export default function CustomersInfo() {
             </div>
           </div>
         </div>
-        <div>Active Members</div>
         <div>
-          <table className="w-full border-collapse table-auto">
-            <thead className="text-left text-gray-400">
+          <p className="text-sm font-semibold text-green-400">Active Members</p>
+        </div>
+        <div>
+
+          <table className="customersInfoTable">
+            <thead>
               <tr>
                 {headers.map((customer) => (
                   <th key={customer}>{customer}</th>
                 ))}
               </tr>
             </thead>
-            <tbody>
+            <tbody className="text-left">
               {customersData.map((customer, i) => (
                 <tr key={i + 1}>
                   <td>{customer.customerName}</td>
@@ -45,10 +49,12 @@ export default function CustomersInfo() {
                   <td>{customer.email}</td>
                   <td>{customer.phoneNumber}</td>
                   <td>{customer.country}</td>
-                  <td className={`text-center`}>{customer.status}</td>
+                  <td>
+                  <div className={`text-center border-1 w-16 h-8 ${customer.status == 'active' ? 'text-green-600 bg-green-100' : 'text-red-600 bg-red-200'}`}>{customer.status}</div>
+                  </td>
                 </tr>
               ))}
-              {customersData.map((customer, index) => (
+              {/* {customersData.map((customer, index) => (
                 <tr key={index} className="hover:bg-gray-100">
                   {headers.map((key) => (
                     <td key={key} className="border border-gray-300 px-4 py-2">
@@ -56,7 +62,7 @@ export default function CustomersInfo() {
                     </td>
                   ))}
                 </tr>
-              ))}
+              ))} */}
             </tbody>
           </table>
         </div>
