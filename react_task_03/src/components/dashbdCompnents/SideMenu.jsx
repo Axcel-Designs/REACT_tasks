@@ -20,7 +20,7 @@ export default function SideMenu() {
 
   return (
     <>
-      {windowWidth > 768 ? (
+      {windowWidth > 960 ? (
         <MaxMenu onToggle={tgglMenu} />
       ) : (
         <MiniMenu onToggle={tgglMenu} />
