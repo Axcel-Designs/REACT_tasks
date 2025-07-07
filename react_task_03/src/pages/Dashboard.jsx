@@ -2,7 +2,7 @@ import SideMenu from "../components/dashbdCompnents/SideMenu";
 import InfoBar from "../components/dashbdCompnents/InfoBar";
 import CustomersInfo from "../components/dashbdCompnents/CustomersInfo";
 import DashbdHeader from "../components/dashbdCompnents/DashbdHeader";
-import "../components/dashbdCompnents/CustomersInfo.css";
+import "../components/dashbdCompnents/customersInfo.css";
 
 export default function Dashboard() {
   return (
