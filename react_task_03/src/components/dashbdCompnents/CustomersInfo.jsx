@@ -13,7 +13,7 @@ export default function CustomersInfo() {
   return (
     <>
       <div
-        className="bg-white grow rounded-2xl p-2 w-full"
+        className="bg-white rounded-2xl p-2 w-full"
         style={{ boxShadow: "0 0 20px rgba(0,0, 0,0.15)" }}
       >
         <div className="gap-4 px-6">
