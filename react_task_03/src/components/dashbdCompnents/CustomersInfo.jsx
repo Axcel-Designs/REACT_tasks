@@ -15,7 +15,7 @@ export default function CustomersInfo() {
       (customer) => customer.status === "active"
     ));
 
-  const headers = Object.keys(customersData[0]);
+  const headers = Object.keys(customersData[0]).map((key) => key[0].toUpperCase()+key.slice(1));
   filteredCustomers = filteredCustomers.filter((customer) =>
     customer.customerName.toLowerCase().includes(search.toLowerCase())
   );
@@ -45,8 +45,8 @@ export default function CustomersInfo() {
                 />
               </div>
               <div className="flex items-center bg-gray-300 rounded-2xl px-2 py-1 w-full sm:w-auto">
-                <p className="ml-2 w-full">sort by</p>
-                <select name="" id="" className="ml-2 w-full sm:w-auto">
+                <p className="ml-2 w-full">sort by:</p>
+                <select name="" id="" className="ml-2 w-full sm:w-auto font-semibold">
                   <option value="newest">Newest</option>
                   <option value="oldest">Oldest</option>
                 </select>
@@ -60,13 +60,13 @@ export default function CustomersInfo() {
           </div>
         </div>
         <div className="tableContainer w-full overflow-x-auto mt-2">
-          <table className="customersInfoTable text-xs sm:text-sm min-w-[400px] md:min-w-[600px] ">
+          <table className="customersInfoTable text-xs sm:text-sm min-w-[400px] md:min-w-[600px] w-full">
             <thead className="sticky top-0">
               <tr>
                 {headers.map((customer) => (
                   <th
                     key={customer}
-                    className="p-1 sm:p-2 text-[10px] sm:text-xs md:text-sm text-left whitespace-nowrap"
+                    className="p-1 sm:p-2 text-left whitespace-nowrap"
                   >
                     {customer}
                   </th>
@@ -76,16 +76,14 @@ export default function CustomersInfo() {
             <tbody className="text-left">
               {filteredCustomers.map((customer, i) => (
                 <tr key={i + 1} className="hover:bg-gray-50">
-                  <td className="px-1 py-1 sm:px-2 sm:py-2 ">
-                    {customer.customerName}
-                  </td>
-                  <td className="px-1 py-1 sm:p-2 whitespace-nowrap">
+                  <td className="p-1 sm:p-2">{customer.customerName}</td>
+                  <td className="p-1 sm:p-2 whitespace-nowrap">
                     {customer.company}
                   </td>
-                  <td className="px-1 py-1 sm:p-2">{customer.phoneNumber}</td>
-                  <td className="px-1 py-1 sm:p-2">{customer.email}</td>
-                  <td className="px-1 py-1 sm:p-2">{customer.country}</td>
-                  <td className="px-1 py-1 sm:px-2 sm:py-2 whitespace-nowrap">
+                  <td className="p-1 sm:p-2">{customer.phoneNumber}</td>
+                  <td className="p-1 sm:p-2">{customer.email}</td>
+                  <td className="p-1 sm:p-2">{customer.country}</td>
+                  <td className="p-1 sm:p-2 whitespace-nowrap">
                     <div
                       className={`flex justify-around items-center border-1 w-14 h-6 ${
                         customer.status == "active"
