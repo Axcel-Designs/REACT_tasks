@@ -4,15 +4,17 @@ import profilePic from "../../assets/profilePic.png";
 export default function MiniMenu({ onToggle }) {
   return (
     <>
-      <aside className="md:flex max-w-fit p-4 md:p-6 flex justify-between flex-col">
+      <aside className="md:flex max-w-fit p-2 py-4 md:p-6 flex justify-between flex-col">
         <header className="">
           <nav>
-            <button
-              className="flex justify-around mb-8 cursor-pointer"
-              onClick={onToggle}
-            >
-              <i className="fa-solid fa-gear"></i>
-            </button>
+            <div className="flex justify-around items-center">
+              <button
+                className="flex justify-around mb-8 cursor-pointer"
+                onClick={onToggle}
+              >
+                <i className="fa-solid fa-gear"></i>
+              </button>
+            </div>
             <ul className="flex flex-col gap-2 text-gray-700 ">
               {dashboardMenu.map((menu) => (
                 <div
