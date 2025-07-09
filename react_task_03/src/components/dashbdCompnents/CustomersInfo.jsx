@@ -46,7 +46,11 @@ export default function CustomersInfo() {
               </div>
               <div className="flex items-center bg-gray-300 rounded-2xl px-2 py-1 w-full sm:w-auto">
                 <p className="ml-2 w-full">sort by:</p>
-                <select name="" id="" className="ml-2 w-full sm:w-auto font-semibold">
+                <select
+                  name=""
+                  id=""
+                  className="ml-2 w-full sm:w-auto font-semibold"
+                >
                   <option value="newest">Newest</option>
                   <option value="oldest">Oldest</option>
                 </select>
@@ -54,19 +58,19 @@ export default function CustomersInfo() {
             </div>
           </div>
           <div onClick={getActiveMembers}>
-            <p className="text-sm font-semibold text-green-400 cursor-pointer my-4">
+            <p className="text-sm font-semibold text-green-400 cursor-pointer my-4 hover:text-green-600">
               Active Members
             </p>
           </div>
         </div>
         <div className="tableContainer w-full overflow-x-auto mt-2">
           <table className="customersInfoTable text-xs sm:text-sm min-w-[400px] md:min-w-[600px] w-full">
-            <thead className="sticky top-0">
+            <thead className="sticky top-0 text-left">
               <tr>
                 {headers.map((customer) => (
                   <th
                     key={customer}
-                    className="p-1 sm:p-2 text-left whitespace-nowrap"
+                    className="p-1  whitespace-nowrap"
                   >
                     {customer}
                   </th>
