@@ -35,8 +35,12 @@ export default function CustomersInfo() {
                 />
               </div>
               <div className="flex items-center bg-gray-300 rounded-2xl px-2 py-1 w-full sm:w-auto">
-                <p className="text-sm">sort by</p>
-                <select name="" id="" className="ml-2 w-full sm:w-auto"></select>
+                <p className="ml-2 w-full">sort by</p>
+                <select
+                  name=""
+                  id=""
+                  className="ml-2 w-full sm:w-auto"
+                ></select>
               </div>
             </div>
           </div>
