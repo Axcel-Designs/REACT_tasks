@@ -4,9 +4,21 @@ import { customersData } from "../../data/customersData";
 
 export default function CustomersInfo() {
   const [search, setSearch] = useState("");
+  const [activeMembers, setActiveMembers] = useState(false);
+
+  let filteredCustomers = customersData;
+
+  function getActiveMembers() {
+    setActiveMembers(!activeMembers);
+  }
+  if (activeMembers) {
+    filteredCustomers = filteredCustomers.filter(
+      (customer) => customer.status === "active"
+    );
+  }
+
   const headers = Object.keys(customersData[0]);
-  // Filter only by customerName
-  const filteredCustomers = customersData.filter((customer) =>
+  filteredCustomers = filteredCustomers.filter((customer) =>
     customer.customerName.toLowerCase().includes(search.toLowerCase())
   );
 
@@ -44,8 +56,8 @@ export default function CustomersInfo() {
               </div>
             </div>
           </div>
-          <div>
-            <p className="text-sm font-semibold text-green-400">
+          <div onClick={getActiveMembers}>
+            <p className="text-sm font-semibold text-green-400 cursor-pointer">
               Active Members
             </p>
           </div>
