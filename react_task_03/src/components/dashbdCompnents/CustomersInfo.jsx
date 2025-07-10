@@ -4,21 +4,31 @@ import { customersData } from "../../data/customersData";
 export default function CustomersInfo() {
   const [search, setSearch] = useState("");
   const [activeMembers, setActiveMembers] = useState(false);
+  const [selectValue, setSelectValue] = useState("newest");
 
   let filteredCustomers = customersData;
 
   function getActiveMembers() {
     setActiveMembers(!activeMembers);
   }
-  activeMembers &&
-    (filteredCustomers = customersData.filter(
-      (customer) => customer.status === "active"
-    ));
 
-  const headers = Object.keys(customersData[0]).map((key) => key[0].toUpperCase()+key.slice(1));
-  filteredCustomers = filteredCustomers.filter((customer) =>
-    customer.customerName.toLowerCase().includes(search.toLowerCase())
-  );
+  filteredCustomers = customersData
+    .filter((customer) => (activeMembers ? customer.status === "active" : true))
+    .filter((customer) =>
+      customer.customerName.toLowerCase().includes(search.toLowerCase())
+    );
+
+  const headers = Object.keys(customersData[0])
+    .map((key) => key[0].toUpperCase() + key.slice(1))
+    .slice(0, -1);
+
+  selectValue === "newest"
+    ? filteredCustomers.sort(
+        (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+      )
+    : filteredCustomers.sort(
+        (a, b) => new Date(a.createdAt) - new Date(b.createdAt)
+      );
 
   return (
     <>
@@ -49,6 +59,8 @@ export default function CustomersInfo() {
                 <select
                   name=""
                   id=""
+                  value={selectValue}
+                  onChange={(e) => setSelectValue(e.target.value)}
                   className="ml-2 w-full sm:w-auto font-semibold"
                 >
                   <option value="newest">Newest</option>
@@ -57,7 +69,7 @@ export default function CustomersInfo() {
               </div>
             </div>
           </div>
-          <div onClick={getActiveMembers}>
+          <div onClick={getActiveMembers} className="w-fit">
             <p className="text-sm font-semibold text-green-400 cursor-pointer my-4 hover:text-green-600">
               Active Members
             </p>
@@ -68,10 +80,7 @@ export default function CustomersInfo() {
             <thead className="sticky top-0 text-left">
               <tr>
                 {headers.map((customer) => (
-                  <th
-                    key={customer}
-                    className="p-1  whitespace-nowrap"
-                  >
+                  <th key={customer} className="p-1  whitespace-nowrap">
                     {customer}
                   </th>
                 ))}
@@ -81,9 +90,7 @@ export default function CustomersInfo() {
               {filteredCustomers.map((customer, i) => (
                 <tr key={i + 1} className="hover:bg-gray-50">
                   <td className="p-1 sm:p-2">{customer.customerName}</td>
-                  <td className="p-1 sm:p-2 whitespace-nowrap">
-                    {customer.company}
-                  </td>
+                  <td className="p-1 sm:p-2"> {customer.company}</td>
                   <td className="p-1 sm:p-2">{customer.phoneNumber}</td>
                   <td className="p-1 sm:p-2">{customer.email}</td>
                   <td className="p-1 sm:p-2">{customer.country}</td>
