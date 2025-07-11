@@ -14,18 +14,15 @@ function App() {
     <>
       <main className="flex justify-around items-center w-screen h-screen">
         <Routes>
-          <Route path="/" element={<RegisterLogin />} />
-          <Route path="/register" element={<Register />}>
-            <Route path="personalinfo" element={<PersonalInfo />} />
-            <Route path="address" element={<AddAdress />} />
-            <Route path="completeaddress" element={<AddAdressFill />} />
+          <Route path="/" element={<RegisterLogin />} >
+            <Route path="user/personalinfo" element={<PersonalInfo />} />
+            <Route path="user/address" element={<AddAdress />} />
+            <Route path="user/completeaddress" element={<AddAdressFill />} />
             <Route
-              path="successfulregistration"
+              path="user/successfulregistration"
               element={<SuccessRegister />}
             />
-          </Route>
-          <Route path="/login" element={<Login />}>
-            <Route path="dashboard" element={<Dashboard />} />
+            <Route path="user/dashboard" element={<Dashboard />} />
           </Route>
         </Routes>
       </main>
