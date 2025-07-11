@@ -18,10 +18,7 @@ function App() {
             <Route path="user/personalinfo" element={<PersonalInfo />} />
             <Route path="user/address" element={<AddAdress />} />
             <Route path="user/completeaddress" element={<AddAdressFill />} />
-            <Route
-              path="user/successfulregistration"
-              element={<SuccessRegister />}
-            />
+            <Route path="user/successfulregistration" element={<SuccessRegister />} />
             <Route path="user/dashboard" element={<Dashboard />} />
           </Route>
         </Routes>
