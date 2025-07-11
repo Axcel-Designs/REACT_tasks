@@ -84,8 +84,8 @@ countriesListVisualization(filteredCountriesData(searchInput.value));
 // color theme switcher
 themeToggler.addEventListener("click", () => {
   document.body.classList.toggle("dark");
-  themeToggler.querySelector("i").classList.toggle("fa-regular");
   themeToggler.querySelector("i").classList.toggle("fa-solid");
+  themeToggler.querySelector("i").classList.toggle("fa-regular");
 });
 
 countryBoxAll.forEach((countryBox)=>{
