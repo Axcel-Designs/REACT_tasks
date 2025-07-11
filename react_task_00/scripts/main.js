@@ -4,26 +4,28 @@ const countriesList = document.getElementById("countriesList");
 const themeToggler = document.getElementById("themeToggle");
 const countryBoxAll = document.querySelectorAll(".countryBox");
 
-async function getWorld(url) {
-  const data = await fetch(url);
-  const response = await data.json();
+// async function getWorld(url) {
+//   const data = await fetch(url);
+//   const response = await data.json();
 
-  return response.map((country) => {
-    return {
-      name: country.name.common,
-      flag: country.flags.svg,
-      flags: country.flags,
-      population: country.population,
-      region: country.region,
-      capital: country.capital ? country.capital[0] : "No Capital",
-    };
-  });
-}
-let worldData = [];
-getWorld(`https://restcountries.com/v3.1/all`).then((data) => {
-  worldData = data;
-  countriesListVisualization(filteredCountriesData(searchInput.value));
-});
+//   return response.map((country) => {
+//     return {
+//       name: country.name.common,
+//       flag: country.flags.svg,
+//       flags: country.flags,
+//       population: country.population,
+//       region: country.region,
+//       capital: country.capital ? country.capital[0] : "No Capital",
+//     };
+//   });
+// }
+
+let worldData = countriesData;
+
+// getWorld(`https://restcountries.com/v3.1/all`).then((data) => {
+//   worldData = data;
+//   countriesListVisualization(filteredCountriesData(searchInput.value));
+// });
 
 // countriesList manipulation code here (sorted Countriesdata Object)
 const filteredCountriesData = (searchtext) => {
