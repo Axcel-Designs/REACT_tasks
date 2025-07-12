@@ -40,7 +40,7 @@ export default function Login() {
     e.preventDefault();
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      navigate("/login/dashboard");
+      navigate("/user/dashboard");
       console.log("sucessfully logged in");
     } catch (error) {
       console.log(error.message);
