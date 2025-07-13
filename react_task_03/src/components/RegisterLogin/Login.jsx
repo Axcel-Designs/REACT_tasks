@@ -4,6 +4,7 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import Input from "../Input";
 import Button from "../Button";
 import { auth } from "../../firebase/firebase";
+import Checkbox from "../Checkbox";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -28,7 +29,7 @@ export default function Login() {
   }
   function validateEmail(e) {
     setEmail(e.target.value);
-    if (email.includes("@")) {
+    if (e.target.value.includes("@")) {
       setEmailCheck(true);
     } else {
       setEmailCheck(false);
@@ -82,7 +83,6 @@ export default function Login() {
         <Button label="Login to Dashboard" type={"submit"} />
         <Checkbox label={"Remember Me"} />
       </form>
-
       <div className="p-4">
         <p className="text-center">
           By continuing I aggree with{" "}
