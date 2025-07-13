@@ -74,7 +74,7 @@ export default function CustomersInfo() {
             </p>
           </div>
         </div>
-        <div className="tableContainer w-full overflow-x-auto mt-2 ">
+        <div className="w-full overflow-x-auto mt-2 ">
           {/* table */}
           <table className="customersInfoTable text-xs sm:text-sm  w-full border-collapse table-auto">
             <thead className="sticky top-0 text-left">
