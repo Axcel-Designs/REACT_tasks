@@ -1,18 +1,14 @@
 .tableContainer {
-    width: 800px;
     overflow-x: scroll;
     margin: auto;
     overflow-y: scroll;
-    height: 80vw;
 }
 
 .customersInfoTable {
-    width: 100%;
     padding: 2vw;
     border-collapse: collapse;
     overflow: hidden;
-
-}
+   }
 
 .customersInfoTable thead tr {
     position: sticky;
@@ -37,5 +33,4 @@
 
 .customersInfoTable tbody td {
     padding: 2px;
-
 }

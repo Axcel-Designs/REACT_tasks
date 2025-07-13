@@ -33,7 +33,7 @@ export default function CustomersInfo() {
   return (
     <>
       <div
-        className="bg-white rounded-2xl p-2 w-full max-w-full overflow-x-auto sm:p-4 md:p-6"
+        className="bg-white rounded-2xl p-2 w-full overflow-x-auto sm:p-4 md:p-6"
         style={{ boxShadow: "0 0 20px rgba(0,0, 0,0.15)" }}
       >
         <div className="gap-4 px-2 sm:px-4 md:px-6">
@@ -44,7 +44,6 @@ export default function CustomersInfo() {
             <div className="flex flex-col sm:flex-row gap-2 items-start sm:items-center w-full sm:w-auto">
               <div className="border-gray-300 px-2 py-1 border-2 rounded-2xl w-full sm:w-auto flex items-center">
                 <li className="fa-solid fa-search"></li>
-                {/* search */}
                 <input
                   type="text"
                   placeholder="Search by name"
@@ -75,10 +74,11 @@ export default function CustomersInfo() {
             </p>
           </div>
         </div>
-        <div className="tableContainer w-full overflow-x-auto mt-2">
-          <table className="customersInfoTable text-xs sm:text-sm min-w-[400px] md:min-w-[600px] w-full">
+        <div className="tableContainer w-full overflow-x-auto mt-2 ">
+          {/* table */}
+          <table className="customersInfoTable text-xs sm:text-sm  md:min-w-[600px] w-full border-collapse">
             <thead className="sticky top-0 text-left">
-              <tr>
+              <tr className="grid md:grid-cols-6">
                 {headers.map((customer) => (
                   <th key={customer} className="p-1  whitespace-nowrap">
                     {customer}
@@ -88,7 +88,10 @@ export default function CustomersInfo() {
             </thead>
             <tbody className="text-left">
               {filteredCustomers.map((customer, i) => (
-                <tr key={i + 1} className="hover:bg-gray-50">
+                <tr
+                  key={i + 1}
+                  className="hover:bg-gray-50 grid md:grid-cols-6 min-w-fit"
+                >
                   <td className="p-1 sm:p-2">{customer.customerName}</td>
                   <td className="p-1 sm:p-2"> {customer.company}</td>
                   <td className="p-1 sm:p-2">{customer.phoneNumber}</td>

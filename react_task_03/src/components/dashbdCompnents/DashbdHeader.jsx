@@ -1,11 +1,11 @@
 export default function DashbdHeader() {
   return (
     <>
-      <header className="flex justify-between items-center min-h-fit">
-        <div className="flex gap-1">
+      <header className="flex flex-col md:flex-row gap-2 justify-between items-start">
+        <div className="flex">
           <p>Hello {}</p>
           <span>
-            <li className="fa-solid fa-hand"></li>
+            <li className="fa-solid fa-hand ml-2"></li>
           </span><input type="text" />
         </div>
         <div className="bg-white px-2 py-1 rounded-2xl  ">

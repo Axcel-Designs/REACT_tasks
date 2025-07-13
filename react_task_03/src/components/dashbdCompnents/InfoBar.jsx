@@ -9,14 +9,14 @@ export default function InfoBar() {
 
   return (
     <>
-      <div className="bg-white rounded-2xl p-4 lg:px-10 w-full flex justify-between items-center gap-4">
+      <div className="bg-white rounded-2xl p-4 lg:px-10 w-full flex flex-col  md:flex-row md:justify-between items-start gap-4">
         <div className="flex justify-between items-center gap-2">
           <div className="bg-green-200 p-2 rounded-4xl w-14 h-14 flex justify-center items-center">
             <li className="fa-solid fa-users fa-xl text-green-600"></li>
           </div>
           <div className="flex flex-col text-xs">
             <p>Total Users</p>
-            <p className="text-lg font-bold">{customersTotal}</p>
+            <p className="text-lg font-bold ">{customersTotal}</p>
             <p>this month</p>
           </div>
         </div>
