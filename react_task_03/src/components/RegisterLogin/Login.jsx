@@ -21,8 +21,8 @@ export default function Login() {
   }
 
   function validatePassword(e) {
-    setPassword(e.target.value);
     if (e.target.value.length >= 8) {
+      setPassword(e.target.value);
       setPasswordCheck(true);
     } else {
       setPasswordCheck(false);

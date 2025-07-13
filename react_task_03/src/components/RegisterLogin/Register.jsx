@@ -11,6 +11,7 @@ export default function Register() {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+    const [message, setMessage] = useState("");
   const [emailCheck, setEmailCheck] = useState(false);
   const [psswrdCheck, setPasswordCheck] = useState(false);
   const [psswrdVisible, setpsswrdVisible] = useState(false);
@@ -19,18 +20,20 @@ export default function Register() {
   }
 
   function validatePassword(e) {
-    setPassword(e.target.value);
-    if (e.target.value.length >= 8) {
+    const newPassword = e.target.value;
+    setPassword(newPassword);
+    if (newPassword.length >= 8) {
       setPasswordCheck(true);
     } else {
       setPasswordCheck(false);
     }
   }
   function validateEmail(e) {
+    const newEmail = e.target.value;
+    setEmail(newEmail);
     const re =
       /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    setEmail(e.target.value);
-    if (re.test(e.target.value)) {
+    if (re.test(newEmail)) {
       setEmailCheck(true);
     } else {
       setEmailCheck(false);
@@ -43,9 +46,11 @@ export default function Register() {
       await createUserWithEmailAndPassword(auth, email, password);
       const user = auth.currentUser;
       console.log("Successfully registered:", user);
+      setMessage("Successfully registered");
       navigate("/user/successfulregistration");
     } catch (error) {
       console.log(error.message);
+      setMessage(error.message)
     }
   };
 
@@ -62,13 +67,6 @@ export default function Register() {
             emailCheck && <i className="fa-solid fa-check text-green-400"></i>
           }
           onChange={validateEmail}
-          onKeyUp={(e) => {
-            if (e.target.value.includes("@")) {
-              setEmailCheck(true);
-            } else {
-              setEmailCheck(false);
-            }
-          }}
         />
         <Input
           placeholder="Password"
@@ -92,6 +90,7 @@ export default function Register() {
         <p>8+ characters</p>
 
         <Button label="Create Account" type={"submit"} />
+        <p>{message}</p>
         <Checkbox label={" Send me news and promotions"} />
       </form>
       <div className="p-4">
