@@ -1,17 +1,16 @@
 .tableContainer {
-    overflow-x: scroll;
+    /* overflow-x: scroll; */
     margin: auto;
-    overflow-y: scroll;
+    /* overflow-y: scroll; */
 }
 
 .customersInfoTable {
     padding: 2vw;
-    border-collapse: collapse;
     overflow: hidden;
    }
 
 .customersInfoTable thead tr {
-    position: sticky;
+    /* position: sticky; */
     top: 0;
     background-color: white;
 }
