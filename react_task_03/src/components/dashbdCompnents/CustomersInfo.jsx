@@ -76,11 +76,16 @@ export default function CustomersInfo() {
         </div>
         <div className="tableContainer w-full overflow-x-auto mt-2 ">
           {/* table */}
-          <table className="customersInfoTable text-xs sm:text-sm  md:min-w-[600px] w-full border-collapse">
+          <table className="customersInfoTable text-xs sm:text-sm  w-full border-collapse table-auto">
             <thead className="sticky top-0 text-left">
-              <tr className="grid md:grid-cols-6">
+              <tr className="grid grid-cols-1 md:grid-cols-7">
                 {headers.map((customer) => (
-                  <th key={customer} className="p-1  whitespace-nowrap">
+                  <th
+                    key={customer}
+                    className={`p-1 whitespace-nowrap${
+                      customer === "Email" ? " md:col-span-2" : ""
+                    }`}
+                  >
                     {customer}
                   </th>
                 ))}
@@ -90,12 +95,14 @@ export default function CustomersInfo() {
               {filteredCustomers.map((customer, i) => (
                 <tr
                   key={i + 1}
-                  className="hover:bg-gray-50 grid md:grid-cols-6 min-w-fit"
+                  className="hover:bg-gray-50 grid-cols-1 grid md:grid-cols-7 min-w-fit"
                 >
                   <td className="p-1 sm:p-2">{customer.customerName}</td>
                   <td className="p-1 sm:p-2"> {customer.company}</td>
                   <td className="p-1 sm:p-2">{customer.phoneNumber}</td>
-                  <td className="p-1 sm:p-2">{customer.email}</td>
+                  <td className="p-1 sm:p-2 whitespace-nowrap md:col-span-2">
+                    {customer.email}
+                  </td>
                   <td className="p-1 sm:p-2">{customer.country}</td>
                   <td className="p-1 sm:p-2 whitespace-nowrap">
                     <div
