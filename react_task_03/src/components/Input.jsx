@@ -24,7 +24,7 @@ export default function Input({
         </label>
         <div className="flex flex-row grow items-center justify-between ">
           <input
-            typeof={type}
+            type={type}
             name={name}
             placeholder={placeholder}
             id={id}

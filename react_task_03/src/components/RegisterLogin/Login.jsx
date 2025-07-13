@@ -72,8 +72,8 @@ export default function Login() {
           }
           show={
             <i
-              className={`fa-regular ${
-                psswrdVisible ? "fa-eye-slash" : "fa-eye"
+              className={`fa-regular fa-eye${
+                psswrdVisible ? "-slash" : ""
               } cursor-pointer`}
             ></i>
           }
