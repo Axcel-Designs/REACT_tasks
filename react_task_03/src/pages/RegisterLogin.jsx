@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, Outlet, useLocation } from "react-router-dom";
 import { socialLinks } from "../data/socialLinks";
 import Register from "../components/RegisterLogin/Register";
-import Login from "../components/RegisterLogin/Register";
+import Login from "../components/RegisterLogin/Login";
 
 export default function RegisterLogin() {
   const [regLog, setRegLog] = useState({
