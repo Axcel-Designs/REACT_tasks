@@ -11,6 +11,7 @@ export default function Login() {
 
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
+  const [message, setMessage] = useState("");
   const [emailCheck, setEmailCheck] = useState(false);
   const [psswrdCheck, setPasswordCheck] = useState(false);
   const [psswrdVisible, setpsswrdVisible] = useState(false);
@@ -41,9 +42,11 @@ export default function Login() {
     try {
       await signInWithEmailAndPassword(auth, email, password);
       navigate("/user/dashboard");
+      setMessage('correct password and email');
       console.log("sucessfully logged in");
     } catch (error) {
       console.log(error.message);
+      setMessage('wrong password or email');
     }
   };
   return (
@@ -81,6 +84,7 @@ export default function Login() {
         />
         <p>8+ characters</p>
         <Button label="Login to Dashboard" type={"submit"} />
+        <p>{message}</p>
         <Checkbox label={"Remember Me"} />
       </form>
       <div className="p-4">
