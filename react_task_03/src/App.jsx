@@ -11,9 +11,6 @@ function App() {
         <Routes>
           <Route path="/" element={<RegisterLogin />} >
           <Route path="user" element={<User />} />
-            {/* <Route path="user/personalinfo" element={<PersonalInfo />} /> */}
-            {/* <Route path="user/address" element={<AddAdress />} /> */}
-            {/* <Route path="user/completeaddress" element={<AddAdressFill />} /> */}
             <Route path="user/successfulregistration" element={<SuccessRegister />} />
             <Route path="user/dashboard" element={<Dashboard />} />
           </Route>
