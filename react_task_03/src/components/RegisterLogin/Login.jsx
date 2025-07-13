@@ -5,12 +5,14 @@ import Input from "../Input";
 import Button from "../Button";
 import { auth } from "../../firebase/firebase";
 import Checkbox from "../Checkbox";
+import { useAuth } from "../../context/AuthProvider";
 
 export default function Login() {
   const navigate = useNavigate();
+  const { setIsLoggedIn } = useAuth();
 
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [message, setMessage] = useState("");
   const [emailCheck, setEmailCheck] = useState(false);
   const [psswrdCheck, setPasswordCheck] = useState(false);
@@ -41,6 +43,7 @@ export default function Login() {
     e.preventDefault();
     try {
       await signInWithEmailAndPassword(auth, email, password);
+      setIsLoggedIn(true);
       navigate("/user/dashboard");
       setMessage('correct password and email');
       console.log("sucessfully logged in");
