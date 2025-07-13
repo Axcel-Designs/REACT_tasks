@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { customersData } from "../../data/customersData";
+import Input from "../Input";
 
 export default function CustomersInfo() {
   const [search, setSearch] = useState("");
@@ -32,10 +33,7 @@ export default function CustomersInfo() {
 
   return (
     <>
-      <div
-        // className="bg-white rounded-2xl p-2 w-full  sm:p-4 md:p-6 shadow-xl/30"
-        className="bg-white rounded-2xl p-2 w-full overflow-y-auto sm:p-4 md:p-6 shadow-xl/30"
-      >
+      <div className="bg-white rounded-2xl p-2 w-full overflow-y-auto sm:p-4 md:p-6 shadow-xl/30">
         <div className="gap-4 px-2 sm:px-4 md:px-6">
           <div className="flex flex-col sm:flex-row justify-between sm:items-center gap-2 ">
             <div>
@@ -45,7 +43,7 @@ export default function CustomersInfo() {
               <div className="border-gray-300 px-2 py-1 border-2 rounded-2xl w-full sm:w-auto flex items-center">
                 <li className="fa-solid fa-search"></li>
                 <input
-                  type="text"
+                  type="search"
                   placeholder="Search by name"
                   className="outline-none bg-white px-2 w-full sm:w-auto"
                   value={search}
@@ -74,17 +72,15 @@ export default function CustomersInfo() {
             </p>
           </div>
         </div>
-        <div className="w-full overflow-x-auto mt-2 ">
+        <div className="w-full overflow-x-auto mt-2 h-screen">
           {/* table */}
-          <table className="customersInfoTable text-xs sm:text-sm  w-full border-collapse table-auto">
-            <thead className="sticky top-0 text-left">
-              <tr className="grid grid-cols-1 md:grid-cols-7">
+          <table className="customersInfoTable text-xs sm:text-sm  w-full border-collapse table-auto relative">
+            <thead className="sticky top-0 w-full text-left">
+              <tr className="grid grid-cols- md:grid-cols-7">
                 {headers.map((customer) => (
                   <th
                     key={customer}
-                    className={`p-1 whitespace-nowrap${
-                      customer === "Email" && " md:col-span-2"
-                    }`}
+                    className={`${customer === "Email" && "md:col-span-2"}`}
                   >
                     {customer}
                   </th>
@@ -95,7 +91,11 @@ export default function CustomersInfo() {
               {filteredCustomers.map((customer, i) => (
                 <tr
                   key={i + 1}
-                  className="hover:bg-gray-50 grid-cols-1 grid md:grid-cols-7 min-w-fit"
+                  className={`hover:bg-gray-50 grid-cols-1 grid md:grid-cols-7 min-w-fit${
+                    customer.status == "active"
+                      ? " hover:bg-green-100"
+                      : " hover:bg-red-100"
+                  }`}
                 >
                   <td className="p-1 sm:p-2">{customer.customerName}</td>
                   <td className="p-1 sm:p-2"> {customer.company}</td>
