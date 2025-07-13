@@ -1,11 +1,15 @@
 import React, { useState } from "react";
 import { Link, Outlet, useLocation } from "react-router-dom";
 import { socialLinks } from "../data/socialLinks";
-import Register from "./Register";
-import Login from "./Login";
+import Register from "../components/RegisterLogin/Register";
+import Login from "../components/RegisterLogin/Register";
 
 export default function RegisterLogin() {
-  const [regLog, setRegLog] = useState({ to: <Register />, label: "register" });
+  const [regLog, setRegLog] = useState({
+    to: <Register  />,
+    // to: <Register toLogin={handleLogin} />,
+    label: "register",
+  });
   const [fontStyle, setFontStyle] = useState("");
   const [logfontStyle, setLogFontStyle] = useState("");
 
@@ -15,6 +19,7 @@ export default function RegisterLogin() {
 
   const handleRegtr = () => {
     setRegLog({ to: <Register />, label: "register" });
+    // setRegLog({ to: <Register toLogin={handleLogin} />, label: "register" });
     setFontStyle(
       "font-semibold border-2 border-transparent border-b-red-800 pb-4"
     );
@@ -31,7 +36,7 @@ export default function RegisterLogin() {
   return (
     <>
       {!hideRender ? (
-        <main className="home">
+        <main className="bg-amber-50 w-full static h-svh flex justify-around items-center">
           <section className="shadow p-6 rounded-lg min-w-fit w-7/8 md:w-4/5 min-h-[400px] lg:w-2/5 bg-white text-gray-700 ">
             <div className="flex flex-row justify-between items-center text-lg">
               <nav className="flex gap-4">

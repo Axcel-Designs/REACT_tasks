@@ -33,8 +33,8 @@ export default function CustomersInfo() {
   return (
     <>
       <div
-        className="bg-white rounded-2xl p-2 w-full overflow-x-auto sm:p-4 md:p-6"
-        style={{ boxShadow: "0 0 20px rgba(0,0, 0,0.15)" }}
+        // className="bg-white rounded-2xl p-2 w-full  sm:p-4 md:p-6 shadow-xl/30"
+        className="bg-white rounded-2xl p-2 w-full overflow-y-auto sm:p-4 md:p-6 shadow-xl/30"
       >
         <div className="gap-4 px-2 sm:px-4 md:px-6">
           <div className="flex flex-col sm:flex-row justify-between sm:items-center gap-2 ">
@@ -83,7 +83,7 @@ export default function CustomersInfo() {
                   <th
                     key={customer}
                     className={`p-1 whitespace-nowrap${
-                      customer === "Email" ? " md:col-span-2" : ""
+                      customer === "Email" && " md:col-span-2"
                     }`}
                   >
                     {customer}
@@ -100,11 +100,9 @@ export default function CustomersInfo() {
                   <td className="p-1 sm:p-2">{customer.customerName}</td>
                   <td className="p-1 sm:p-2"> {customer.company}</td>
                   <td className="p-1 sm:p-2">{customer.phoneNumber}</td>
-                  <td className="p-1 sm:p-2 whitespace-nowrap md:col-span-2">
-                    {customer.email}
-                  </td>
+                  <td className="p-1 sm:p-2 md:col-span-2">{customer.email}</td>
                   <td className="p-1 sm:p-2">{customer.country}</td>
-                  <td className="p-1 sm:p-2 whitespace-nowrap">
+                  <td className="p-1 sm:p-2 ">
                     <div
                       className={`flex justify-around items-center border-1 w-14 h-6 ${
                         customer.status == "active"

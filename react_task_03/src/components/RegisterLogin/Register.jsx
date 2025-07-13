@@ -1,20 +1,19 @@
-import { Outlet, useNavigate } from "react-router-dom";
-import Button from "../components/Button";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import Input from "../components/Input";
-import Checkbox from "../components/Checkbox";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../firebase/firebase";
+import { auth } from "../../firebase/firebase";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import Input from "../Input";
+import Checkbox from "../Checkbox";
+import Button from "../Button";
 
-export default function Login() {
+export default function Register() {
   const navigate = useNavigate();
 
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [emailCheck, setEmailCheck] = useState(false);
   const [psswrdCheck, setPasswordCheck] = useState(false);
   const [psswrdVisible, setpsswrdVisible] = useState(false);
-
   function showPassword() {
     setpsswrdVisible(!psswrdVisible);
   }
@@ -28,8 +27,10 @@ export default function Login() {
     }
   }
   function validateEmail(e) {
+    const re =
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     setEmail(e.target.value);
-    if (email.includes("@")) {
+    if (re.test(e.target.value)) {
       setEmailCheck(true);
     } else {
       setEmailCheck(false);
@@ -39,13 +40,15 @@ export default function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await signInWithEmailAndPassword(auth, email, password);
-      navigate("/user/dashboard");
-      console.log("sucessfully logged in");
+      await createUserWithEmailAndPassword(auth, email, password);
+      const user = auth.currentUser;
+      console.log("Successfully registered:", user);
+      navigate("/user/successfulregistration");
     } catch (error) {
       console.log(error.message);
     }
   };
+
   return (
     <>
       <form action="" onSubmit={handleSubmit} autoCompletete="on">
@@ -55,10 +58,17 @@ export default function Login() {
           id="email"
           label={"Email"}
           value={email}
-          onChange={validateEmail}
           check={
             emailCheck && <i className="fa-solid fa-check text-green-400"></i>
           }
+          onChange={validateEmail}
+          onKeyUp={(e) => {
+            if (e.target.value.includes("@")) {
+              setEmailCheck(true);
+            } else {
+              setEmailCheck(false);
+            }
+          }}
         />
         <Input
           placeholder="Password"
@@ -72,20 +82,18 @@ export default function Login() {
           }
           show={
             <i
-              className={`fa-regular ${
-                psswrdVisible ? "fa-eye-slash" : "fa-eye"
+              className={`fa-regular fa-eye${
+                psswrdVisible ? "-slash" : ""
               } cursor-pointer`}
             ></i>
           }
           showEye={showPassword}
         />
         <p>8+ characters</p>
-        {/* <Link to="/login/dashboard"> */}
-        <Button label="Login to Dashboard" type={"submit"} />
-        {/* </Link> */}
-        <Checkbox label={"Remember Me"} />
-      </form>
 
+        <Button label="Create Account" type={"submit"} />
+        <Checkbox label={" Send me news and promotions"} />
+      </form>
       <div className="p-4">
         <p className="text-center">
           By continuing I aggree with{" "}

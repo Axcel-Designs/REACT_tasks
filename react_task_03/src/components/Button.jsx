@@ -1,4 +1,4 @@
-export default function Button({label, link,type}){
+export default function Button({label, link,type,}){
     return(
         <button onClick={link} typeof={type} className="bg-[#5932EA] w-full rounded-lg my-2 p-2 text-white font-semibold cursor-pointer">
             {label}

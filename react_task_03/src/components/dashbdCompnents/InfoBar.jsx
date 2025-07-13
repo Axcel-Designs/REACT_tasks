@@ -9,7 +9,9 @@ export default function InfoBar() {
 
   return (
     <>
-      <div className="bg-white rounded-2xl p-4 lg:px-10 w-full flex flex-col md:flex-row md:justify-between items-start gap-4">
+      <div
+        className="bg-white rounded-2xl p-4 lg:px-10 w-full h-full sm:h-auto flex flex-col md:flex-row md:justify-between items-start gap-4 shadow-xl/30"
+      >
         <div className="flex justify-between items-center gap-2">
           <div className="bg-green-200 p-2 rounded-4xl w-14 h-14 flex justify-center items-center">
             <li className="fa-solid fa-users fa-xl text-green-600"></li>
