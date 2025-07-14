@@ -4,17 +4,29 @@ import RegisterLogin from "./pages/RegisterLogin";
 import SuccessRegister from "./pages/SucessRegister";
 import Dashboard from "./pages/Dashboard";
 import User from "./pages/User";
+import ProtectedRoute from "./context/ProtectedRoute";
 
 function App() {
   return (
     <>
-        <Routes>
-          <Route path="/" element={<RegisterLogin />} >
-          <Route path="user" element={<User />} />
-            <Route path="user/successfulregistration" element={<SuccessRegister />} />
-            <Route path="user/dashboard" element={<Dashboard />} />
+      <Routes>
+        <Route path="/" element={<RegisterLogin />}>
+          <Route
+            path="user"
+            element={
+              <ProtectedRoute>
+                <User />
+              </ProtectedRoute>
+            }
+          >
+            <Route
+              path="successfulregistration"
+              element={<SuccessRegister />}
+            />
+            <Route path="dashboard" element={<Dashboard />} />
           </Route>
-        </Routes>
+        </Route>
+      </Routes>
     </>
   );
 }

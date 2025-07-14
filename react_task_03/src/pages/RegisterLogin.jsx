@@ -1,25 +1,29 @@
 import React, { useState } from "react";
-import { Link, Outlet, useLocation } from "react-router-dom";
+import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
 import { socialLinks } from "../data/socialLinks";
 import Register from "../components/RegisterLogin/Register";
 import Login from "../components/RegisterLogin/Login";
+import { signInWithPopup } from "firebase/auth";
+import { auth } from "../firebase/firebase";
+import { GoogleAuthProvider } from "firebase/auth/web-extension";
 
 export default function RegisterLogin() {
   const [regLog, setRegLog] = useState({
-    to: <Register  />,
-    // to: <Register toLogin={handleLogin} />,
+    to: <Register />,
     label: "register",
   });
   const [fontStyle, setFontStyle] = useState("");
   const [logfontStyle, setLogFontStyle] = useState("");
+  const [message, setMessage] = useState("");
 
+
+  const navigate = useNavigate();
   const location = useLocation();
   const hideRender =
     location.pathname.startsWith("/user") && location.pathname !== "/user";
 
   const handleRegtr = () => {
     setRegLog({ to: <Register />, label: "register" });
-    // setRegLog({ to: <Register toLogin={handleLogin} />, label: "register" });
     setFontStyle(
       "font-semibold border-2 border-transparent border-b-red-800 pb-4"
     );
@@ -32,7 +36,32 @@ export default function RegisterLogin() {
     );
     setFontStyle("border-2 border-transparent");
   };
+  
+  async function handleSocialLogin() {
+    try {
+      const provider = new GoogleAuthProvider();
+      const result = await signInWithPopup(auth, provider);
+      setMessage("User signed in successfully");
+      console.log("User signed in:");
+      return result;
+      // const user = result.user;
+    } catch (error) {
+      console.error("Error signing in:", error);
+      setMessage("Error signing in");
+    }
+  }
 
+  async function signOut() {
+    try {
+      await auth.signOut();
+      setMessage("User signed out successfully");
+      navigate("/");
+      console.log("User signed out");
+    } catch (error) {
+      console.error("Error signing out:", error);
+      setMessage("Error signing out");
+    }
+  }
   return (
     <>
       {!hideRender ? (
@@ -47,16 +76,17 @@ export default function RegisterLogin() {
                   <Link>Login</Link>
                 </div>
               </nav>
-              <Link to="/">
-                <div className="font-semibold ">X</div>
-              </Link>
+
+              <div className="font-semibold cursor-pointer" onClick={signOut}>
+                X
+              </div>
             </div>
             <div className="flex flex-row gap-4 my-4">
               {socialLinks.map((social, i) => (
                 <div
                   key={i}
                   className="bg-gray-200 p-2 rounded-full text-xl h-10 w-10 flex justify-around items-center"
-                  onClick={social.url}
+                  onClick={social.name === "google" ? handleSocialLogin : null}
                 >
                   <a target="_blank" rel="noopener noreferrer">
                     <li
@@ -71,6 +101,11 @@ export default function RegisterLogin() {
               <p className="my-2">or {regLog.label} with email</p>
               <div>{regLog.to}</div>
             </section>
+            {message && (
+              <div className="text-red-500">
+                <p>{message}</p>
+              </div>
+            )}
           </section>
         </main>
       ) : (
