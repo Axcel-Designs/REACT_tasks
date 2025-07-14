@@ -1,8 +1,10 @@
 import { Link, Outlet } from "react-router-dom";
 import Input from "../Input";
 import Button from "../Button";
+import { useAuth } from "../../context/AuthProvider";
 
-export default function AddAdressFill() {
+export default function AddAddressFill() {
+  const {} = useAuth();
   return (
     <>
       <section>

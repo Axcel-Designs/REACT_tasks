@@ -1,8 +1,9 @@
 import { Link, Outlet } from "react-router-dom";
 import Input from "../Input";
+import { useAuth } from "../../context/AuthProvider";
 
-export default function AddAdress({ gotoPage }) {
-  
+export default function AddAddress({ gotoPage }) {
+  const {} = useAuth();
   return (
     <>
       <section>

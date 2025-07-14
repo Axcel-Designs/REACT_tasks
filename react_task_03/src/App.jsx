@@ -1,10 +1,10 @@
 import { Route, Routes } from "react-router-dom";
 import RegisterLogin from "./pages/RegisterLogin";
-import SuccessRegister from "./pages/SucessRegister";
+import SuccessRegister from "./pages/SuccessRegister";
 import Dashboard from "./pages/Dashboard";
 import User from "./pages/User";
 import ProtectedRoute from "./context/ProtectedRoute";
-import UserInfo from "./components/user/userInfo";
+import UserInfo from "./components/user/UserInfo";
 
 function App() {
   return (

@@ -10,6 +10,7 @@ export function AuthProvider({ children }) {
   const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [fullName, setFullName] = useState("");
   const [gender, setGender] = useState("");
+  const [cntryCd, setCntryCd] = useState("");
   const [telphone, setTelphone] = useState("");
   const [birthday, setBirthday] = useState("");
   const [address, setAddress] = useState("");
@@ -23,6 +24,7 @@ export function AuthProvider({ children }) {
     isLoggedIn, setIsLoggedIn,
     fullName, setFullName,
     gender, setGender,
+    cntryCd, setCntryCd,
     telphone, setTelphone,
     birthday, setBirthday,
     address, setAddress,

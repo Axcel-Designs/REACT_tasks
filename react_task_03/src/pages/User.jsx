@@ -1,14 +1,14 @@
 import { Link, Outlet, useLocation } from "react-router-dom";
 import PersonalInfo from "../components/user/PersonalInfo";
 import { useState } from "react";
-import AddAdress from "../components/user/AddAddress";
-import AddAdressFill from "../components/user/AddAddressFill";
-import SuccessRegister from "./SucessRegister";
+import AddAddress from "../components/user/AddAddress";
+import AddAddressFill from "../components/user/AddAddressFill";
+import SuccessRegister from "./SuccessRegister";
 
 const pages = {
   personalInfo: PersonalInfo,
-  addAddress: AddAdress,
-  addAddressFill: AddAdressFill,
+  addAddress: AddAddress,
+  addAddressFill: AddAddressFill,
   successRegister: SuccessRegister,
 };
 
