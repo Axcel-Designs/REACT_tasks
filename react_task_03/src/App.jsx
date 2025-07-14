@@ -11,14 +11,10 @@ function App() {
     <>
       <Routes>
         <Route path="/" element={<RegisterLogin />}>
-          <Route
-            path="user"
-            element={
+          <Route path="user" element={
               <ProtectedRoute>
                 <User />
-              </ProtectedRoute>
-            }
-          >
+              </ProtectedRoute>}>
             <Route path="successfulregistration" element={<SuccessRegister />}  />
             <Route path="dashboard" element={<Dashboard />} />
           </Route>

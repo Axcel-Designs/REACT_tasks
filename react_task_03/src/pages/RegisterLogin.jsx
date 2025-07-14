@@ -6,11 +6,13 @@ import Login from "../components/RegisterLogin/Login";
 import { signInWithPopup } from "firebase/auth";
 import { auth } from "../firebase/firebase";
 import { GoogleAuthProvider } from "firebase/auth";
+import { useAuth } from "../context/AuthProvider";
 
 export default function RegisterLogin() {
   const [regLog, setRegLog] = useState(<Register />);
   const [message, setMessage] = useState("");
   const [activeView, setActiveView] = useState("register");
+  const { setIsLoggedIn } = useAuth();
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -31,6 +33,7 @@ export default function RegisterLogin() {
     try {
       const provider = new GoogleAuthProvider();
       const result = await signInWithPopup(auth, provider);
+      setIsLoggedIn(true);
       navigate("/user/dashboard");
       setMessage("User signed in successfully");
       console.log("User signed in:");
