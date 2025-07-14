@@ -16,7 +16,7 @@ export default function RegisterLogin() {
   const navigate = useNavigate();
   const location = useLocation();
   const hideRender =
-    location.pathname.startsWith("/user") && location.pathname !== "/user";
+    location.pathname.startsWith("/") && location.pathname !== "/";
 
   const handleRegtr = () => {
     setActiveView("register");

@@ -56,7 +56,7 @@ export default function Login() {
     <>
       <form action="" onSubmit={handleSubmit} autoCompletete="on">
         <Input
-          placeholder="email"
+          placeholder="example@gmail.com"
           type="email"
           id="email"
           label={"Email"}
@@ -67,7 +67,7 @@ export default function Login() {
           }
         />
         <Input
-          placeholder="Password"
+          placeholder="************"
           type={psswrdVisible ? "text" : "password"}
           id="password"
           label={"Password"}

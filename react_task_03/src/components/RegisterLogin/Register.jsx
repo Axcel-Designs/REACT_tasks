@@ -5,14 +5,18 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import Input from "../Input";
 import Checkbox from "../Checkbox";
 import Button from "../Button";
+import { useAuth } from "../../context/AuthProvider";
 
-export default function Register({ onSucess }) {
+// export default function Register({ onSucess }) {
+
+export default function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
   const [emailCheck, setEmailCheck] = useState(false);
   const [psswrdCheck, setPasswordCheck] = useState(false);
   const [psswrdVisible, setpsswrdVisible] = useState(false);
+  const { setIsLoggedIn } = useAuth();
 
   const navigate = useNavigate();
 
@@ -45,13 +49,14 @@ export default function Register({ onSucess }) {
     e.preventDefault();
     try {
       await createUserWithEmailAndPassword(auth, email, password);
-      const user = auth.currentUser;
-      console.log("Successfully registered:", user);
+      // const user = auth.currentUser;
+      setIsLoggedIn(true)
+      navigate("/user");
+      console.log("Successfully registered:");
       setMessage("Successfully registered");
-      if (onSucess) {
-        onSucess();
-      }
-
+      // if (onSucess) {
+      //   onSucess();
+      // }
     } catch (error) {
       console.log(error.message);
       setMessage(error.message);
@@ -62,7 +67,7 @@ export default function Register({ onSucess }) {
     <>
       <form action="" onSubmit={handleSubmit} autoCompletete="on">
         <Input
-          placeholder="email"
+          placeholder="example@gmail.com"
           type="email"
           id="email"
           label={"Email"}
@@ -73,7 +78,7 @@ export default function Register({ onSucess }) {
           onChange={validateEmail}
         />
         <Input
-          placeholder="Password"
+          placeholder="***********"
           type={psswrdVisible ? "text" : "password"}
           id="password"
           label={"Password"}

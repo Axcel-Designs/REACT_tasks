@@ -2,6 +2,7 @@ import { Link, Outlet } from "react-router-dom";
 import Input from "../Input";
 
 export default function AddAdress({ gotoPage }) {
+  
   return (
     <>
       <section>
@@ -21,12 +22,12 @@ export default function AddAdress({ gotoPage }) {
         <br className="my-6" />
         <div className="flex flex-row gap-4 my-6">
           <a href="http://">
-            <div className="border-2 p-2 rounded-2xl border-orange-200">
+            <div className="border-2 p-2 rounded-2xl border-orange-200 text-[#5932EA] font-semibold">
               <i class="fa-solid fa-location-dot"></i> Use current location
             </div>
           </a>
           <div
-            className="border-2 p-2 rounded-2xl border-orange-200 cursor-pointer"
+            className="border-2 p-2 rounded-2xl border-orange-200 cursor-pointer text-[#5932EA] font-semibold"
             onClick={() => gotoPage("addAddressFill")}
           >
             Add Manually

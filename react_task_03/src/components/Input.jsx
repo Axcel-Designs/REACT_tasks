@@ -31,7 +31,7 @@ export default function Input({
             value={value}
             onChange={onChange}
             className={`
-              text-gray-900 placeholder:text-gray-400 focus:outline-none w-7/8`}
+              text-gray-900 placeholder:text-gray-800 focus:outline-none w-7/8`}
             required
           />
           <div className="flex gap-2 justify-around items-center">
