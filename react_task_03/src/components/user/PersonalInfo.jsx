@@ -48,7 +48,7 @@ export default function PersonalInfo({ gotoPage }) {
             <label htmlFor="male">Male</label>
             <input
               type="radio"
-              value="male"
+              value="female"
               checked={gender === "female"}
               name="gender"
               onChange={(e) => setGender(e.target.value)}
