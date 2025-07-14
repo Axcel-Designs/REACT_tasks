@@ -9,7 +9,6 @@ import { GoogleAuthProvider } from "firebase/auth";
 import { useAuth } from "../context/AuthProvider";
 
 export default function RegisterLogin() {
-  const [regLog, setRegLog] = useState(<Register />);
   const [message, setMessage] = useState("");
   const [activeView, setActiveView] = useState("register");
   const { setIsLoggedIn } = useAuth();
@@ -20,11 +19,9 @@ export default function RegisterLogin() {
     location.pathname.startsWith("/user") && location.pathname !== "/user";
 
   const handleRegtr = () => {
-    setRegLog(<Register />);
     setActiveView("register");
   };
   const handleLogin = () => {
-    setRegLog(<Login />);
     setActiveView("login");
   };
 
@@ -72,7 +69,7 @@ export default function RegisterLogin() {
           <section className="shadow p-6 rounded-lg min-w-fit w-7/8 md:w-4/5 min-h-[400px] lg:w-2/5 bg-white text-gray-700 ">
             <div className="flex flex-row justify-between items-center text-lg">
               <nav className="flex gap-4">
-                <div
+                <button
                   onClick={handleRegtr}
                   className={`${
                     activeView === "register"
@@ -81,8 +78,8 @@ export default function RegisterLogin() {
                   }`}
                 >
                   <Link>Register</Link>
-                </div>
-                <div
+                </button>
+                <button
                   onClick={handleLogin}
                   className={`${
                     activeView === "login"
@@ -91,12 +88,15 @@ export default function RegisterLogin() {
                   }`}
                 >
                   <Link>Login</Link>
-                </div>
+                </button>
               </nav>
-
-              <div className="font-semibold cursor-pointer" onClick={signOut}>
-                X
-              </div>
+              <button
+                className="font-semibold cursor-pointer"
+                onClick={signOut}
+              >
+                {" "}
+                X{" "}
+              </button>
             </div>
             <div className="flex flex-row gap-4 my-4">
               {socialLinks.map((social, i) => (
@@ -116,7 +116,12 @@ export default function RegisterLogin() {
             </div>
             <section className="text-gray-500 min-w-fit">
               <p className="my-2">or {activeView} with email</p>
-              <div>{regLog}</div>
+              <div>
+                {activeView === "register" && (
+                  <Register onSucess={handleLogin} />
+                )}
+              </div>
+              <div>{activeView === "login" && <Login />}</div>
             </section>
             <div className="text-red-500">
               <p>{message}</p>

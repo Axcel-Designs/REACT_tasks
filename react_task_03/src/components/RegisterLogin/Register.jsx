@@ -1,4 +1,4 @@
-import { Link, Outlet, useNavigate } from "react-router-dom";
+import {  Outlet } from "react-router-dom";
 import { useState } from "react";
 import { auth } from "../../firebase/firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
@@ -6,12 +6,11 @@ import Input from "../Input";
 import Checkbox from "../Checkbox";
 import Button from "../Button";
 
-export default function Register() {
-  const navigate = useNavigate();
+export default function Register({ onSucess }) {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-    const [message, setMessage] = useState("");
+  const [message, setMessage] = useState("");
   const [emailCheck, setEmailCheck] = useState(false);
   const [psswrdCheck, setPasswordCheck] = useState(false);
   const [psswrdVisible, setpsswrdVisible] = useState(false);
@@ -47,10 +46,12 @@ export default function Register() {
       const user = auth.currentUser;
       console.log("Successfully registered:", user);
       setMessage("Successfully registered");
-      navigate("/user/successfulregistration");
+      if(onSucess){
+        onSucess()
+      }
     } catch (error) {
       console.log(error.message);
-      setMessage(error.message)
+      setMessage(error.message);
     }
   };
 
