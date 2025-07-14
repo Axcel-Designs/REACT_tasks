@@ -1,4 +1,4 @@
-import {  Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import { useState } from "react";
 import { auth } from "../../firebase/firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
@@ -7,7 +7,6 @@ import Checkbox from "../Checkbox";
 import Button from "../Button";
 
 export default function Register({ onSucess }) {
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
@@ -46,8 +45,8 @@ export default function Register({ onSucess }) {
       const user = auth.currentUser;
       console.log("Successfully registered:", user);
       setMessage("Successfully registered");
-      if(onSucess){
-        onSucess()
+      if (onSucess) {
+        onSucess();
       }
     } catch (error) {
       console.log(error.message);
@@ -89,7 +88,6 @@ export default function Register({ onSucess }) {
           showEye={showPassword}
         />
         <p>8+ characters</p>
-
         <Button label="Create Account" type={"submit"} />
         <p>{message}</p>
         <Checkbox label={" Send me news and promotions"} />
