@@ -10,8 +10,7 @@ import { useAuth } from "../context/AuthProvider";
 
 export default function RegisterLogin() {
   const [message, setMessage] = useState("");
-  const [activeView, setActiveView] = useState("register");
-  const { setIsLoggedIn } = useAuth();
+  const { setIsLoggedIn, activeView, setActiveView } = useAuth();
 
   const navigate = useNavigate();
   const location = useLocation();

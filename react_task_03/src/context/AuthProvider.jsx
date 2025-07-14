@@ -8,6 +8,9 @@ export function useAuth() {
 
 export function AuthProvider({ children }) {
   const [isLoggedIn, setIsLoggedIn] = useState(true);
+
+  const [activeView, setActiveView] = useState("register");
+
   const [fullName, setFullName] = useState("");
   const [gender, setGender] = useState("");
   const [cntryCd, setCntryCd] = useState("");
@@ -22,6 +25,7 @@ export function AuthProvider({ children }) {
 
   const value = {
     isLoggedIn, setIsLoggedIn,
+    activeView, setActiveView,
     fullName, setFullName,
     gender, setGender,
     cntryCd, setCntryCd,
