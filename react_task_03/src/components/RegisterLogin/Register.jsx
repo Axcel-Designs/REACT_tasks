@@ -1,4 +1,4 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { auth } from "../../firebase/firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
@@ -13,6 +13,9 @@ export default function Register({ onSucess }) {
   const [emailCheck, setEmailCheck] = useState(false);
   const [psswrdCheck, setPasswordCheck] = useState(false);
   const [psswrdVisible, setpsswrdVisible] = useState(false);
+
+  const navigate = useNavigate();
+
   function showPassword() {
     setpsswrdVisible(!psswrdVisible);
   }
@@ -48,6 +51,7 @@ export default function Register({ onSucess }) {
       if (onSucess) {
         onSucess();
       }
+
     } catch (error) {
       console.log(error.message);
       setMessage(error.message);
