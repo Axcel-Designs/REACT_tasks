@@ -16,7 +16,6 @@ export default function RegisterLogin() {
   const [logfontStyle, setLogFontStyle] = useState("");
   const [message, setMessage] = useState("");
 
-
   const navigate = useNavigate();
   const location = useLocation();
   const hideRender =
@@ -36,7 +35,7 @@ export default function RegisterLogin() {
     );
     setFontStyle("border-2 border-transparent");
   };
-  
+
   async function handleSocialLogin() {
     try {
       const provider = new GoogleAuthProvider();
@@ -50,7 +49,7 @@ export default function RegisterLogin() {
       setMessage("Error signing in");
     }
   }
-
+  // useEffect(() => {
   async function signOut() {
     try {
       await auth.signOut();
@@ -62,6 +61,7 @@ export default function RegisterLogin() {
       setMessage("Error signing out");
     }
   }
+
   return (
     <>
       {!hideRender ? (

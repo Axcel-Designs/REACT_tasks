@@ -19,10 +19,7 @@ function App() {
               </ProtectedRoute>
             }
           >
-            <Route
-              path="successfulregistration"
-              element={<SuccessRegister />}
-            />
+            <Route path="successfulregistration" element={<SuccessRegister />}  />
             <Route path="dashboard" element={<Dashboard />} />
           </Route>
         </Route>
