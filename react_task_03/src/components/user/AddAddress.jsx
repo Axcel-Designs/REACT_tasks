@@ -3,7 +3,7 @@ import Input from "../Input";
 import { useAuth } from "../../context/AuthProvider";
 
 export default function AddAddress({ gotoPage }) {
-  const {} = useAuth();
+  const { address, setAddress } = useAuth();
   return (
     <>
       <section>
@@ -15,8 +15,7 @@ export default function AddAddress({ gotoPage }) {
             <div>X</div>
           </Link>
         </div>
-        {/* <form action="" className="text-gray-600" autoComplete=""> */}
-        <Input placeholder="address" type={"text"} />
+        <Input placeholder="address" type={"text"} value={address} onChange={(e) => setAddress(e.target.value)}/>
         <div className="text-sm my-4 ">
           <p>Your address is not visible to other users</p>
         </div>
@@ -56,7 +55,6 @@ export default function AddAddress({ gotoPage }) {
           </div>
         </section>
         <Outlet />
-        {/* </form> */}
       </section>
     </>
   );

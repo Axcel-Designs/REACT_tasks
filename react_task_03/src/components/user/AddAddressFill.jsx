@@ -4,7 +4,18 @@ import Button from "../Button";
 import { useAuth } from "../../context/AuthProvider";
 
 export default function AddAddressFill() {
-  const {} = useAuth();
+  const {
+    stAddress,
+    setStAddress,
+    aprtmnt,
+    setAprtmnt,
+    city,
+    setCity,
+    state,
+    setState,
+    zipCde,
+    setZipCde,
+  } = useAuth();
   return (
     <>
       <section>
@@ -21,14 +32,18 @@ export default function AddAddressFill() {
           name="street"
           type={"text"}
           label={"Street address"}
+          value={stAddress}
+          onChange={(e) => setStAddress(e.target.value)}
         />
         <Input
           placeholder="Appartment"
           name="appartment"
           type={"text"}
           label={"apartment"}
+          value={aprtmnt}
+          onChange={(e) => setAprtmnt(e.target.value)}
         />
-        <Input placeholder="city" name="city" type={"text"} label={"city"} />
+        <Input placeholder="city" name="city" type={"text"} label={"city"} value={city} onChange={(e) => setCity(e.target.value)} />
         <div>
           <div className="flex flex-row items-center justify-between">
             <Input
@@ -37,6 +52,8 @@ export default function AddAddressFill() {
               name="state"
               type={"text"}
               width={"w-2/5"}
+              value={state}
+              onChange={(e) => setState(e.target.value)}
             />
             <Input
               placeholder={"Zip code"}
@@ -44,6 +61,8 @@ export default function AddAddressFill() {
               width={"w-2/5"}
               name="zip"
               type="number"
+              value={zipCde}
+              onChange={(e) => setZipCde(e.target.value)}
             />
           </div>
         </div>
