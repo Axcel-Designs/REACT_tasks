@@ -31,6 +31,7 @@ export default function RegisterLogin() {
     try {
       const provider = new GoogleAuthProvider();
       const result = await signInWithPopup(auth, provider);
+      navigate("/user/dashboard");
       setMessage("User signed in successfully");
       console.log("User signed in:");
       return result;
