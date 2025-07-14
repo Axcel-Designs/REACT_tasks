@@ -64,8 +64,8 @@ export default function RegisterLogin() {
   return (
     <>
       {!hideRender ? (
-        <main className="bg-amber-50 w-full static h-svh flex justify-around items-center">
-          <section className="shadow p-6 rounded-lg min-w-fit w-7/8 md:w-4/5 min-h-[400px] lg:w-2/5 bg-white text-gray-700 ">
+        <main className="flex justify-around items-center bg-amber-50 w-full h-svh">
+          <section className="shadow-xl/30 p-6 rounded-lg w-7/8 md:w-4/5 min-h-[400px] h-fit lg:w-2/5 bg-white">
             <div className="flex flex-row justify-between items-center text-lg">
               <nav className="flex gap-4">
                 <button

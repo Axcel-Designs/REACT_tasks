@@ -1,6 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
 import Button from "../components/Button";
-// import img from "../assets/Saly10.svg";
 import { useAuth } from "../context/AuthProvider";
 
 export default function SuccessRegister() {
@@ -15,7 +14,7 @@ export default function SuccessRegister() {
     <>
       <main className=" w-full h-svh flex justify-around items-center">
         <section className="rounded-2xl w-3/5 min-h-[400px] lg:w-2/5  bg-white text-gray-700 shadow-lg/30">
-          <div className="bg-[url('../assets/Saly10.svg')] bg-cover bg-center h-fit">
+          <div className="bg-[url('assets/saly10.svg')] bg-cover bg-center h-[300px] w-full bg-red-50 rounded-t-2xl">
             {/* <img src={img} alt="image" className="bg-red-50 w-full rounded-t-2xl" /> */}
           </div>
           <div className="p-4 ">
