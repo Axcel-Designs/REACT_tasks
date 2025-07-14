@@ -49,7 +49,7 @@ export default function Login() {
       console.log("sucessfully logged in");
     } catch (error) {
       console.log(error.message);
-      setMessage('wrong password or email');
+      setMessage(`either wrong password or email | check your network connection | the account isnt registered `);
     }
   };
   return (
