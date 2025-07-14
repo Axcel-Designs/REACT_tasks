@@ -16,10 +16,12 @@ export default function User() {
   const location = useLocation();
   const hideRender =
     location.pathname.startsWith("/user") && location.pathname !== "/user";
+    
   function handleSubmit(e) {
     e.preventDefault();
     currentPage === "addAddressFill" && setCurrentPage("successRegister");
   }
+
   const [currentPage, setCurrentPage] = useState("personalInfo");
   const PageComponent = pages[currentPage] || PersonalInfo;
 
