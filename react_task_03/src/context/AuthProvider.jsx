@@ -7,7 +7,7 @@ export function useAuth() {
 }
 
 export function AuthProvider({ children }) {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [fullName, setFullName] = useState("");
   const [gender, setGender] = useState("");
   const [telphone, setTelphone] = useState("");

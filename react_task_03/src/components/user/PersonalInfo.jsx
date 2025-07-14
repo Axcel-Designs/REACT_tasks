@@ -4,6 +4,7 @@ import Button from "../Button";
 import { countryCode } from "../../data/countryCodes";
 
 export default function PersonalInfo({ gotoPage }) {
+  
   return (
     <>
       <section>
