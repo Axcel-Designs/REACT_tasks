@@ -74,7 +74,7 @@ export default function RegisterLogin() {
                   className={`${
                     activeView === "register"
                       ? "font-semibold border-2 border-transparent border-b-red-800 pb-4"
-                      : "border-2 border-transparent"
+                      : "border-2 border-transparent pb-4"
                   }`}
                 >
                   <Link>Register</Link>
@@ -84,7 +84,7 @@ export default function RegisterLogin() {
                   className={`${
                     activeView === "login"
                       ? "font-semibold border-b-2 border-red-800 pb-4"
-                      : "border-2 border-transparent"
+                      : "border-2 border-transparent pb-4"
                   }`}
                 >
                   <Link>Login</Link>
