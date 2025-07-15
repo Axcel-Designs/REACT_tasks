@@ -31,12 +31,14 @@ export default function Input({
             value={value}
             onChange={onChange}
             className={`
-              text-gray-900 placeholder:text-gray-800 focus:outline-none w-7/8`}
+              text-gray-900 placeholder:text-gray-800 focus:outline-none w-7/8 bg-white`}
             required
           />
           <div className="flex gap-2 justify-around items-center">
             <div>{check}</div>
-            <div onClick={showEye}>{show}</div>
+            <div className="text-gray-800" onClick={showEye}>
+              {show}
+            </div>
           </div>
         </div>
       </div>
