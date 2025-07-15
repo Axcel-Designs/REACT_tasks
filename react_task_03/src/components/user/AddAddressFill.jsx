@@ -19,8 +19,8 @@ export default function AddAddressFill({ formik }) {
           name="street"
           type="text"
           label="Street address"
-          onChange={formik.handleChange}
           onBlur={formik.handleBlur}
+          onChange={formik.handleChange}
           value={formik.values.street}
           error={
             formik.touched.street && formik.errors.street
@@ -33,8 +33,8 @@ export default function AddAddressFill({ formik }) {
           name="apartment"
           type="text"
           label="Apartment"
-          onChange={formik.handleChange}
           onBlur={formik.handleBlur}
+          onChange={formik.handleChange}
           value={formik.values.apartment}
           error={
             formik.touched.apartment && formik.errors.apartment
@@ -47,8 +47,8 @@ export default function AddAddressFill({ formik }) {
           name="city"
           type="text"
           label="city"
-          onChange={formik.handleChange}
           onBlur={formik.handleBlur}
+          onChange={formik.handleChange}
           value={formik.values.city}
           error={
             formik.touched.city && formik.errors.city
@@ -64,8 +64,8 @@ export default function AddAddressFill({ formik }) {
               name="state"
               type={"text"}
               width={"w-2/5"}
-              onChange={formik.handleChange}
               onBlur={formik.handleBlur}
+              onChange={formik.handleChange}
               value={formik.values.state}
               error={
                 formik.touched.city && formik.errors.city
@@ -79,8 +79,8 @@ export default function AddAddressFill({ formik }) {
               width={"w-2/5"}
               type="text"
               name="zipCde"
-              onChange={formik.handleChange}
               onBlur={formik.handleBlur}
+              onChange={formik.handleChange}
               value={formik.values.zipCde}
               error={
                 formik.touched.zipCde && formik.errors.zipCde

@@ -23,6 +23,7 @@ export default function PersonalInfo({ gotoPage, formik }) {
           name="fullName"
           type="text"
           value={formik.values.fullName}
+          onBlur={formik.handleBlur}
           onChange={formik.handleChange}
           error={
             formik.touched.fullName && formik.errors.fullName
@@ -37,6 +38,7 @@ export default function PersonalInfo({ gotoPage, formik }) {
               type="radio"
               value={formik.values.gender}
               name="gender"
+              onBlur={formik.handleBlur}
               onChange={formik.handleChange}
             />
             <label htmlFor="male">Male</label>
@@ -44,6 +46,7 @@ export default function PersonalInfo({ gotoPage, formik }) {
               type="radio"
               value={formik.values.gender}
               name="gender"
+              onBlur={formik.handleBlur}
               onChange={formik.handleChange}
             />
             <label htmlFor="female">Female</label>
@@ -77,6 +80,7 @@ export default function PersonalInfo({ gotoPage, formik }) {
               name="telphone"
               type={"tel"}
               value={formik.values.telphone}
+              onBlur={formik.handleBlur}
               onChange={formik.handleChange}
               error={
                 formik.touched.telphone && formik.errors.telphone
@@ -92,6 +96,7 @@ export default function PersonalInfo({ gotoPage, formik }) {
           type="date"
           show={"optional"}
           value={formik.valuesbirthday}
+          onBlur={formik.handleBlur}
           onChange={formik.handleChange}
           error={
             formik.touched.birthday && formik.errors.birthday

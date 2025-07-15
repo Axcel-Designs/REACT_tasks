@@ -6,6 +6,7 @@ export default function Input({
   placeholder,
   value,
   onChange,
+  onBlur,
   id,
   show,
   error,
@@ -31,6 +32,7 @@ export default function Input({
             id={id}
             value={value}
             onChange={onChange}
+            onBlur={onBlur}
             className={`
               text-gray-900 placeholder:text-gray-800 focus:outline-none w-7/8 bg-white`}
             required
@@ -42,7 +44,7 @@ export default function Input({
             </div>
           </div>
         </div>
-      {error && <p className="text-red-400 text-sm">{error}</p>}
+        {error && <p className="text-red-400 text-sm">{error}</p>}
       </div>
     </>
   );

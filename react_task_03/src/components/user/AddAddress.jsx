@@ -16,9 +16,9 @@ export default function AddAddress({ gotoPage, formik }) {
         <Input
           placeholder="address"
           type="text"
+          onBlur={formik.handleBlur}
           onChange={formik.handleChange}
           value={formik.values.address}
-          
           name="address"
         />
         <div className="text-sm my-4 ">

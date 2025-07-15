@@ -24,7 +24,12 @@ export default function User() {
   const PageComponent = pages[currentPage] || PersonalInfo;
 
   function changePage(pageName) {
-    setCurrentPage(pageName);
+     if (Object.keys(formik.errors).length === 0) {
+       setCurrentPage(pageName);
+     }else{
+      setCurrentPage('')
+     }
+    // setCurrentPage(pageName);
   }
 
   // function handleSubmit(e) {
