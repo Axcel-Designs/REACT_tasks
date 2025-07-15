@@ -3,7 +3,7 @@ import Input from "../Input";
 import Button from "../Button";
 import { countryCode } from "../../data/countryCodes";
 import { useAuth } from "../../context/AuthProvider";
-import {useFormik, validateYupSchema} from 'formik'
+import {useFormik} from 'formik'
 import UserSchema from '../../utils/userFormSchema'
 
 export default function PersonalInfo({ gotoPage }) {
