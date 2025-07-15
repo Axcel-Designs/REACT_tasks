@@ -4,20 +4,8 @@ import Button from "../Button";
 import { countryCode } from "../../data/countryCodes";
 import { useAuth } from "../../context/AuthProvider";
 
-export default function PersonalInfo({ gotoPage,formik }) {
-  const {
-    fullName,
-    setFullName,
-    gender,
-    setGender,
-    cntryCd,
-    setCntryCd,
-    telphone,
-    setTelphone,
-    birthday,
-    setBirthday,
-  } = useAuth();
-
+export default function PersonalInfo({ gotoPage, formik }) {
+  const { cntryCd, setCntryCd } = useAuth();
 
   return (
     <>
@@ -30,30 +18,33 @@ export default function PersonalInfo({ gotoPage,formik }) {
             <div>X</div>
           </Link>
         </div>
-        {/* <form action="" className="text-gray-600" autoComplete=""> */}
         <Input
           placeholder="Full name"
-          type={"text"}
-          value={fullName}
-          onChange={(e) => setFullName(e.target.value)}
+          name="fullName"
+          type="text"
+          value={formik.values.fullName}
+          onChange={formik.handleChange}
+          error={
+            formik.touched.fullName && formik.errors.fullName
+              ? formik.errors.fullName
+              : null
+          }
         />
         <div className="flex flex-row gap-2 items-center text-gray-600 my-2">
           <p>Gender: </p>
           <div className="flex flex-row gap-2">
             <input
               type="radio"
-              value="male"
-              checked={gender === "male"}
+              value={formik.values.gender}
               name="gender"
-              onChange={(e) => setGender(e.target.value)}
+              onChange={formik.handleChange}
             />
             <label htmlFor="male">Male</label>
             <input
               type="radio"
-              value="female"
-              checked={gender === "female"}
+              value={formik.values.gender}
               name="gender"
-              onChange={(e) => setGender(e.target.value)}
+              onChange={formik.handleChange}
             />
             <label htmlFor="female">Female</label>
           </div>
@@ -83,27 +74,36 @@ export default function PersonalInfo({ gotoPage,formik }) {
             <Input
               placeholder={"Phone number"}
               width={"w-4/5"}
-              name="phoneNumber"
+              name="telphone"
               type={"tel"}
-              value={telphone}
-              onChange={(e) => setTelphone(e.target.value)}
+              value={formik.values.telphone}
+              onChange={formik.handleChange}
+              error={
+                formik.touched.telphone && formik.errors.telphone
+                  ? formik.errors.telphone
+                  : null
+              }
             />
           </div>
         </div>
         <Input
           placeholder="Birthday"
-          type={"date"}
+          name={"birthday"}
+          type="date"
           show={"optional"}
-          value={birthday}
-          onChange={(e) => setBirthday(e.target.value)}
+          value={formik.valuesbirthday}
+          onChange={formik.handleChange}
+          error={
+            formik.touched.birthday && formik.errors.birthday
+              ? formik.errors.birthday
+              : null
+          }
         />
         <p className="mb-6">Let's know your birthday so as no to miss a gift</p>
         <Button
           label={"Save Information"}
           link={() => gotoPage("addAddress")}
         />
-        <Outlet />
-        {/* </form> */}
       </section>
     </>
   );

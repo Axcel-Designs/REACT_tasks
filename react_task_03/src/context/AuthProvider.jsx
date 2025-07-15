@@ -17,26 +17,39 @@ export function AuthProvider({ children }) {
   const [telphone, setTelphone] = useState("");
   const [birthday, setBirthday] = useState("");
   const [address, setAddress] = useState("");
-  const [stAddress, setStAddress] = useState("");
-  const [aprtmnt, setAprtmnt] = useState("");
+  const [street, setStreet] = useState("");
+  const [apartment, setapartment] = useState("");
   const [city, setCity] = useState("");
   const [state, setState] = useState("");
   const [zipCde, setZipCde] = useState("");
 
   const value = {
-    isLoggedIn, setIsLoggedIn,
-    activeView, setActiveView,
-    fullName, setFullName,
-    gender, setGender,
-    cntryCd, setCntryCd,
-    telphone, setTelphone,
-    birthday, setBirthday,
-    address, setAddress,
-    stAddress, setStAddress,
-    aprtmnt, setAprtmnt,
-    city, setCity,
-    state, setState,
-    zipCde, setZipCde,
+    isLoggedIn,
+    setIsLoggedIn,
+    activeView,
+    setActiveView,
+    fullName,
+    setFullName,
+    gender,
+    setGender,
+    cntryCd,
+    setCntryCd,
+    telphone,
+    setTelphone,
+    birthday,
+    setBirthday,
+    address,
+    setAddress,
+    street,
+    setStreet,
+    apartment,
+    setapartment,
+    city,
+    setCity,
+    state,
+    setState,
+    zipCde,
+    setZipCde,
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

@@ -1,24 +1,8 @@
 import { Link, Outlet } from "react-router-dom";
 import Input from "../Input";
 import Button from "../Button";
-import { useAuth } from "../../context/AuthProvider";
 
-export default function AddAddressFill({formik}) {
-  const {
-    stAddress,
-    setStAddress,
-    aprtmnt,
-    setAprtmnt,
-    city,
-    setCity,
-    state,
-    setState,
-    zipCde,
-    setZipCde,
-  } = useAuth();
-
- 
-
+export default function AddAddressFill({ formik }) {
   return (
     <>
       <section>
@@ -33,33 +17,44 @@ export default function AddAddressFill({formik}) {
         <Input
           placeholder="Street address"
           name="street"
-          type={"text"}
-          label={"Street address"}
-          value={stAddress}
-          onChange={(e) => setStAddress(e.target.value)}
-          error={formik.touched.stAddress&&formik.errors.stAddress?formik.errors.stAddress:null}
-        />
-        <Input
-          placeholder="Apartment"
-          name="apartment"
-          type={"text"}
-          label={"apartment"}
-          value={aprtmnt}
-          onChange={(e) => setAprtmnt(e.target.value)}
+          type="text"
+          label="Street address"
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          value={formik.values.street}
           error={
-            formik.touched.aprtmnt && formik.errors.aprtmnt
-              ? formik.errors.aprtmnt
+            formik.touched.street && formik.errors.street
+              ? formik.errors.street
               : null
           }
         />
         <Input
-          placeholder="city"
+          placeholder="Apartment"
+          name="apartment"
+          type="text"
+          label="Apartment"
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          value={formik.values.apartment}
+          error={
+            formik.touched.apartment && formik.errors.apartment
+              ? formik.errors.apartment
+              : null
+          }
+        />
+        <Input
+          placeholder="City"
           name="city"
-          type={"text"}
-          label={"city"}
-          value={city}
-          onChange={(e) => setCity(e.target.value)}
-          error={formik.touched.city && formik.errors.city?formik.errors.city:null}
+          type="text"
+          label="city"
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          value={formik.values.city}
+          error={
+            formik.touched.city && formik.errors.city
+              ? formik.errors.city
+              : null
+          }
         />
         <div>
           <div className="flex flex-row items-center justify-between">
@@ -69,8 +64,9 @@ export default function AddAddressFill({formik}) {
               name="state"
               type={"text"}
               width={"w-2/5"}
-              value={state}
-              onChange={(e) => setState(e.target.value)}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              value={formik.values.state}
               error={
                 formik.touched.city && formik.errors.city
                   ? formik.errors.city
@@ -81,17 +77,21 @@ export default function AddAddressFill({formik}) {
               placeholder={"Zip code"}
               label={"Zip code"}
               width={"w-2/5"}
-              name="zip"
-              type="number"
-              value={zipCde}
-              onChange={(e) => setZipCde(e.target.value)}
-              error={formik.touched.zipCde&& formik.errors.zipCde?formik.errors.city:null}
+              type="text"
+              name="zipCde"
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              value={formik.values.zipCde}
+              error={
+                formik.touched.zipCde && formik.errors.zipCde
+                  ? formik.errors.zipCde
+                  : null
+              }
             />
           </div>
         </div>
         <br className="my-4" />
         <Button label="Save Information" type="submit" />
-        <Outlet />
       </section>
     </>
   );

@@ -7,8 +7,8 @@ export default function UserInfo() {
     telphone,
     birthday,
     address,
-    stAddress,
-    aprtmnt,
+    street,
+    apartment,
     city,
     state,
     zipCde,
@@ -22,8 +22,8 @@ export default function UserInfo() {
           <h1>Telphone: {telphone}</h1>
           <h1>Birthday: {birthday}</h1>
           <h1>Address: {address}</h1>
-          <h1>StAddress: {stAddress}</h1>
-          <h1>Aprtmnt: {aprtmnt}</h1>
+          <h1>street: {street}</h1>
+          <h1>apartment: {apartment}</h1>
           <h1>City: {city}</h1>
           <h1>State: {state}</h1>
           <h1>ZipCde: {zipCde}</h1>

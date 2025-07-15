@@ -1,9 +1,7 @@
 import { Link, Outlet } from "react-router-dom";
 import Input from "../Input";
-import { useAuth } from "../../context/AuthProvider";
 
-export default function AddAddress({ gotoPage }) {
-  const { address, setAddress } = useAuth();
+export default function AddAddress({ gotoPage, formik }) {
   return (
     <>
       <section>
@@ -15,7 +13,14 @@ export default function AddAddress({ gotoPage }) {
             <div>X</div>
           </Link>
         </div>
-        <Input placeholder="address" type={"text"} value={address} onChange={(e) => setAddress(e.target.value)}/>
+        <Input
+          placeholder="address"
+          type="text"
+          onChange={formik.handleChange}
+          value={formik.values.address}
+          
+          name="address"
+        />
         <div className="text-sm my-4 ">
           <p>Your address is not visible to other users</p>
         </div>
@@ -54,7 +59,7 @@ export default function AddAddress({ gotoPage }) {
             </div>
           </div>
         </section>
-        <Outlet />
+        {/* <Outlet /> */}
       </section>
     </>
   );

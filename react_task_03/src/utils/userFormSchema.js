@@ -1,15 +1,25 @@
-import * as Yup from 'yup'
+import * as Yup from "yup";
 
-const UserSchema = Yup.object().shape({
-  fullName: Yup.string().required("Full Name is reguired"),
+const userFormSchema = Yup.object().shape({
+  fullName: Yup.string()
+    .min(2, "Too Short!")
+    .max(50, "Too Long!")
+    .required("Full Name is reguired"),
+  cntryCd: Yup.string()
+    .matches(/^\+\d{1,3}$/, "Invalid Country Code")
+    .required("Required"),
   gender: Yup.string().oneOf(["male", "female"]).required("Gender is reguired"),
-  telphone: Yup.number().required("Telephone number is required"),
-  birthday: Yup.date().required("Birthday is required"),
+  telphone: Yup.string()
+    .matches(/^\d{7,15}$/, "Invalid Phone Number")
+    .required("Telephone number is required"),
+  birthday: Yup.date().nullable().max(new Date(), "Invalid Date"),
   address: Yup.string().required("Address is required"),
-  stAddress: Yup.string().required("Street Address is required"),
-  aprtmnt: Yup.string().required("Apartment is required"),
+  street: Yup.string().required("Street Address is required"),
+  apartment: Yup.string().required("Apartment is required"),
   city: Yup.string().required("City is reguired"),
   state: Yup.string().required("State is required"),
-  zipCde: Yup.string().required("Zip is reguired")..matches(/^\d{5}(-\d{4})?$/, 'Invalid Zip Code'),
-});  
-export default UserSchema;
+  zipCde: Yup.string()
+    .matches(/^\d{5}(-\d{4})?$/, "Invalid Zip Code")
+    .required("Zip is reguired"),
+});
+export default userFormSchema;

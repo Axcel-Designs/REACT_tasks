@@ -42,8 +42,8 @@ export default function Input({
             </div>
           </div>
         </div>
-      </div>
       {error && <p className="text-red-400 text-sm">{error}</p>}
+      </div>
     </>
   );
 }

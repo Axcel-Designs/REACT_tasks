@@ -6,7 +6,7 @@ import AddAddressFill from "../components/user/AddAddressFill";
 import SuccessRegister from "./SuccessRegister";
 import { useAuth } from "../context/AuthProvider";
 import { useFormik } from "formik";
-import UserSchema from "../utils/userFormSchema";
+import userFormSchema from "../utils/userFormSchema";
 
 const pages = {
   personalInfo: PersonalInfo,
@@ -27,23 +27,34 @@ export default function User() {
     setCurrentPage(pageName);
   }
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    currentPage === "addAddressFill" && setCurrentPage("successRegister");
-  }
+  // function handleSubmit(e) {
+  //   e.preventDefault();
+  // currentPage === "addAddressFill" && setCurrentPage("successRegister");
+  // }
 
   const {
-    fullName, setFullName,
-    gender, setGender,
-    cntryCd, setCntryCd,
-    telphone, setTelphone,
-    birthday, setBirthday,
-    address, setAddress,
-    stAddress, setStAddress,
-    aprtmnt, setAprtmnt,
-    city, setCity,
-    state, setState,
-    zipCde, setZipCde,
+    fullName,
+    setFullName,
+    gender,
+    setGender,
+    cntryCd,
+    setCntryCd,
+    telphone,
+    setTelphone,
+    birthday,
+    setBirthday,
+    address,
+    setAddress,
+    street,
+    setStreet,
+    apartment,
+    setapartment,
+    city,
+    setCity,
+    state,
+    setState,
+    zipCde,
+    setZipCde,
   } = useAuth();
 
   const formik = useFormik({
@@ -54,22 +65,23 @@ export default function User() {
       telphone: telphone || "",
       birthday: birthday || "",
       address: address || "",
-      stAddress: stAddress || "",
-      aprtmnt: aprtmnt || "",
+      street: street || "",
+      apartment: apartment || "",
       city: city || "",
       state: state || "",
       zipCde: zipCde || "",
     },
-    validationSchema: UserSchema,
+    validationSchema: userFormSchema,
     onSubmit: (values) => {
+      setCurrentPage("successRegister");
       setFullName(values.fullName);
       setGender(values.gender);
       setCntryCd(values.cntryCd);
       setTelphone(values.telphone);
       setBirthday(values.birthday);
       setAddress(values.address);
-      setStAddress(values.stAddress);
-      setAprtmnt(values.aprtmnt);
+      setStreet(values.street);
+      setapartment(values.apartment);
       setCity(values.city);
       setState(values.state);
       setZipCde(values.zipCde);
@@ -84,9 +96,9 @@ export default function User() {
             <form
               className="text-gray-600"
               autoComplete="on"
-              onSubmit={handleSubmit}
+              onSubmit={formik.handleSubmit}
             >
-              <PageComponent gotoPage={changePage} />
+              <PageComponent gotoPage={changePage} formik={formik} />
             </form>
           </section>
         </main>
