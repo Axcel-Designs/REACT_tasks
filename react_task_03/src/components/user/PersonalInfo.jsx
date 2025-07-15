@@ -3,6 +3,8 @@ import Input from "../Input";
 import Button from "../Button";
 import { countryCode } from "../../data/countryCodes";
 import { useAuth } from "../../context/AuthProvider";
+import {useFormik, validateYupSchema} from 'formik'
+import UserSchema from '../../utils/userFormSchema'
 
 export default function PersonalInfo({ gotoPage }) {
   const {
@@ -17,6 +19,19 @@ export default function PersonalInfo({ gotoPage }) {
     birthday,
     setBirthday,
   } = useAuth();
+
+const formik = useFormik({
+  initialValues: {
+    fullName: "",
+    gender: "",
+    cntryCd: "",
+    telphone: "",
+    birthday: "",
+  },
+validateSchema:UserSchema, 
+});
+
+
   return (
     <>
       <section>
