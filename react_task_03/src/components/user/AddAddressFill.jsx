@@ -36,8 +36,8 @@ export default function AddAddressFill() {
           onChange={(e) => setStAddress(e.target.value)}
         />
         <Input
-          placeholder="Appartment"
-          name="appartment"
+          placeholder="Apartment"
+          name="apartment"
           type={"text"}
           label={"apartment"}
           value={aprtmnt}
