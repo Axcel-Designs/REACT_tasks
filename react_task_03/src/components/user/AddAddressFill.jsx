@@ -2,10 +2,8 @@ import { Link, Outlet } from "react-router-dom";
 import Input from "../Input";
 import Button from "../Button";
 import { useAuth } from "../../context/AuthProvider";
-import { useFormik } from "formik";
-import UserSchema from "../../utils/userFormSchema";
 
-export default function AddAddressFill() {
+export default function AddAddressFill({formik}) {
   const {
     stAddress,
     setStAddress,
@@ -19,24 +17,7 @@ export default function AddAddressFill() {
     setZipCde,
   } = useAuth();
 
-  const formik = useFormik({
-    initialValues: {
-      stAddress: "",
-      aprtmnt: "",
-      city: "",
-      state: "",
-      zipCde: "",
-    },
-    validationSchema: UserSchema,
-    onSubmit: (values) => {
-      setStAddress(values.stAddress);
-      setAprtmnt(values.aprtmnt);
-      setCity(values.city);
-      setState(values.state);
-      setZipCde(values.zipCde);
-      // handleSubmit();
-    },
-  });
+ 
 
   return (
     <>

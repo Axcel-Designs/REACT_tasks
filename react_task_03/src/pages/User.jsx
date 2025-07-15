@@ -4,6 +4,9 @@ import { useState } from "react";
 import AddAddress from "../components/user/AddAddress";
 import AddAddressFill from "../components/user/AddAddressFill";
 import SuccessRegister from "./SuccessRegister";
+import { useAuth } from "../context/AuthProvider";
+import { useFormik } from "formik";
+import UserSchema from "../utils/userFormSchema";
 
 const pages = {
   personalInfo: PersonalInfo,
@@ -28,6 +31,50 @@ export default function User() {
     e.preventDefault();
     currentPage === "addAddressFill" && setCurrentPage("successRegister");
   }
+
+  const {
+    fullName, setFullName,
+    gender, setGender,
+    cntryCd, setCntryCd,
+    telphone, setTelphone,
+    birthday, setBirthday,
+    address, setAddress,
+    stAddress, setStAddress,
+    aprtmnt, setAprtmnt,
+    city, setCity,
+    state, setState,
+    zipCde, setZipCde,
+  } = useAuth();
+
+  const formik = useFormik({
+    initialValues: {
+      fullName: fullName || "",
+      gender: gender || "",
+      cntryCd: cntryCd || "",
+      telphone: telphone || "",
+      birthday: birthday || "",
+      address: address || "",
+      stAddress: stAddress || "",
+      aprtmnt: aprtmnt || "",
+      city: city || "",
+      state: state || "",
+      zipCde: zipCde || "",
+    },
+    validationSchema: UserSchema,
+    onSubmit: (values) => {
+      setFullName(values.fullName);
+      setGender(values.gender);
+      setCntryCd(values.cntryCd);
+      setTelphone(values.telphone);
+      setBirthday(values.birthday);
+      setAddress(values.address);
+      setStAddress(values.stAddress);
+      setAprtmnt(values.aprtmnt);
+      setCity(values.city);
+      setState(values.state);
+      setZipCde(values.zipCde);
+    },
+  });
 
   return (
     <>

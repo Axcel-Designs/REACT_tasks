@@ -3,10 +3,8 @@ import Input from "../Input";
 import Button from "../Button";
 import { countryCode } from "../../data/countryCodes";
 import { useAuth } from "../../context/AuthProvider";
-import {useFormik} from 'formik'
-import UserSchema from '../../utils/userFormSchema'
 
-export default function PersonalInfo({ gotoPage }) {
+export default function PersonalInfo({ gotoPage,formik }) {
   const {
     fullName,
     setFullName,
@@ -19,17 +17,6 @@ export default function PersonalInfo({ gotoPage }) {
     birthday,
     setBirthday,
   } = useAuth();
-
-const formik = useFormik({
-  initialValues: {
-    fullName: "",
-    gender: "",
-    cntryCd: "",
-    telphone: "",
-    birthday: "",
-  },
-validateSchema:UserSchema, 
-});
 
 
   return (
