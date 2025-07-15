@@ -20,7 +20,7 @@ export default function AddAddress({ gotoPage }) {
           <p>Your address is not visible to other users</p>
         </div>
         <br className="my-6" />
-        <div className="flex flex-row gap-4 my-6">
+        <div className="flex flex-row gap-4 my-6 max-sm:flex-col">
           <a href="http://">
             <div className="border-2 p-2 rounded-2xl border-orange-200 text-[#5932EA] font-semibold">
               <i class="fa-solid fa-location-dot"></i> Use current location
