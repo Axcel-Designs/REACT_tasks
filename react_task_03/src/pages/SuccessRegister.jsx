@@ -13,10 +13,11 @@ export default function SuccessRegister() {
   }
   return (
     <>
-      <main className=" w-full">
+      {/* <main className=" w-full flex justify-around items-center h-svh"> */}
         {/* <section className="rounded-2xl w-3/5 min-h-[400px] lg:w-2/5  bg-white text-gray-700 shadow-lg/30"> */}
+        <section>
           <div className="bg-[url('../../public/Saly10.svg')] bg-cover bg-center h-[300px] w-full bg-red-50 rounded-t-2xl">
-            <div className="flex flex-row justify-end items-center text-lg font-semibold p-8">
+            <div className="flex flex-row justify-end items-center text-lg font-semibold p-6">
             
               <Link to="/">
                 <div>X</div>
@@ -34,8 +35,8 @@ export default function SuccessRegister() {
             </h1>
             <Button label={"Go to Login"} link={handleLogin} />
           </div>
-        {/* </section> */}
-      </main>
+        </section>
+      {/* </main> */}
     </>
   );
 }

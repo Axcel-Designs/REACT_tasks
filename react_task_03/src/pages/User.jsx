@@ -1,12 +1,12 @@
-import { Link, Outlet, useLocation } from "react-router-dom";
-import PersonalInfo from "../components/user/PersonalInfo";
 import { useState } from "react";
+import { Outlet, useLocation } from "react-router-dom";
+import { useFormik } from "formik";
+import userFormSchema from "../utils/userFormSchema";
+import PersonalInfo from "../components/user/PersonalInfo";
 import AddAddress from "../components/user/AddAddress";
 import AddAddressFill from "../components/user/AddAddressFill";
 import SuccessRegister from "./SuccessRegister";
 import { useAuth } from "../context/AuthProvider";
-import { useFormik } from "formik";
-import userFormSchema from "../utils/userFormSchema";
 
 const pages = {
   personalInfo: PersonalInfo,
@@ -21,21 +21,6 @@ export default function User() {
     location.pathname.startsWith("/user") && location.pathname !== "/user";
 
   const [currentPage, setCurrentPage] = useState("personalInfo");
-  const PageComponent = pages[currentPage] || PersonalInfo;
-
-  function changePage(pageName) {
-     if (Object.keys(formik.errors).length === 0) {
-       setCurrentPage(pageName);
-     }else{
-      setCurrentPage('')
-     }
-    // setCurrentPage(pageName);
-  }
-
-  // function handleSubmit(e) {
-  //   e.preventDefault();
-  // currentPage === "addAddressFill" && setCurrentPage("successRegister");
-  // }
 
   const {
     fullName,
@@ -48,18 +33,6 @@ export default function User() {
     setTelphone,
     birthday,
     setBirthday,
-    address,
-    setAddress,
-    street,
-    setStreet,
-    apartment,
-    setapartment,
-    city,
-    setCity,
-    state,
-    setState,
-    zipCde,
-    setZipCde,
   } = useAuth();
 
   const formik = useFormik({
@@ -69,42 +42,47 @@ export default function User() {
       cntryCd: cntryCd || "",
       telphone: telphone || "",
       birthday: birthday || "",
-      address: address || "",
-      street: street || "",
-      apartment: apartment || "",
-      city: city || "",
-      state: state || "",
-      zipCde: zipCde || "",
+      address: "",
+      street: "",
+      apartment: "",
+      city: "",
+      state: "",
+      zipCde: "",
     },
-    validationSchema: userFormSchema,
+    validateOnBlur: true,
+    validateOnChange: true,
+    // validationSchema: userFormSchema,
+    validationSchema: null,
     onSubmit: (values) => {
-      setCurrentPage("successRegister");
-      setFullName(values.fullName);
-      setGender(values.gender);
-      setCntryCd(values.cntryCd);
-      setTelphone(values.telphone);
-      setBirthday(values.birthday);
-      setAddress(values.address);
-      setStreet(values.street);
-      setapartment(values.apartment);
-      setCity(values.city);
-      setState(values.state);
-      setZipCde(values.zipCde);
+      console.log("Error Fields:", Object.keys(formik.errors));
+      // console.log("SUBMIT from User.jsx:", values);
+      if (currentPage === "personalInfo") {
+        console.log("Going to addAddress");
+        setFullName(values.fullName);
+        setGender(values.gender);
+        setCntryCd(values.cntryCd);
+        setTelphone(values.telphone);
+        setBirthday(values.birthday);
+        setCurrentPage("addAddress");
+      } else if (currentPage === "addAddressFill") {
+        console.log("Final values", values);
+        setCurrentPage("successRegister");
+      }
     },
   });
+  function changePage(pageName) {
+    setCurrentPage(pageName);
+  }
+
+  const PageComponent = pages[currentPage] || PersonalInfo;
 
   return (
     <>
       {!hideRender ? (
         <main className="flex justify-around items-center w-full h-svh">
-          <section className="shadow-xl/30 p-6 rounded-lg w-7/8 md:w-4/5 min-h-[400px] h-fit lg:w-2/5 bg-white">
-            <form
-              className="text-gray-600"
-              autoComplete="on"
-              onSubmit={formik.handleSubmit}
-            >
-              <PageComponent gotoPage={changePage} formik={formik} />
-            </form>
+          <section className="shadow-xl/30 p-6 rounded-xl w-7/8 sm:w-3/5 md:w-4/7 lg:w-2/5 min-h-[400px] h-fit bg-white">
+            <PageComponent gotoPage={changePage} formik={formik} />
+            {/* <PageComponent formik={formik} /> */}
           </section>
         </main>
       ) : (

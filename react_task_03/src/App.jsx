@@ -14,7 +14,8 @@ function App() {
           <Route path="user" element={
             <ProtectedRoute>
                 <User />
-              </ProtectedRoute>}>
+              </ProtectedRoute>
+              }>
             <Route path="successfulregistration" element={<SuccessRegister />}  />
             <Route path="dashboard" element={<Dashboard />} />
             <Route path="userinfo" element={<UserInfo />}/>

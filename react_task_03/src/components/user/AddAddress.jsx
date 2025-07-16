@@ -1,7 +1,10 @@
-import { Link, Outlet } from "react-router-dom";
+import { Link} from "react-router-dom";
 import Input from "../Input";
+// import { useNavigate } from "react-router-dom";
 
 export default function AddAddress({ gotoPage, formik }) {
+// const navigate = useNavigate();
+
   return (
     <>
       <section>
@@ -16,10 +19,11 @@ export default function AddAddress({ gotoPage, formik }) {
         <Input
           placeholder="address"
           type="text"
+          name="address"
+          value={formik.values.address}
           onBlur={formik.handleBlur}
           onChange={formik.handleChange}
-          value={formik.values.address}
-          name="address"
+          error={formik.touched.address && formik.errors.address}
         />
         <div className="text-sm my-4 ">
           <p>Your address is not visible to other users</p>
@@ -28,7 +32,7 @@ export default function AddAddress({ gotoPage, formik }) {
         <div className="flex flex-row gap-4 my-6 max-sm:flex-col">
           <a href="http://">
             <div className="border-2 p-2 rounded-2xl border-orange-200 text-[#5932EA] font-semibold">
-              <i class="fa-solid fa-location-dot"></i> Use current location
+              <i className="fa-solid fa-location-dot"></i> Use current location
             </div>
           </a>
           <div
@@ -46,20 +50,19 @@ export default function AddAddress({ gotoPage, formik }) {
           </div>
           <div className="flex flex-col gap-4 my-4">
             <div className="flex flex-row gap-4 items-center">
-              <i class="fa-solid fa-users"></i>
+              <i className="fa-solid fa-users"></i>
               <p>People near you</p>
             </div>
             <div className="flex flex-row gap-4 items-center">
-              <i class="fa-regular fa-clock"></i>
+              <i className="fa-regular fa-clock"></i>
               <p>Estimated delivery time</p>
             </div>
             <div className="flex flex-row gap-4 items-center">
-              <i class="fa-solid fa-dollar-sign"></i>
+              <i className="fa-solid fa-dollar-sign"></i>
               <p>Estimate shipping costs</p>
             </div>
           </div>
         </section>
-        {/* <Outlet /> */}
       </section>
     </>
   );
