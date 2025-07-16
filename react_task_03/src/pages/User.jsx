@@ -33,6 +33,18 @@ export default function User() {
     setTelphone,
     birthday,
     setBirthday,
+    address,
+    setAddress,
+    street,
+    setStreet,
+    apartment,
+    setapartment,
+    city,
+    setCity,
+    state,
+    setState,
+    zipCde,
+    setZipCde,
   } = useAuth();
 
   const formik = useFormik({
@@ -42,12 +54,12 @@ export default function User() {
       cntryCd: cntryCd || "",
       telphone: telphone || "",
       birthday: birthday || "",
-      address: "",
-      street: "",
-      apartment: "",
-      city: "",
-      state: "",
-      zipCde: "",
+      address: address || "",
+      street: street || "",
+      apartment: apartment || "",
+      city: city || "",
+      state:state|| "",
+      zipCde:zipCde|| "",
     },
     validateOnBlur: true,
     validateOnChange: true,
@@ -65,6 +77,12 @@ export default function User() {
         setCurrentPage("addAddress");
       } else if (currentPage === "addAddressFill") {
         console.log("Final values", values);
+        setAddress(values.address);
+        setStreet(values.street);
+        setapartment(values.apartment);
+        setCity(values.city);
+        setState(values.state);
+        setZipCde(values.zipCde);
         setCurrentPage("successRegister");
       }
     },
