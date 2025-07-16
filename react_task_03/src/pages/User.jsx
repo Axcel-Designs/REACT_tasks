@@ -55,7 +55,6 @@ export default function User() {
       currentPage === "personalInfo" ? personalInfoSchema : addressSchema,
     onSubmit: (values) => {
       console.log("Error Fields:", Object.keys(formik.errors));
-      // console.log("SUBMIT from User.jsx:", values);
       if (currentPage === "personalInfo") {
         console.log("Going to addAddress");
         setFullName(values.fullName);
