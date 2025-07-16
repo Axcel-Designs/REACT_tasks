@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import { useFormik } from "formik";
-import userFormSchema from "../utils/userFormSchema";
+import { personalInfoSchema, addressSchema } from "../utils/userFormSchema";
 import PersonalInfo from "../components/user/PersonalInfo";
 import AddAddress from "../components/user/AddAddress";
 import AddAddressFill from "../components/user/AddAddressFill";
@@ -51,8 +51,8 @@ export default function User() {
     },
     validateOnBlur: true,
     validateOnChange: true,
-    // validationSchema: userFormSchema,
-    validationSchema: null,
+    validationSchema:
+      currentPage === "personalInfo" ? personalInfoSchema : addressSchema,
     onSubmit: (values) => {
       console.log("Error Fields:", Object.keys(formik.errors));
       // console.log("SUBMIT from User.jsx:", values);
