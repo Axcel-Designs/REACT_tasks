@@ -30,11 +30,7 @@ export default function PersonalInfo({ formik }) {
             value={formik.values.fullName}
             onBlur={formik.handleBlur}
             onChange={formik.handleChange}
-            error={
-              formik.touched.fullName && formik.errors.fullName
-                ? formik.errors.fullName
-                : null
-            }
+            error={formik.errors.fullName ? formik.errors.fullName : null}
           />
           {/* Gender */}
           <div className="flex flex-row gap-2 items-center text-gray-600 my-2">
@@ -64,7 +60,7 @@ export default function PersonalInfo({ formik }) {
               </label>
             </div>
           </div>
-          {formik.touched.gender && formik.errors.gender && (
+          {formik.errors.gender && (
             <p className="text-sm text-red-500">{formik.errors.gender}</p>
           )}
           {/* Info note */}
@@ -88,7 +84,7 @@ export default function PersonalInfo({ formik }) {
                   +{code}
                 </option>
               ))}
-              {formik.touched.cntryCd && formik.errors.cntryCd && (
+              {formik.errors.cntryCd && (
                 <p className="text-sm text-red-500">{formik.errors.cntryCd}</p>
               )}
             </select>
@@ -100,11 +96,7 @@ export default function PersonalInfo({ formik }) {
               value={formik.values.telphone}
               onBlur={formik.handleBlur}
               onChange={formik.handleChange}
-              error={
-                formik.touched.telphone && formik.errors.telphone
-                  ? formik.errors.telphone
-                  : null
-              }
+              error={formik.errors.telphone ? formik.errors.telphone : null}
             />
           </div>
           {/* Birthday */}
@@ -116,11 +108,7 @@ export default function PersonalInfo({ formik }) {
             value={formik.values.birthday || ""}
             onBlur={formik.handleBlur}
             onChange={formik.handleChange}
-            error={
-              formik.touched.birthday && formik.errors.birthday
-                ? formik.errors.birthday
-                : null
-            }
+            error={formik.errors.birthday ? formik.errors.birthday : null}
           />
           <p className="mb-6 text-sm text-gray-500">
             Let's know your birthday so as not to miss a gift.
