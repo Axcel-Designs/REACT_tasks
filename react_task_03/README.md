@@ -1,14 +1,15 @@
-# KodeCamp React Task 03
+# React Task 03
 
-This is the third task for the KodeCamp React course.
+This is the third task for the React course.
 
-**Objective**: Replicate the design in this Figma link: https://www.figma.com/design/vUUpIZaDvoAtMDpUcMy3OI/KodeCamp-4.0-React-Task?node-id=0-1&t=MdeYAqdUGoDrFqcR-1
+**Objective**: Replicate the design in this Figma link: https://www.figma.com/design/vUUpIZaDvoAtMDpUcMy3OI/-4.0-React-Task?node-id=0-1&t=MdeYAqdUGoDrFqcR-1
 
 ### Deployment Link
+
 https://task03-gules.vercel.app/
 
-
 ## Instructions:
+
 ```
 - Build out all the screens in the design.
 
@@ -28,6 +29,7 @@ https://task03-gules.vercel.app/
 ```
 
 ## **IMAGES**
+
 **Register**
 ![Register](../taskSamples/react_task_03/Frame.png)
 

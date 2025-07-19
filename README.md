@@ -1,6 +1,9 @@
-# KodeCamp React Tasks
- This contains all the react tasks for the KodeCamp React course.
+# React Tasks
+
+This contains all the react tasks for the React course.
+
 ### Tasks
+
 - [Task 00](./react_task_00/)
 - [Task 01](./react_task_01/)
 - [Task 02](./react_task_02/)
@@ -13,4 +16,5 @@
 - [Task 09](./react_task_09/)
 
 ## Task design samples
+
 - [Task samples](./taskSamples)

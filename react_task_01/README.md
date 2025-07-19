@@ -1,5 +1,5 @@
-# KodeCamp React Task 01
-This is the first task for the KodeCamp React course.
+# React Task 01
+This is the first task for the React course.
 ## Task Description
 ```
 Create a react application and name it react-task-one
