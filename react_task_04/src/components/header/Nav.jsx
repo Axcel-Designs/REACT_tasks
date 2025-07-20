@@ -8,23 +8,24 @@ const menus = [
   { label: "Sign Up", path: "/signup" },
 ];
 
-function NavLists() {
+function NavLists({ closeNav }) {
   return menus.map((item) => (
     <NavLink
       to={item.path}
       key={item.label}
       className={({ isActive }) =>
-        `${isActive ? "border-gray-500" : "border-transparent"} border-b-2`
+        `${isActive ? "border-gray-500" : "border-transparent"} border-b-2 hover:border-gray-900`
       }
+      onClick={closeNav}
     >
       {item.label}
     </NavLink>
   ));
 }
 
-export default function Nav() {
+export default function DeskNav() {
   return (
-    <nav className="hidden sm:flex w-full">
+    <nav className="hidden sm:flex w-full justify-around ">
       <ul className="flex gap-4 font-semibold">
         <NavLists />
       </ul>
@@ -32,6 +33,12 @@ export default function Nav() {
   );
 }
 
-export function MobileNav() {
-  return <NavLists />;
+export function MobileNav({ closeNav }) {
+  return (
+    <nav>
+      <ul className="flex flex-col gap-3 font-semibold">
+        <NavLists closeNav={closeNav} />
+      </ul>
+    </nav>
+  );
 }
