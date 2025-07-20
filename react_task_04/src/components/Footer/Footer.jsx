@@ -1,7 +1,14 @@
-import React from 'react'
+import React from "react";
+import FooterTop from "./FooterTop";
+import FooterBottom from "./FooterBottom";
 
 export default function Footer() {
   return (
-    <div>Footer</div>
-  )
+    <>
+      <footer className="w-full">
+        <FooterTop />
+        <FooterBottom />
+      </footer>
+    </>
+  );
 }

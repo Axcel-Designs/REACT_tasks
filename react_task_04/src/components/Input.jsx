@@ -2,46 +2,38 @@ export default function Input({
   label,
   type,
   name,
-  width,
-  placeholder,
+  wdt,
+  plhldr,
   value,
   onChange,
   onBlur,
   id,
-  show,
   error,
   check,
-  showEye,
 }) {
   return (
     <>
-      <div
-        className={`my-2 border-2 border-gray-200 rounded-2xl py-2 px-4 ${width} flex flex-col focus:border-[#5932EA] hover:border-[#5932EA]`}
-      >
+      <div className={`my-2 rounded-sm ${wdt} flex flex-col bg-gray-50`}>
         <label
           className="shrink-0 text-gray-500 select-none text-sm/6"
           htmlFor={Input.name}
         >
           {label}
         </label>
-        <div className="flex flex-row grow items-center justify-between ">
+        <div className="flex flex-row  items-center justify-between ">
           <input
             type={type}
             name={name}
-            placeholder={placeholder}
+            placeholder={plhldr}
             id={id}
             value={value}
             onChange={onChange}
             onBlur={onBlur}
             className={`
-              text-gray-900 placeholder:text-gray-800 focus:outline-none w-7/8 bg-white`}
-            required
+              text-gray-900 placeholder:text-gray-700 focus:outline-none p-2 bg-gray-50 rounded-sm`}
           />
-          <div className="flex gap-2 justify-around items-center">
-            <div>{check}</div>
-            <div className="text-gray-800" onClick={showEye}>
-              {show}
-            </div>
+          <div className="flex gap-2 p-2 justify-around items-center">
+            {check}
           </div>
         </div>
         {error && <p className="text-red-400 text-sm">{error}</p>}

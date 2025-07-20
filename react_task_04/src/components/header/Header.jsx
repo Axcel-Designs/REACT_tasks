@@ -5,7 +5,7 @@ import HeaderBottom from "./HeaderBottom";
 export default function Header() {
   return (
     <>
-      <header>
+      <header className="w-full text-sm">
         <HeaderTop />
         <HeaderBottom />
       </header>
