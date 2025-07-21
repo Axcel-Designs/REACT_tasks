@@ -54,7 +54,7 @@ export function InputTrnparnt({
 }) {
   return (
     <>
-      <div className={`my-2 rounded-sm ${wdt} border-2 border-gray-600`}>
+      <div className={`rounded-sm ${wdt} border-2 border-gray-600`}>
         <label
           className="shrink-0 text-gray-500 select-none text-sm/6"
           htmlFor={Input.name}
@@ -71,9 +71,9 @@ export function InputTrnparnt({
             onChange={onChange}
             onBlur={onBlur}
             className={`
-              text-gray-900 placeholder:text-gray-700 focus:outline-none p-2`}
+              text-gray-900 placeholder:text-gray-700 focus:outline-none p-1`}
           />
-          <div className="p-2">{check}</div>
+          <div className="">{check}</div>
         </div>
         {error && <p className="text-red-400 text-sm">{error}</p>}
       </div>
