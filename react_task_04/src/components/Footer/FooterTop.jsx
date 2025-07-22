@@ -7,9 +7,11 @@ import as from "../../assets/appstore.png";
 import Input, { InputTrnparnt } from "../Input";
 
 export default function FooterTop() {
+  // w-5/6 md:w-9/10 lg:w-5/6
   return (
-    <main className="bg-black text-white w-full">
-      <section className=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 py-10 max-sm:text-center gap-4 w-5/6 md:w-9/10 lg:w-5/6 m-auto">
+    <main className="bg-black text-white w-full flex justify-around">
+      <section className=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 py-10 max-sm:text-center gap-6">
+        {/* Exclusive */}
         <div>
           <h1 className="max-sm:mb-0 mb-4 font-bold">Exclusive</h1>
           <ul className="flex flex-col gap-2 text-sm">
@@ -17,9 +19,9 @@ export default function FooterTop() {
             <li>Get 10% off your first order</li>
             <li className="max-sm:m-auto w-fit ">
               <InputTrnparnt
-                wdt={"pr-2"}
+                wdt={"pr-2 text-gray-200"}
                 plhldr={"Enter your email"}
-                check={<i className="fa-solid fa-arrow-right"></i>}
+                check={<i class="bx  bx-send-alt"></i>}
               />
             </li>
             {/* <li className="border-2 border-gray-700  w-5/7 max-sm:m-auto">
@@ -27,7 +29,8 @@ export default function FooterTop() {
             </li> */}
           </ul>
         </div>
-        <div>
+        {/* Support */}
+        <div >
           <h1 className="mb-2 font-bold">Support</h1>
           <ul className="flex flex-col gap-2 text-sm">
             <l1>
@@ -41,7 +44,8 @@ export default function FooterTop() {
             </l1>
           </ul>
         </div>
-        <div>
+        {/* Account */}
+        <div >
           <h1 className="max-sm:mb-0 mb-4 font-bold">Account</h1>
           <ul className="flex flex-col gap-2 text-sm">
             {accountDt.map((item, i) => (
@@ -51,6 +55,7 @@ export default function FooterTop() {
             ))}
           </ul>
         </div>
+        {/* Quick Link */}
         <div>
           <h1 className="max-sm:mb-0 mb-4 font-bold">Quick Link</h1>
           <ul className="flex flex-col gap-2 text-sm">
@@ -61,7 +66,8 @@ export default function FooterTop() {
             ))}
           </ul>
         </div>
-        <div>
+        {/* Download App */}
+        <div className="sm:max-lg:bg-black sm:max-lg:col-span-2">
           <h1 className="max-sm:mb-0 mb-4 font-bold">Download App</h1>
           <ul className="flex flex-col gap-2 text-sm">
             <li className="text-xs text-gray-600">

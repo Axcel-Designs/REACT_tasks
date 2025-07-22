@@ -14,7 +14,7 @@ function NavLists({ closeNav }) {
       to={item.path}
       key={item.label}
       className={({ isActive }) =>
-        `${isActive ? "border-gray-500" : "border-transparent"} border-b-2 hover:border-gray-900`
+        `${isActive ? "border-gray-400" : "border-transparent"} border-b-2 hover:border-gray-900 pb-2`
       }
       onClick={closeNav}
     >

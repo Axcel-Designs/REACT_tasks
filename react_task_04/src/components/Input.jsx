@@ -71,7 +71,7 @@ export function InputTrnparnt({
             onChange={onChange}
             onBlur={onBlur}
             className={`
-              text-gray-900 placeholder:text-gray-700 focus:outline-none p-1`}
+              text-gray-00 placeholder:text-gray-700 focus:outline-none p-1`}
           />
           <div className="">{check}</div>
         </div>

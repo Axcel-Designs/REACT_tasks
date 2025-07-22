@@ -11,7 +11,7 @@ export default function HeaderBottom() {
     setNav(!nav);
   };
   return (
-    <section className="sticky top-0 z-50 bg-white">
+    <section className="sticky top-0 bg-white z-40">
       <div className="w-full border-b-2 border-gray-200 bg-white pt-2">
         <div className="md:w-9/10 lg:w-5/6 flex m-auto justify-between gap-6 max-sm:gap-0 items-center">
           <div className="maxw-1/5 ml-1 ">
@@ -44,7 +44,7 @@ export default function HeaderBottom() {
         </div>
       </div>
       {nav && (
-        <div className="flex flex-col gap-2 items-center justify-center text-center my-4">
+        <div className="flex flex-col gap-2 items-center justify-center text-center my-4 transition-all delay-300 duration-500 ease-in-out">
           <MobileNav closeNav={toggleNav} />
           <NavIcons closeNav={toggleNav} />
         </div>
