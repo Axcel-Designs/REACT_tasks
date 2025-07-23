@@ -11,6 +11,7 @@ import Product from "./pages/Product";
 import LogIn from "./pages/LogIn";
 import Contact from "./pages/Contact";
 import About from "./pages/About";
+import  '../public/style.css'
 
 function App() {
   return (

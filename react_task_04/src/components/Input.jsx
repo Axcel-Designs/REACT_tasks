@@ -16,11 +16,11 @@ export default function Input({
       <div className={`my-2 rounded-sm ${wdt}`}>
         <label
           className="shrink-0 text-gray-500 select-none text-sm/6"
-          htmlFor={Input.name}
+          htmlFor={id}
         >
           {label}
         </label>
-        <div className="flex flex-row  items-center justify-between bg-gray-200 w-fit rounded-sm">
+        <div className="flex flex-row  items-center justify-between bg-[#f5f5f5] w-fit rounded-sm">
           <input
             type={type}
             name={name}
@@ -54,10 +54,12 @@ export function InputTrnparnt({
 }) {
   return (
     <>
-      <div className={`rounded-sm ${wdt} border-2 border-gray-600`}>
+      <div
+        className={`rounded-sm ${wdt} border-2 border-[#f5f5f5]`}
+      >
         <label
           className="shrink-0 text-gray-500 select-none text-sm/6"
-          htmlFor={Input.name}
+          htmlFor={id}
         >
           {label}
         </label>

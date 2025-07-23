@@ -22,6 +22,7 @@ export default function HeaderBottom() {
             <div className="flex max-sm:justify-center justify-end gap-4 max-sm:gap-8 items-center w-full">
               <div className="">
                 <Input
+                  id="search"
                   type={"text"}
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
