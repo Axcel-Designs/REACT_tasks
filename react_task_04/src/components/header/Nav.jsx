@@ -25,7 +25,7 @@ function NavLists({ closeNav }) {
 
 export default function DeskNav() {
   return (
-    <nav className="hidden sm:flex w-full justify-around ">
+    <nav className="hidden md:flex w-full justify-around ">
       <ul className="flex gap-4 font-semibold">
         <NavLists />
       </ul>

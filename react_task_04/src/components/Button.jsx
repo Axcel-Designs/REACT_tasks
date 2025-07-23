@@ -15,9 +15,9 @@ export function ButtonTrnparnt({ label, click, type, width, icon, src }) {
       onClick={click}
       type={type}
       className={`
-                text-gray-600 border-2 border-gray-400 w-full rounded-sm my-2 p-2 bg-white font-semibold cursor-pointer ${width} m-auto flex justify-center gap-2`}
+                text-gray-600 border-2 border-gray-300 w-full rounded-sm my-2 p-2 bg-white font-semibold cursor-pointer ${width} m-auto flex justify-center gap-2 items-center`}
     >
-      <div className='flex h-1/5 bg-amber-400 w-fit'>
+      <div className='flex h-1/5 w-1/12'>
       <i className={icon}></i>
         <img src={src} alt="google" width="" />
       </div>

@@ -27,17 +27,17 @@ export default function HeaderBottom() {
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
                   plhldr="what are you looking for"
-                  wdt={"w-4/5"}
+                  // wdt={"w-3/5"}
                   check={<i className="fa fa-magnifying-glass"></i>}
                 />
               </div>
-              <div className="max-sm:hidden">
+              <div className="max-md:hidden">
                 <NavIcons />
               </div>
             </div>
           </div>
           <div
-            className="hidden max-sm:block cursor-pointer mr-4"
+            className="hidden max-md:flex cursor-pointer mr-4"
             onClick={toggleNav}
           >
             <i className={`fa fa-xl ${nav ? "fa-times" : "fa-bars"}`}></i>
