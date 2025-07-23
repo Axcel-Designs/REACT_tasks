@@ -3,7 +3,7 @@ export default function Button({ label, click, type, width }) {
     <button
       onClick={click}
       type={type}
-      className={`bg-[#db4444] border-2 border-[#db4444] w-full  rounded-sm my-2 p-2 ${width}  text-white font-semibold cursor-pointer`}
+      className={`bg-[#db4444] border-2 border-[#db4444] rounded-sm my-2 p-2 ${width}  text-white font-semibold cursor-pointer`}
     >
       {label}
     </button>
@@ -19,7 +19,7 @@ export function ButtonTrnparnt({ label, click, type, width, icon, src }) {
     >
       <div className='flex h-1/5 w-1/12'>
       <i className={icon}></i>
-        <img src={src} alt="google" width="" />
+        <img src={src}  width="" />
       </div>
       {label}
     </button>

@@ -40,7 +40,6 @@ export default function Input({
   );
 }
 export function InputForm({
-  label,
   type,
   name,
   wdt,
@@ -55,13 +54,7 @@ export function InputForm({
   return (
     <>
       <div className={`my-2 rounded-sm ${wdt}`}>
-        <label
-          className="shrink-0 text-gray-500 select-none text-sm/6"
-          htmlFor={id}
-        >
-          {label}
-        </label>
-        <div className="flex flex-row items-center justify-between border-gray-300 border-b-2 w-fit">
+        <div className="flex flex-row items-center justify-between border-gray-300 border-b-2 ">
           <input
             type={type}
             name={name}

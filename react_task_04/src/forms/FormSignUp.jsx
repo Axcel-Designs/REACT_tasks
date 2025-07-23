@@ -10,22 +10,21 @@ export default function FormSignUp() {
   async function handleSubmit(e) {
     e.preventDefault();
     try {
-      
       navigate("/login");
     } catch (error) {
       console.log("error", error);
-      
     }
   }
 
   function googleSignIn() {}
   return (
     <>
-      <div className="min-w-fit p-10 ">
+      <div className="min-w-fit p-10 w-5/7">
         <div>
           <h1 className="text-2xl">Create an account</h1>
           <p className="text-sm">Enter your details below</p>
         </div>
+        <br />
         <form onSubmit={handleSubmit} autoComplete="on">
           <InputForm
             plhldr={"Name"}
@@ -48,7 +47,7 @@ export default function FormSignUp() {
             // value=""
             // onchange=""
           />
-          <Button type="submit" label="Create Account" />
+          <Button type="submit" label="Create Account" width={"w-full"} />
         </form>
         <div>
           <ButtonTrnparnt

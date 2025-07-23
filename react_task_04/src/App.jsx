@@ -12,6 +12,7 @@ import LogIn from "./pages/LogIn";
 import Contact from "./pages/Contact";
 import About from "./pages/About";
 import  '../public/style.css'
+import FetctedProducts from "./data/FetctedProducts";
 
 function App() {
   return (
@@ -24,8 +25,9 @@ function App() {
           <Route path="notfound" element={<NotFound />} />
           <Route path="wishlist" element={<WishList />} />
           <Route path="signup" element={<SignUp />} />
-          <Route path="product" element={<Product />} />
+          <Route path="fetch" element={<FetctedProducts />} />
           <Route path="login" element={<LogIn />} />
+          <Route path="product" element={<Product />} />
           <Route path="contact" element={<Contact/>} />
           <Route path="about" element={<About/>} />
       </Routes>
