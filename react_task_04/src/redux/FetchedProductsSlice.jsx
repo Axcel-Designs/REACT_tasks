@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 export const fetchProducts = createAsyncThunk(
-  "productsData/fetchProducts",
+  "inventory/fetchProducts",
   async () => {
     const response = await fetch("https://api.escuelajs.co/api/v1/products/");
     const data = await response.json();
@@ -9,27 +9,47 @@ export const fetchProducts = createAsyncThunk(
   }
 );
 
-export const getProductsData = createSlice({
-  name: "productsData",
+export const inventorySlice = createSlice({
+  name: "inventory",
   initialState: {
-    items: null,
-    loading: false,
+    products: [],
+    loading: "idle",
     error: null,
+    cart: [],
+    wishlist: [],
   },
-  reducers: {},
+  reducers: {
+    addToCart: (state, action) => {
+      const item = state.products.find((item) => item.id == action.payload);
+      if (item) {
+        state.cart.push(item);
+      }
+    },
+    addToWishlist: (state, action) => {
+      const item = state.products.find((item) => item.id == action.payload);
+      if (item) state.wishlist.push(item);
+    },
+    removeFromCart: (state, action) => {
+      state.cart = state.cart.filter((item) => item.id !== action.payload);
+    },
+    clearCart: (state) => {
+      state.cart = [];
+    },
+  },
   extraReducers: (builder) => {
-    builder.addCase(fetchProducts.pending, (state) => {
+    builder
+      .addCase(fetchProducts.pending, (state) => {
         state.loading = "pending";
       })
-      .builder.addCase(fetchProducts.fulfilled, (state, action) => {
+      .addCase(fetchProducts.fulfilled, (state, action) => {
         state.loading = "fufilled";
-        state.items = action.payload;
+        state.products = action.payload;
       })
-      .builder.addCase(fetchProducts.rejected,(state,action)=>{
-        state.loading='rejected'
-        state.error=action.error.message
-      })
+      .addCase(fetchProducts.rejected, (state, action) => {
+        state.loading = "rejected";
+        state.error = action.error.message;
+      });
   },
 });
 
-export default getProductsData.reducer;
+export default inventorySlice.reducer;
