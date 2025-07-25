@@ -3,20 +3,66 @@ import { InputForm } from "../components/Input";
 import Button, { ButtonTrnparnt } from "../components/Button";
 import { NavLink, useNavigate } from "react-router-dom";
 import ggl from "../assets/Icon-Google.svg";
+import {
+  createUserWithEmailAndPassword,
+  GoogleAuthProvider,
+  onAuthStateChanged,
+  signInWithPopup,
+} from "firebase/auth";
+import { auth } from "../firebase/firebase";
+import { useState } from "react";
 
 export default function FormSignUp() {
   const navigate = useNavigate();
 
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [errMessage, setErrMessage] = useState("");
+
+  
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    const uid = user.uid;
+    console.log(uid);    
+  } else {
+    // ...
+  }
+});
+
   async function handleSubmit(e) {
     e.preventDefault();
-    try {
-      navigate("/login");
-    } catch (error) {
-      console.log("error", error);
-    }
+    await createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        console.log(user);
+        navigate("/login");
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorMessage);
+        setErrMessage(errorCode, errorMessage);
+      });
   }
 
-  function googleSignIn() {}
+  function googleSignIn() {
+    const provider = new GoogleAuthProvider();
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        const credential = GoogleAuthProvider.credentialFromResult(result);
+        const token = credential.accessToken;
+        navigate("/");
+        const user = result.user;
+        console.log(token);
+        console.log(user);
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        setErrMessage(errorCode, errorMessage);
+      });
+  }
   return (
     <>
       <div className="min-w-fit p-10 w-5/7">
@@ -29,23 +75,23 @@ export default function FormSignUp() {
           <InputForm
             plhldr={"Name"}
             type={"text"}
-            id="name"
-            // value=""
-            // onchange=""
+            name="name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
           />
           <InputForm
             plhldr={"Email or Phone Number"}
             type={"email"}
-            id="name"
-            // value=""
-            // onchange=""
+            name="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
           <InputForm
             plhldr={"Password"}
             type={"password"}
-            id="name"
-            // value=""
-            // onchange=""
+            name="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
           />
           <Button type="submit" label="Create Account" width={"w-full"} />
         </form>
@@ -62,6 +108,7 @@ export default function FormSignUp() {
             Log In
           </NavLink>
         </div>
+        <p>{errMessage}</p>
       </div>
     </>
   );

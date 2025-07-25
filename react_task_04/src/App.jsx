@@ -11,27 +11,25 @@ import Product from "./pages/Product";
 import LogIn from "./pages/LogIn";
 import Contact from "./pages/Contact";
 import About from "./pages/About";
-import  '../public/style.css'
-import FetctedProducts from "./data/FetctedProducts";
+import "../public/style.css";
 
 function App() {
   return (
     <>
-    <Header/>
+      <Header />
       <Routes>
-          <Route path="/" element={<Home/>} />
-          <Route path="cart" element={<Cart/>} />
-          <Route path="account" element={<Account />} />
-          <Route path="notfound" element={<NotFound />} />
-          <Route path="wishlist" element={<WishList />} />
-          <Route path="signup" element={<SignUp />} />
-          <Route path="fetch" element={<FetctedProducts />} />
-          <Route path="login" element={<LogIn />} />
-          <Route path="product" element={<Product />} />
-          <Route path="contact" element={<Contact/>} />
-          <Route path="about" element={<About/>} />
+        <Route path="/" element={<Home />} />
+        <Route path="cart" element={<Cart />} />
+        <Route path="account" element={<Account />} />
+        <Route path="notfound" element={<NotFound />} />
+        <Route path="wishlist" element={<WishList />} />
+        <Route path="signup" element={<SignUp />} />
+        <Route path="login" element={<LogIn />} />
+        <Route path="product" element={<Product />} />
+        <Route path="contact" element={<Contact />} />
+        <Route path="about" element={<About />} />
       </Routes>
-      <Footer/>
+      <Footer />
     </>
   );
 }

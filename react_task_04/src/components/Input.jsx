@@ -64,7 +64,7 @@ export function InputForm({
             onChange={onChange}
             onBlur={onBlur}
             className={`
-              text-gray-900 placeholder:text-gray-00 focus:outline-none pr-2 py-2`}
+              text-gray-900 placeholder:text-gray-200 focus:outline-none pr-2 py-2 bg-white`}
           />
           <div className="pr-2">{check}</div>
         </div>

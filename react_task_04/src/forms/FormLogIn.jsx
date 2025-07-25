@@ -1,19 +1,51 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { InputForm } from "../components/Input";
 import Button, { ButtonTrnparnt } from "../components/Button";
+import {
+  sendPasswordResetEmail,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
+import { auth } from "../firebase/firebase";
+import {  useDispatch } from "react-redux";
+import { logIn } from "../redux/authSlice";
+
 
 export default function FormLogIn() {
   const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [message, setMessage] = useState("");
+ const dispatch = useDispatch();
 
-  function forgetPassword() {}
+  async function forgetPassword(e) {
+    e.preventDefault();
+    await sendPasswordResetEmail(auth, email)
+      .then(() => {
+        setMessage(" Password reset email sent! Check your inbox.");
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorCode, errorMessage);
+        setMessage(`${error.message}`);
+      });
+  }
+
   async function handleSubmit(e) {
     e.preventDefault();
-    try {
-      navigate("/");
-    } catch (error) {
-      console.log("error", error);
-    }
+    await signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        dispatch(logIn());
+        console.log(user);
+        navigate("/");
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorCode, errorMessage);
+      });
   }
 
   return (
@@ -28,26 +60,28 @@ export default function FormLogIn() {
           <InputForm
             plhldr={"Email or Phone Number"}
             type={"email"}
-            id="name"
-            // value=""
-            // onchange=""
+            name="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
           <InputForm
             plhldr={"Password"}
             type={"password"}
-            id="name"
-            // value=""
-            // onchange=""
+            name="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
           />
           <div className="flex justify-between items-center gap-2 ">
             <Button type="submit" label="Log In" width={"w-1/3"} />
-            <div className="w-fit text-red-400 gap-2 cursor-pointer" onClick={forgetPassword}>
-              <p>
-                Forget Password?
-                </p>
+            <div
+              className="w-fit text-red-400 gap-2 cursor-pointer"
+              onClick={forgetPassword}
+            >
+              <p>Forget Password?</p>
             </div>
           </div>
         </form>
+        <p>{message}</p>
       </div>
     </>
   );
