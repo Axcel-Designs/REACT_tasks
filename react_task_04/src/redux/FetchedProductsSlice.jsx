@@ -9,7 +9,7 @@ export const fetchProducts = createAsyncThunk(
   }
 );
 
-export const inventorySlice = createSlice({
+ export const inventorySlice = createSlice({
   name: "inventory",
   initialState: {
     products: [],
@@ -28,6 +28,9 @@ export const inventorySlice = createSlice({
     addToWishlist: (state, action) => {
       const item = state.products.find((item) => item.id == action.payload);
       if (item) state.wishlist.push(item);
+    },
+    removeFromWishlist: (state, action) => {
+      state.wishlist = state.wishlist.filter((item) => item.id !== action.payload);
     },
     removeFromCart: (state, action) => {
       state.cart = state.cart.filter((item) => item.id !== action.payload);
@@ -51,5 +54,5 @@ export const inventorySlice = createSlice({
       });
   },
 });
-
+export const {addToCart,addToWishlist,removeFromCart,clearCart,removeFromWishlist}=inventorySlice.actions;
 export default inventorySlice.reducer;

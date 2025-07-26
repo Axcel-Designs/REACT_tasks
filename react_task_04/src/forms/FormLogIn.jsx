@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { InputForm } from "../components/Input";
-import Button, { ButtonTrnparnt } from "../components/Button";
+import Button from "../components/Button";
 import {
   sendPasswordResetEmail,
   signInWithEmailAndPassword,

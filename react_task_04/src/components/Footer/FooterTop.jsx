@@ -19,13 +19,12 @@ export default function FooterTop() {
             <li>Get 10% off your first order</li>
             <li className="max-sm:m-auto w-fit ">
               <InputTrnparnt
-                id='email'
+                id="email"
                 wdt={"pr-2 text-gray-200"}
                 plhldr={"Enter your email"}
                 check={<i className="bx  bx-send-alt"></i>}
               />
             </li>
-           
           </ul>
         </div>
         {/* Support */}

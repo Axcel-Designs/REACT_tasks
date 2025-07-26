@@ -1,9 +1,9 @@
 import React from "react";
 import ShopNow from "../ShopNow";
-import ps5 from '../../assets/ps5Slim.png'
-import awc from '../../assets/attractiveWoman.png'
-import gp from '../../assets/gucciPerfumes.png'
-import ae from '../../assets/amazonEcho.png'
+import ps5 from "../../assets/ps5Slim.png";
+import awc from "../../assets/attractiveWoman.png";
+import gp from "../../assets/gucciPerfumes.png";
+import ae from "../../assets/amazonEcho.png";
 
 export default function NewArrival() {
   return (
@@ -12,12 +12,15 @@ export default function NewArrival() {
         <div className="bg-[#db4444] py-2 ">gg</div>
         <p>Featured</p>
       </div>
+      <br />
       <div>
         <h2>New Arrival</h2>
       </div>
-      <div className="grid sm:grid-cols-2 md:grid-cols-4 md:grid-rows-[200px_200px]  gap-4 text-white bg-amber-500">
+      <br />
+      <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-4 text-white">
         <div
-          className={`col-span-2 md:row-span-2 bg-[url('../../assets/ps5Slim.png')] bg-cover bg-center flex items-end`}
+          className={`col-span-2 md:row-span-2 bg-no-repeat bg-center flex items-end bg-black pt-30 p-4`}
+          style={{ backgroundImage: `url(${ps5})` }}
         >
           <div>
             <h2>PlayStation 5</h2>
@@ -26,8 +29,8 @@ export default function NewArrival() {
           </div>
         </div>
         <div
-          className={`col-span-2 bg-[url(${awc})] bg-cover bg-center flex items-end`}
-          style={{ backgroundImage: `url(${awc})`}}
+          className={`col-span-2 bg-no-repeat bg-center flex items-end pt-30 p-4 bg-black`}
+          style={{ backgroundImage: `url(${awc})` }}
         >
           <div>
             <h2>Women's Collections</h2>
@@ -36,7 +39,8 @@ export default function NewArrival() {
           </div>
         </div>
         <div
-          className={`bg-[url(${ae})] bg-cover bg-center flex items-end`}
+          className={`bg-no-repeat bg-center flex items-end bg-black pt-30 p-4`}
+          style={{ backgroundImage: `url(${ae})` }}
         >
           <div>
             <h2>Speakers</h2>
@@ -44,7 +48,10 @@ export default function NewArrival() {
             <ShopNow />
           </div>
         </div>
-        <div className={`bg-[url(${gp})] bg-center bg-cover flex items-end`}>
+        <div
+          className={`bg-center bg-no-repeat flex items-end bg-black pt-30 p-4`}
+          style={{ backgroundImage: `url(${gp})` }}
+        >
           <div>
             <h2>Perfume</h2>
             <p>Gucci Instense oUd EDP</p>

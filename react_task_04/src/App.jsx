@@ -25,7 +25,7 @@ function App() {
         <Route path="wishlist" element={<WishList />} />
         <Route path="signup" element={<SignUp />} />
         <Route path="login" element={<LogIn />} />
-        <Route path="details" element={<ProductDetails />} />
+        <Route path="details:id" element={<ProductDetails />} />
         <Route path="contact" element={<Contact />} />
         <Route path="about" element={<About />} />
       </Routes>

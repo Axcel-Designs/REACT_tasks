@@ -2,30 +2,32 @@ import React from "react";
 import Services from "../components/home/Services";
 import ScrollToTop from "../components/ScrollToTop";
 import NewArrival from "../components/home/newArrival";
+import ExploreProducts from "../components/home/ExploreProducts";
 
 export default function Home() {
   return (
     <>
-      <main className="flex flex-col  relative m-auto sm:w-11/12 lg:w-4/5">
+      <main className="flex flex-col  relative m-auto sm:w-11/12 lg:w-4/5 bg-white">
         {/* hero */}
-        <section>
+        <section className="my-10">
           <aside></aside>
-
           <div></div>
         </section>
         {/* flash sales */}
-        <section></section>
+        <section className="my-10"></section>
         {/* browse category */}
-        <section></section>
+        <section className="my-10"></section>
         {/*best selling products */}
-        <section></section>
+        <section className="my-10"></section>
         {/* banner */}
-        <section></section>
+        <section className="my-10"></section>
         {/* explore products */}
-        <section></section>
-        {/* new arrival */}
         <section>
-          <NewArrival/>
+          <ExploreProducts />
+        </section>
+        {/* new arrival */}
+        <section className="my-10">
+          <NewArrival />
         </section>
         {/* services */}
         <section className="my-10">

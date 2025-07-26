@@ -5,6 +5,6 @@ import inventoryReducer from './FetchedProductsSlice'
 export const store = configureStore({
   reducer: {
     authKey: authReducer,
-    productsKey: inventoryReducer,
+    inventory: inventoryReducer,
   },
 });
