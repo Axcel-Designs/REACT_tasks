@@ -1,7 +1,6 @@
 import React from "react";
 import Services from "../components/home/Services";
-import ScrollToTop from "../components/ScrollToTop";
-import NewArrival from "../components/home/newArrival";
+import NewArrival from "../components/home/NewArrival";
 import ExploreProducts from "../components/home/ExploreProducts";
 import FlashSales from "../components/home/FlashSales";
 import BrowseCategory from "../components/home/BrowseCategory";
@@ -34,7 +33,7 @@ export default function Home() {
           <Banner />
         </section>
         {/* explore products */}
-        <section>
+        <section className="my-10">
           <ExploreProducts />
         </section>
         {/* new arrival */}
