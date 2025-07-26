@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import ItemBox, { ForYouItemBox, WishListItemBox } from "../components/ItemBox";
 import { ButtonTrnparnt } from "../components/Button";
 import { addToCart, removeFromWishlist } from "../redux/FetchedProductsSlice";
+import { NavLink } from "react-router-dom";
 
 export default function WishList() {
   const { wishlist } = useSelector((state) => state.inventory);
@@ -21,7 +22,7 @@ export default function WishList() {
           </div>
           <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-4">
             {wishlist.map((item) => (
-              <li key={item.id}>
+              <NavLink to={`details/${item.id}`} key={item.id}>
                 <WishListItemBox
                   img={item.images[0]}
                   label={item.title}
@@ -29,7 +30,7 @@ export default function WishList() {
                   click={() => dispatch(removeFromWishlist(item.id))}
                   addCart={() => dispatch(addToCart(item.id))}
                 />
-              </li>
+              </NavLink>
             ))}
           </ul>
         </section>

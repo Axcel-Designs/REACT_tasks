@@ -5,6 +5,7 @@ import ItemBox from "../ItemBox";
 import Button from "../Button";
 import { addToWishlist } from "../../redux/FetchedProductsSlice";
 import SectionTitle from "./SectionTitle";
+import { NavLink } from "react-router-dom";
 
 export default function ExploreProducts() {
   const dispatch = useDispatch();
@@ -39,14 +40,14 @@ export default function ExploreProducts() {
         <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-4">
           {products
             .map((item) => (
-              <li key={item.id}>
+              <NavLink to={`details/${item.id}`} key={item.id}>
                 <ItemBox
                   img={item.images[0]}
                   label={item.title}
                   price={item.price}
                   click={() => dispatch(addToWishlist(item.id))}
                 />
-              </li>
+              </NavLink>
             ))
             .sort(() => Math.random() - 0.5)
             .slice(0, 8)}

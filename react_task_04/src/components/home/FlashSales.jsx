@@ -4,6 +4,7 @@ import Button from "../Button";
 import ItemBox from "../ItemBox";
 import { useDispatch, useSelector } from "react-redux";
 import {addToCart} from '../../redux/FetchedProductsSlice'
+import { NavLink } from "react-router-dom";
 
 export default function FlashSales() {
   const { products } = useSelector((state) => state.inventory);
@@ -29,14 +30,14 @@ export default function FlashSales() {
         <ul className="grid grid-cols-2 lg:grid-cols-4 w-full gap-2 my-10">
           {products
             .map((item) => (
-              <li key={item.id}>
+              <NavLink to={`details/${item.id}`} key={item.id}>
                 <ItemBox
                   img={item.images}
                   label={item.title}
                   price={item.price}
                   click={() => dispatch(addToCart(item.id))}
                 />
-              </li>
+              </NavLink>
             ))
             .sort(() => Math.random() - 0.5)
             .slice(0, 4)}
