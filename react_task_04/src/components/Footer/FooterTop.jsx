@@ -3,7 +3,7 @@ import { accountDt, quickLinkDt } from "../../data/footerData";
 import { NavLink } from "react-router-dom";
 import qrs from "../../assets/qrCode.png";
 import gp from "../../assets/googleplay.png";
-import as from "../../assets/appstore.png";
+import as from "../../assets/appStore.png";
 import { InputTrnparnt } from "../Input";
 
 export default function FooterTop() {
