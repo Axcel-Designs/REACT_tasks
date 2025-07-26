@@ -1,9 +1,10 @@
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import SectionTitle from "../components/home/SectionTitle";
 import { useDispatch } from "react-redux";
-import { fetchProducts } from "../redux/FetchedProductsSlice";
+import { addToWishlist, fetchProducts } from "../redux/FetchedProductsSlice";
+import ItemBox from "../components/ItemBox";
 
 export default function ProductDetails() {
   const { products } = useSelector((state) => state.inventory);
@@ -15,41 +16,92 @@ export default function ProductDetails() {
     dispatch(fetchProducts());
   }, [dispatch]);
 
+  const relatedItems = products.filter(
+    (items) => items.category === product.category && items.id !== product.id
+  );
+
   return (
     <>
       <main className="flex flex-col  relative m-auto sm:w-11/12 lg:w-4/5 bg-white">
-        <section>
-          <div className="flex">
-            <div>
-              <ul>
-                <div className="flex md:flex-col gap-4 order-last md:order-first">
-                  {product.images?.map((img, i) => (
-                    <div
-                      key={i}
-                      className="w-24 h-24 bg-gray-100 p-1 cursor-pointer"
-                    >
-                      <img
-                        src={img}
-                        alt={`${product.title} view ${i + 1}`}
-                        className="w-full h-full object-contain"
-                      />
-                    </div>
-                  ))}
+        <section className="my-10">
+          <div>
+            <div className="flex flex-col md:flex-row gap-4">
+              <div className="flex md:flex-col gap-4 order-last md:order-first">
+                {product.images?.slice(0, 4).map((img, index) => (
+                  <div
+                    key={index}
+                    className="w-24 h-24 bg-gray-200 p-1 cursor-pointer"
+                  >
+                    <img
+                      src={img}
+                      alt={`${product.title} view ${index + 1}`}
+                      className="w-full h-full object-contain"
+                    />
+                  </div>
+                ))}
+              </div>
+              <div className="flex-grow bg-gray-200 p-4 h-[500px]">
+                <img
+                  src={product.images?.[0]}
+                  alt={product.title}
+                  className="w-full h-full object-contain"
+                />
+              </div>
+              <div className="md:w-fit md:max-w-2/5">
+                <div className="border-b-2 border-gray-200 py-2">
+                  <h1 className="text-2xl">{product.title}</h1>
+                  <p className="font-semibold my-2">${product.price}</p>
+                  <p className="my-2">{product.description}</p>
                 </div>
-              </ul>
-            </div>
-            <div>
-              <img src={product.images?.[0]} />
-            </div>
-            <div>
-              <h1>{product.title}</h1>
+                <div className="my-4">
+                  <div className="flex flex-row items-center gap-4 border-1 p-4">
+                    <i className="fa-solid fa-car"></i>
+                    <div className="flex flex-col">
+                      <h1>Free Delivery</h1>
+                      <p className="text-sm">
+                        Enter your postal code for Delivery Availability
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex flex-row items-center gap-4 border-x-1 border-b-1 p-4">
+                    <i className="fa-solid fa-car"></i>
+                    <div className="flex flex-col">
+                      <h1>Return Delivery</h1>
+                      <p className="text-sm">
+                        Free 30 Days Delivery Rreturns. Details
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
+          <br className="my-5" />
 
           {/* related items */}
           <div>
             <SectionTitle title="Related Items" />
-            <div></div>
+            <div>
+              <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-4">
+                {relatedItems == 0 ? (
+                  <h1> No related Items Found</h1>
+                ) : (
+                  relatedItems
+                    .map((item) => (
+                      <NavLink to={`details/${item.id}`} key={item.id}>
+                        <ItemBox
+                          img={item.images[0]}
+                          label={item.title}
+                          price={item.price}
+                          click={() => dispatch(addToWishlist(item.id))}
+                        />
+                      </NavLink>
+                    ))
+                    .sort(() => Math.random() - 0.5)
+                    .slice(0, 4)
+                )}
+              </ul>
+            </div>
           </div>
         </section>
       </main>
