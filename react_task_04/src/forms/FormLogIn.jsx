@@ -7,16 +7,19 @@ import {
   signInWithEmailAndPassword,
 } from "firebase/auth";
 import { auth } from "../firebase/firebase";
-import {  useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { logIn } from "../redux/authSlice";
-
 
 export default function FormLogIn() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
- const dispatch = useDispatch();
+  const dispatch = useDispatch();
+  const [show, setShow] = useState(false);
+  function visible() {
+    setShow(!show);
+  }
 
   async function forgetPassword(e) {
     e.preventDefault();
@@ -45,6 +48,7 @@ export default function FormLogIn() {
         const errorCode = error.code;
         const errorMessage = error.message;
         console.log(errorCode, errorMessage);
+        setMessage(errorCode, errorMessage);
       });
   }
 
@@ -66,8 +70,12 @@ export default function FormLogIn() {
           />
           <InputForm
             plhldr={"Password"}
-            type={"password"}
+            type={show ? "text" : "password"}
             name="password"
+            clickCheck={visible}
+            check={
+              <i className={`fa-regular fa-eye${show ? "-slash" : ""}`}></i>
+            }
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
@@ -81,7 +89,7 @@ export default function FormLogIn() {
             </div>
           </div>
         </form>
-        <p>{message}</p>
+        <p className="text-sm text-red-400 mt-4">{message}</p>
       </div>
     </>
   );

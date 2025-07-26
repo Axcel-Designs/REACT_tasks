@@ -50,6 +50,7 @@ export function InputForm({
   id,
   error,
   check,
+  clickCheck,
 }) {
   return (
     <>
@@ -66,7 +67,9 @@ export function InputForm({
             className={`
               text-gray-900 placeholder:text-gray-200 focus:outline-none pr-2 py-2 bg-white`}
           />
-          <div className="pr-2">{check}</div>
+          <div className="pr-2 cursor-pointer" onClick={clickCheck}>
+            {check}
+          </div>
         </div>
         {error && <p className="text-red-400 text-sm">{error}</p>}
       </div>

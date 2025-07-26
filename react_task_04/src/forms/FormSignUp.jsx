@@ -14,25 +14,63 @@ import { useState } from "react";
 
 export default function FormSignUp() {
   const navigate = useNavigate();
-
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
+  const [show, setShow] = useState(false);
   const [errMessage, setErrMessage] = useState("");
+  const [errors, setErrors] = useState({});
 
-  
-onAuthStateChanged(auth, (user) => {
-  if (user) {
-    const uid = user.uid;
-    console.log(uid);    
-  } else {
-    // ...
+  function validationSchema() {
+    const newErr = {};
+    if (!formData.name.trim()) {
+      newErr.name = "Name required";
+    }
+    if (!formData.email.trim()) {
+      newErr.email = "Email required";
+    }else if(!formData.email.includes('@')) {
+      newErr.email = 'Invalid Email'
+    }
+
+    if (!formData.password.trim()) {
+      newErr.password = "Password required";
+    }
+
+    setErrors(newErr);
+    return Object.keys(errors).length == 0;
   }
-});
+
+  function visible() {
+    setShow(!show);
+  }
+
+  function handleForm(e) {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+      setErrors((prev) => ({
+        ...prev,
+        [e.target.name]: "",
+      }));
+  }
+
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      const uid = user.uid;
+      console.log(uid);
+    } else {
+      // ...
+    }
+  });
 
   async function handleSubmit(e) {
     e.preventDefault();
-    await createUserWithEmailAndPassword(auth, email, password)
+    if (!validationSchema()) return;
+    await createUserWithEmailAndPassword(
+      auth,
+      formData.email,
+      formData.password
+    )
       .then((userCredential) => {
         const user = userCredential.user;
         console.log(user);
@@ -63,6 +101,7 @@ onAuthStateChanged(auth, (user) => {
         setErrMessage(errorCode, errorMessage);
       });
   }
+
   return (
     <>
       <div className="min-w-fit p-10 w-5/7">
@@ -76,22 +115,29 @@ onAuthStateChanged(auth, (user) => {
             plhldr={"Name"}
             type={"text"}
             name="name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
+            value={formData.name}
+            onChange={handleForm}
+            error={errors.name}
           />
           <InputForm
             plhldr={"Email or Phone Number"}
             type={"email"}
             name="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            value={formData.email}
+            onChange={handleForm}
+            error={errors.email}
           />
           <InputForm
             plhldr={"Password"}
-            type={"password"}
+            type={show ? "text" : "password"}
             name="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            clickCheck={visible}
+            check={
+              <i className={`fa-regular fa-eye${show ? "-slash" : ""}`}></i>
+            }
+            value={formData.password}
+            onChange={handleForm}
+            error={errors.password}
           />
           <Button type="submit" label="Create Account" width={"w-full"} />
         </form>
@@ -108,7 +154,7 @@ onAuthStateChanged(auth, (user) => {
             Log In
           </NavLink>
         </div>
-        <p>{errMessage}</p>
+        <p className="text-sm text-red-400 mt-4">{errMessage}</p>
       </div>
     </>
   );

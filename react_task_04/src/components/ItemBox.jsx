@@ -24,7 +24,7 @@ export default function ItemBox({ img, label, price,click }) {
       </div>
       <div>
         <h1 className="text-sm">{label}</h1>
-        <p className="text-xs text-[#db4444]">{price}</p>
+        <p className="text-xs text-[#db4444]">${price}</p>
       </div>
     </div>
   );
@@ -41,7 +41,7 @@ export  function WishListItemBox({ img, label, price,click,addCart }) {
         <div>
           <button
             type="button"
-            className="bg-white flex justify-around rounded-full p-1"
+            className="bg-white flex justify-around rounded-full p-1 cursor-pointer"
             onClick={click}
           >
             <i className="fa-regular fa-trash-can "></i>
@@ -49,7 +49,7 @@ export  function WishListItemBox({ img, label, price,click,addCart }) {
         </div>
       </div>
       <div
-        className="bg-black text-white flex justify-center items-center gap-2 py-1 text-sm"
+        className="bg-black text-white flex justify-center items-center gap-2 py-1 text-sm cursor-pointer"
         onClick={addCart}
       >
         <i className="fa-solid fa-cart-shopping"></i>
@@ -74,7 +74,7 @@ export  function ForYouItemBox({ img, label, price,click,addCart }) {
         <div>
           <button
             type="button"
-            className="bg-white flex justify-around rounded-full p-1"
+            className="bg-white flex justify-around rounded-full p-1 cursor-pointer"
             onClick={click}
           >
             <i className="fa-regular fa-eye "></i>
@@ -82,7 +82,7 @@ export  function ForYouItemBox({ img, label, price,click,addCart }) {
         </div>
       </div>
       <div
-        className="bg-black text-white flex justify-center items-center gap-2 py-1 text-sm"
+        className="bg-black text-white flex justify-center items-center gap-2 py-1 text-sm cursor-pointer"
         onClick={addCart}
       >
         <i className="fa-solid fa-cart-shopping"></i>

@@ -12,23 +12,27 @@ import Contact from "./pages/Contact";
 import About from "./pages/About";
 import "../public/style.css";
 import ProductDetails from "./pages/ProductDetails";
+import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
   return (
     <>
       <Header />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="cart" element={<Cart />} />
-        <Route path="account" element={<Account />} />
-        <Route path="notfound" element={<NotFound />} />
-        <Route path="wishlist" element={<WishList />} />
-        <Route path="signup" element={<SignUp />} />
-        <Route path="login" element={<LogIn />} />
-        <Route path="details:id" element={<ProductDetails />} />
-        <Route path="contact" element={<Contact />} />
-        <Route path="about" element={<About />} />
-      </Routes>
+      <main className="max-md:px-2 overflow-x-hidden">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="cart" element={<Cart />} />
+          <Route path="account" element={<Account />} />
+          <Route path="notfound" element={<NotFound />} />
+          <Route path="wishlist" element={<WishList />} />
+          <Route path="signup" element={<SignUp />} />
+          <Route path="login" element={<LogIn />} />
+          <Route path="details:id" element={<ProductDetails />} />
+          <Route path="contact" element={<Contact />} />
+          <Route path="about" element={<About />} />
+        </Routes>
+        <ScrollToTop />
+      </main>
       <Footer />
     </>
   );
