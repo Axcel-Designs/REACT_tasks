@@ -15,7 +15,7 @@ export default function Banner() {
             </li>
             <li className="bg-white rounded-full flex flex-col justify-center items-center h-15 w-15">
               <p className="font-semibold">05</p>
-              <p>Days</p>
+              <p>Days</p>p
             </li>
             <li className="bg-white rounded-full flex flex-col justify-center items-center h-15 w-15">
               <p className="font-semibold">59</p>
