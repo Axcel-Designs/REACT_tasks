@@ -15,7 +15,7 @@ export default function ExploreProducts() {
     dispatch(fetchProducts());
   }, [dispatch]);
 
-  //   if (loading) {
+  //   if (!loading) {
   //     return <h1>Loading...</h1>;
   //   }
   //   if (error) {

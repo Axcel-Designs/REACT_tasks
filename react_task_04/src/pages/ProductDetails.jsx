@@ -12,6 +12,14 @@ export default function ProductDetails() {
   const product = products.find((item) => item.id == id);
   const dispatch = useDispatch();
 
+  const size = [
+    { sz: "xs" },
+    { sz: "s" },
+    { sz: "m" },
+    { sz: "l" },
+    { sz: "xl" },
+  ];
+
   useEffect(() => {
     dispatch(fetchProducts());
   }, [dispatch]);
@@ -52,6 +60,24 @@ export default function ProductDetails() {
                   <h1 className="text-2xl">{product.title}</h1>
                   <p className="font-semibold my-2">${product.price}</p>
                   <p className="my-2">{product.description}</p>
+                </div>
+                <div className="flex items-center gap-2 my-2">
+                  <p>Size:</p>
+                  {size.map((item) => (
+                    <NavLink
+                      to={null}
+                      key={item.sz}
+                      className={({ isActive }) =>
+                        `${
+                          isActive
+                          ? "bg-white text-black "
+                           : "bg-red-400 text-white "
+                        }w-8 h-8 border-1 flex justify-center items-center rounded-sm`
+                      }
+                    >
+                      {item.sz}
+                    </NavLink>
+                  ))}
                 </div>
                 <div className="my-4">
                   <div className="flex flex-row items-center gap-4 border-1 p-4">
