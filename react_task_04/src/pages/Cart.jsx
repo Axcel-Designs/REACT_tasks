@@ -1,13 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Button, { ButtonTrnparnt } from "../components/Button";
 import Input, { InputForm } from "../components/Input";
-import { clearCart } from "../redux/FetchedProductsSlice";
+import { clearCart, fetchProducts } from "../redux/FetchedProductsSlice";
 
 export default function Cart() {
   const [quantity, setQuantity] = useState({});
   const { cart } = useSelector((state) => state.inventory);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchProducts());
+  }, [dispatch]);
 
   function getQty(id) {
     return quantity[id] || 1;
@@ -20,10 +24,9 @@ export default function Cart() {
     }));
   }
 
-  const sum = cart.reduce((acc,item)=>{
+  const sum = cart.reduce((acc, item) => {
     return acc + Number(getQty(item.id)) * Number(item.price);
-  },0)
-
+  }, 0);
 
   return (
     <>
