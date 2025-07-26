@@ -1,14 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import ItemBox, { ForYouItemBox, WishListItemBox } from "../components/ItemBox";
 import { ButtonTrnparnt } from "../components/Button";
-import { addToCart, removeFromWishlist } from "../redux/FetchedProductsSlice";
+import {
+  addToCart,
+  fetchProducts,
+  removeFromWishlist,
+} from "../redux/FetchedProductsSlice";
 import { NavLink } from "react-router-dom";
 
 export default function WishList() {
   const { wishlist } = useSelector((state) => state.inventory);
   const { products } = useSelector((state) => state.inventory);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchProducts());
+  }, [dispatch]);
 
   return (
     <>
