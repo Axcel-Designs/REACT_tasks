@@ -13,7 +13,7 @@ import About from "./pages/About";
 import "../public/style.css";
 import ProductDetails from "./pages/ProductDetails";
 import ScrollToTop from "./components/ScrollToTop";
-import ProctectedRoute from "./redux/ProctectedRoute";
+import ProtectedRoute from "./redux/ProtectedRoute";
 
 function App() {
   return (
@@ -25,18 +25,39 @@ function App() {
           <Route
             path="cart"
             element={
-              // <ProctectedRoute>
+              <ProtectedRoute>
                 <Cart />
-              //  </ProctectedRoute>
+              </ProtectedRoute>
             }
           />
-          <Route path="account" element={<Account />} />
+          <Route
+            path="account"
+            element={
+              <ProtectedRoute>
+                <Account />
+              </ProtectedRoute>
+            }
+          />
           <Route path="notfound" element={<NotFound />} />
           <Route path="wishlist" element={<WishList />} />
           <Route path="signup" element={<SignUp />} />
           <Route path="login" element={<LogIn />} />
-          <Route path="details/:id" element={<ProductDetails />} />
-          <Route path="contact" element={<Contact />} />
+          <Route
+            path="details/:id"
+            element={
+              <ProtectedRoute>
+                <ProductDetails />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="contact"
+            element={
+              <ProtectedRoute>
+                <Contact />
+              </ProtectedRoute>
+            }
+          />
           <Route path="about" element={<About />} />
         </Routes>
         <ScrollToTop />
