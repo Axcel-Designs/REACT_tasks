@@ -93,12 +93,12 @@ export default function ProductDetails() {
                   <p className="my-2">{product.description}</p>
                 </div>
                 <div className="flex items-center gap-4 my-6">
-                  <h3 className="text-xl">Colours:</h3>
+                  <h3 className="text-lg">Colours:</h3>
                   <div className="flex items-center gap-2">
                     {colors.map((color) => (
                       <div
                         key={color.name}
-                        className={`w-5 h-5 rounded-full cursor-pointer ring-offset-1 ${
+                        className={`w-5 h-5 rounded-full cursor-pointer ${
                           color.class
                         } ${
                           selectedColor === color.name ? "ring-2 ring-black" : ""

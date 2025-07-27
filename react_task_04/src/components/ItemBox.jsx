@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-export default function ItemBox({ img, label, price,click }) {
+export default function ItemBox({ img, label, price, click }) {
   return (
     <div className="flex flex-col">
       <div
@@ -15,7 +15,7 @@ export default function ItemBox({ img, label, price,click }) {
             className="bg-white flex justify-around rounded-full p-1"
             onClick={click}
           >
-            <i className="fa-regular fa-heart "></i>
+            <i className={`fa-regular fa-heart`}></i>
           </button>
           <button className="bg-white flex justify-around rounded-full p-1">
             <i className="fa-regular fa-eye"></i>
@@ -30,7 +30,7 @@ export default function ItemBox({ img, label, price,click }) {
   );
 }
 // Add to WishList Item box
-export  function WishListItemBox({ img, label, price,click,addCart }) {
+export function WishListItemBox({ img, label, price, click, addCart }) {
   return (
     <div className="flex flex-col">
       <div
@@ -63,7 +63,7 @@ export  function WishListItemBox({ img, label, price,click,addCart }) {
   );
 }
 // Add to Just For You Item box
-export  function ForYouItemBox({ img, label, price,click,addCart }) {
+export function ForYouItemBox({ img, label, price, click, addCart }) {
   return (
     <div className="flex flex-col">
       <div
