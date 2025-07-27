@@ -3,7 +3,11 @@ import { useSelector } from "react-redux";
 import { NavLink, useParams } from "react-router-dom";
 import SectionTitle from "../components/home/SectionTitle";
 import { useDispatch } from "react-redux";
-import { addToWishlist, fetchProducts } from "../redux/FetchedProductsSlice";
+import {
+  addToCart,
+  addToWishlist,
+  fetchProducts,
+} from "../redux/FetchedProductsSlice";
 import ItemBox from "../components/ItemBox";
 import Button from "../components/Button";
 
@@ -13,6 +17,16 @@ export default function ProductDetails() {
   const dispatch = useDispatch();
   const [selectedSize, setSelectedSize] = useState(null);
   const product = products.find((item) => item.id == id);
+  const [qty, setQty] = useState(1);
+  const [selectedColor, setSelectedColor] = useState(null);       
+
+  function minusQty() {
+    if (qty <= 0) return setQty(0);
+    setQty(qty - 1);
+  }
+  function addQty() {
+    setQty(qty + 1);
+  }
 
   const size = [
     { sz: "xs" },
@@ -20,6 +34,11 @@ export default function ProductDetails() {
     { sz: "m" },
     { sz: "l" },
     { sz: "xl" },
+  ];
+
+  const colors = [
+    { name: "gray", class: "bg-gray-400" },
+    { name: "red", class: "bg-red-500" },
   ];
 
   useEffect(() => {
@@ -73,6 +92,22 @@ export default function ProductDetails() {
                   <p className="font-semibold my-2">${product.price}</p>
                   <p className="my-2">{product.description}</p>
                 </div>
+                <div className="flex items-center gap-4 my-6">
+                  <h3 className="text-xl">Colours:</h3>
+                  <div className="flex items-center gap-2">
+                    {colors.map((color) => (
+                      <div
+                        key={color.name}
+                        className={`w-5 h-5 rounded-full cursor-pointer ring-offset-1 ${
+                          color.class
+                        } ${
+                          selectedColor === color.name ? "ring-2 ring-black" : ""
+                        }`}
+                        onClick={() => setSelectedColor(color.name)}
+                      ></div>
+                    ))}
+                  </div>
+                </div>
                 <div className="flex items-center gap-4 my-4">
                   <h3 className="text-xl">Size:</h3>
                   <ul className="flex items-center gap-2">
@@ -91,7 +126,33 @@ export default function ProductDetails() {
                     ))}
                   </ul>
                 </div>
-                <Button label="Add To Cart" />
+                <div className="flex justify-between items-center">
+                  <div className=" flex text-2xl rounded-sm">
+                    <div
+                      className="w-10 h-10 border flex justify-center items-center rounded-l-sm"
+                      onClick={minusQty}
+                    >
+                      -
+                    </div>
+                    <div className="w-20 h-10 border-y flex justify-center items-center">
+                      {qty}
+                    </div>
+                    <div
+                      className="w-10 h-10 border flex justify-center items-center rounded-r-sm"
+                      onClick={addQty}
+                    >
+                      +
+                    </div>
+                  </div>
+                  <Button
+                    label="Buy Now"
+                    click={() => dispatch(addToCart(product.id))}
+                  />
+                  <div className="w-10 h-10 border flex justify-center items-center rounded-sm">
+                    {" "}
+                    <i className="fa-regular fa-heart"></i>
+                  </div>
+                </div>
                 <div className="my-6">
                   <div className="flex flex-row items-center gap-4 border-1 p-4">
                     <i className="fa-solid fa-car"></i>
