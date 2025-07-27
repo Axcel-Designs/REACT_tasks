@@ -85,7 +85,7 @@ export default function HeaderBottom() {
       )}
       <div className="flex flex-col max-md:items-center md:items-end md:w-9/10 lg:w-5/6 m-auto">
         {toggle && (
-          <div className="bg-black text-white p-4 rounded-xl">
+          <div className="bg-linear-to-b from-zinc-600 via-gray-600 to-75% to-gray-400 text-white p-4 rounded-xl">
             {microMenu.map(({ icon, label, click }) => (
               <div className="flex items-center gap-2">
                 <l className={icon}></l>
