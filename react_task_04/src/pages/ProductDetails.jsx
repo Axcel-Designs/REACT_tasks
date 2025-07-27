@@ -86,7 +86,7 @@ export default function ProductDetails() {
                   className="w-full h-full object-contain"
                 />
               </div>
-              <div className="md:w-fit md:max-w-2/5">
+              <div className="md:w-fit md:max-w-2/5 order-last">
                 <div className="border-b-2 border-gray-200 py-2">
                   <h1 className="text-2xl">{product.title}</h1>
                   <p className="font-semibold my-2">${product.price}</p>
@@ -101,7 +101,9 @@ export default function ProductDetails() {
                         className={`w-5 h-5 rounded-full cursor-pointer ${
                           color.class
                         } ${
-                          selectedColor === color.name ? "ring-2 ring-black" : ""
+                          selectedColor === color.name
+                            ? "ring-2 ring-black"
+                            : ""
                         }`}
                         onClick={() => setSelectedColor(color.name)}
                       ></div>
