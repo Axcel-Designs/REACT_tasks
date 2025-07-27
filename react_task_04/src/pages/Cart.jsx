@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Button, { ButtonTrnparnt } from "../components/Button";
 import Input, { InputForm } from "../components/Input";
 import { clearCart, fetchProducts } from "../redux/FetchedProductsSlice";
+import { Outlet } from "react-router-dom";
 
 export default function Cart() {
   const [quantity, setQuantity] = useState({});
@@ -118,6 +119,7 @@ export default function Cart() {
           </div>
         </section>
       </main>
+      <Outlet/>
     </>
   );
 }

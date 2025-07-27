@@ -13,6 +13,7 @@ import About from "./pages/About";
 import "../public/style.css";
 import ProductDetails from "./pages/ProductDetails";
 import ScrollToTop from "./components/ScrollToTop";
+import ProctectedRoute from "./redux/ProctectedRoute";
 
 function App() {
   return (
@@ -21,7 +22,14 @@ function App() {
       <main className="max-md:px-2 overflow-x-hidden">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="cart" element={<Cart />} />
+          <Route
+            path="cart"
+            element={
+              // <ProctectedRoute>
+                <Cart />
+              //  </ProctectedRoute>
+            }
+          />
           <Route path="account" element={<Account />} />
           <Route path="notfound" element={<NotFound />} />
           <Route path="wishlist" element={<WishList />} />

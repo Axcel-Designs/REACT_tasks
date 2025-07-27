@@ -16,7 +16,7 @@ export default function HeaderBottom() {
   const dispatch = useDispatch();
 
   const onToggle = () => setToggle(!toggle);
-  const toggleNav = () => setNav(!nav);
+  const toggleNav = () => {setNav(!nav); setToggle( false)};
 
   const sigedOut = async () => {
     navigate("/");
