@@ -5,7 +5,7 @@ import NavIcons from "./NavIcons";
 import { signOut } from "firebase/auth";
 import { auth } from "../../firebase/firebase";
 import { NavLink, useNavigate } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { logout } from "../../redux/authSlice";
 
 export default function HeaderBottom() {
@@ -15,7 +15,6 @@ export default function HeaderBottom() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-
   const onToggle = () => setToggle(!toggle);
   const toggleNav = () => setNav(!nav);
 
@@ -23,9 +22,9 @@ export default function HeaderBottom() {
     navigate("/");
     onToggle();
     dispatch(logout());
-   await signOut(auth)
+    await signOut(auth)
       .then(() => {
-        console.log('Sign-out successful')
+        console.log("Sign-out successful");
       })
       .catch((error) => {
         console.log(error);
@@ -34,10 +33,14 @@ export default function HeaderBottom() {
 
   const microMenu = [
     { label: "Manage My Account", icon: "fa-regular fa-user", click: onToggle },
-    { label: "My Order", icon: "fa-regular fa-user", click: onToggle },
-    { label: "My Cancellations", icon: "fa-regular fa-user", click: onToggle },
-    { label: "My Reviews", icon: "fa-regular fa-user", click: onToggle },
-    { label: "Logout", icon: "fa-regular fa-user", click: sigedOut },
+    { label: "My Order", icon: "fa-solid fa-bag-shopping", click: onToggle },
+    { label: "My Cancellations", icon: "fa-solid fa-xmark", click: onToggle },
+    { label: "My Reviews", icon: "fa-regular fa-star", click: onToggle },
+    {
+      label: "Logout",
+      icon: "fa-solid fa-right-from-bracket",
+      click: sigedOut,
+    },
   ];
 
   return (
@@ -81,15 +84,16 @@ export default function HeaderBottom() {
         </div>
       )}
       <div className="flex flex-col max-md:items-center md:items-end md:w-9/10 lg:w-5/6 m-auto">
-        <div>
-          {toggle &&
-            microMenu.map((menu) => (
-              <div className="flex items-center gap-1">
-                <l className={menu.icon}></l>
-                <NavLink onClick={menu.click}>{menu.label}</NavLink>
+        {toggle && (
+          <div className="bg-black text-white p-4 rounded-xl">
+            {microMenu.map(({ icon, label, click }) => (
+              <div className="flex items-center gap-2">
+                <l className={icon}></l>
+                <NavLink onClick={click}>{label}</NavLink>
               </div>
             ))}
-        </div>
+          </div>
+        )}
       </div>
     </section>
   );
