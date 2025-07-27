@@ -12,28 +12,26 @@ import ItemBox from "../components/ItemBox";
 import Button from "../components/Button";
 
 export default function ProductDetails() {
-  const { products, loading } = useSelector((state) => state.inventory);
   const { id } = useParams();
+  const { products, loading } = useSelector((state) => state.inventory);
+  const product = products.find((item) => item.id == id);
   const dispatch = useDispatch();
   const [selectedSize, setSelectedSize] = useState(null);
-  const product = products.find((item) => item.id == id);
+  const [selectedColor, setSelectedColor] = useState(null);
   const [qty, setQty] = useState(1);
-  const [selectedColor, setSelectedColor] = useState(null);       
 
   function minusQty() {
     if (qty <= 0) return setQty(0);
     setQty(qty - 1);
   }
-  function addQty() {
-    setQty(qty + 1);
-  }
+  const addQty = () => setQty(qty + 1);
 
   const size = [
-    { sz: "xs" },
-    { sz: "s" },
-    { sz: "m" },
-    { sz: "l" },
-    { sz: "xl" },
+    { sz: "XS" },
+    { sz: "S" },
+    { sz: "M" },
+    { sz: "L" },
+    { sz: "XL" },
   ];
 
   const colors = [
@@ -123,7 +121,7 @@ export default function ProductDetails() {
                         }`}
                         onClick={() => setSelectedSize(item.sz)}
                       >
-                        {item.sz.toUpperCase()}
+                        {item.sz}
                       </li>
                     ))}
                   </ul>

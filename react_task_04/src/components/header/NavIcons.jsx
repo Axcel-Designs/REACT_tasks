@@ -1,8 +1,10 @@
 import React from "react";
 import { NavLink, useLocation } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 export default function NavIcons({ closeNav }) {
   const location = useLocation();
+  const isLoggedIn = useSelector((state) => state.authKey.isLoggedIn);
 
   return (
     <>
@@ -23,7 +25,7 @@ export default function NavIcons({ closeNav }) {
         </NavLink>
         <NavLink
           className={({ isActive }) => `${isActive ? "text-red-500" : ""}`}
-          to="/signup"
+          // to="/signup"
           onClick={closeNav}
         >
           {location.pathname !== "/login" && location.pathname !== "/signup" ? (

@@ -12,35 +12,27 @@ export default function Home() {
   return (
     <>
       <main className="flex flex-col relative m-auto sm:w-11/12 lg:w-4/5 bg-white">
-        {/* hero */}
         <section className="mb-10">
           <Hero />
         </section>
-        {/* flash sales */}
         <section className="my-10">
           <FlashSales />
         </section>
-        {/* browse category */}
         <section className="my-10">
           <BrowseCategory />
         </section>
-        {/*best selling products */}
         <section className="my-10">
           <BestSelling />
         </section>
-        {/* banner */}
         <section className="my-10">
           <Banner />
         </section>
-        {/* explore products */}
         <section className="my-10">
           <ExploreProducts />
         </section>
-        {/* new arrival */}
         <section className="my-10">
           <NewArrival />
         </section>
-        {/* services */}
         <section className="my-10">
           <Services />
         </section>

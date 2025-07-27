@@ -7,9 +7,8 @@ export default function HeaderBottom() {
   const [nav, setNav] = useState(false);
   const [search, setSearch] = useState("");
 
-  const toggleNav = () => {
-    setNav(!nav);
-  };
+  const toggleNav = () => setNav(!nav);
+
   return (
     <section className="sticky top-0 bg-white z-40">
       <div className="w-full border-b-2 border-gray-200 bg-white pt-2">

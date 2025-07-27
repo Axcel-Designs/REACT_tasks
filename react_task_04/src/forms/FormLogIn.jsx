@@ -15,8 +15,8 @@ export default function FormLogIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
-  const dispatch = useDispatch();
   const [show, setShow] = useState(false);
+  const dispatch = useDispatch();
   function visible() {
     setShow(!show);
   }
