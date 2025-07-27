@@ -1,16 +1,18 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { NavLink, useParams } from "react-router-dom";
 import SectionTitle from "../components/home/SectionTitle";
 import { useDispatch } from "react-redux";
 import { addToWishlist, fetchProducts } from "../redux/FetchedProductsSlice";
 import ItemBox from "../components/ItemBox";
+import Button from "../components/Button";
 
 export default function ProductDetails() {
-  const { products } = useSelector((state) => state.inventory);
+  const { products, loading } = useSelector((state) => state.inventory);
   const { id } = useParams();
-  const product = products.find((item) => item.id == id);
   const dispatch = useDispatch();
+  const [selectedSize, setSelectedSize] = useState(null);
+  const product = products.find((item) => item.id == id);
 
   const size = [
     { sz: "xs" },
@@ -21,8 +23,18 @@ export default function ProductDetails() {
   ];
 
   useEffect(() => {
-    dispatch(fetchProducts());
-  }, [dispatch]);
+    if (products.length === 0) {
+      dispatch(fetchProducts());
+    }
+  }, [dispatch, products.length]);
+
+  if (loading && !product) {
+    return <div className="text-center p-10">Loading...</div>;
+  }
+
+  if (!product) {
+    return <div className="text-center p-10">Product not found.</div>;
+  }
 
   const relatedItems = products.filter(
     (items) => items.category === product.category && items.id !== product.id
@@ -61,25 +73,26 @@ export default function ProductDetails() {
                   <p className="font-semibold my-2">${product.price}</p>
                   <p className="my-2">{product.description}</p>
                 </div>
-                <div className="flex items-center gap-2 my-2">
-                  <p>Size:</p>
-                  {size.map((item) => (
-                    <NavLink
-                      to={null}
-                      key={item.sz}
-                      className={({ isActive }) =>
-                        `${
-                          isActive
-                          ? "bg-white text-black "
-                           : "bg-red-400 text-white "
-                        }w-8 h-8 border-1 flex justify-center items-center rounded-sm`
-                      }
-                    >
-                      {item.sz}
-                    </NavLink>
-                  ))}
+                <div className="flex items-center gap-4 my-4">
+                  <h3 className="text-xl">Size:</h3>
+                  <ul className="flex items-center gap-2">
+                    {size.map((item) => (
+                      <li
+                        key={item.sz}
+                        className={`w-8 h-8 border flex justify-center items-center rounded-sm cursor-pointer transition-colors ${
+                          selectedSize === item.sz
+                            ? "bg-red-500 text-white border-red-500"
+                            : "bg-white text-black hover:bg-gray-100"
+                        }`}
+                        onClick={() => setSelectedSize(item.sz)}
+                      >
+                        {item.sz.toUpperCase()}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-                <div className="my-4">
+                <Button label="Add To Cart" />
+                <div className="my-6">
                   <div className="flex flex-row items-center gap-4 border-1 p-4">
                     <i className="fa-solid fa-car"></i>
                     <div className="flex flex-col">
