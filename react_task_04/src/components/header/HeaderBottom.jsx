@@ -4,7 +4,7 @@ import DeskNav, { MobileNav } from "./Nav";
 import NavIcons from "./NavIcons";
 import { signOut } from "firebase/auth";
 import { auth } from "../../firebase/firebase";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { logout } from "../../redux/authSlice";
 
@@ -12,14 +12,15 @@ export default function HeaderBottom() {
   const [nav, setNav] = useState(false);
   const [search, setSearch] = useState("");
   const [toggle, setToggle] = useState(false);
-  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const onToggle = () => setToggle(!toggle);
-  const toggleNav = () => {setNav(!nav); setToggle( false)};
+  const toggleNav = () => {
+    setNav(!nav);
+    setToggle(false);
+  };
 
   const sigedOut = async () => {
-    navigate("/");
     onToggle();
     dispatch(logout());
     await signOut(auth)
@@ -32,14 +33,35 @@ export default function HeaderBottom() {
   };
 
   const microMenu = [
-    { label: "Manage My Account", icon: "fa-regular fa-user", click: onToggle },
-    { label: "My Order", icon: "fa-solid fa-bag-shopping", click: onToggle },
-    { label: "My Cancellations", icon: "fa-solid fa-xmark", click: onToggle },
-    { label: "My Reviews", icon: "fa-regular fa-star", click: onToggle },
+    {
+      label: "Manage My Account",
+      icon: "fa-regular fa-user",
+      click: onToggle,
+      link: "account",
+    },
+    {
+      label: "My Order",
+      icon: "fa-solid fa-bag-shopping",
+      click: onToggle,
+      link: "/cart",
+    },
+    {
+      label: "My Cancellations",
+      icon: "fa-solid fa-xmark",
+      click: onToggle,
+      link: null,
+    },
+    {
+      label: "My Reviews",
+      icon: "fa-regular fa-star",
+      click: onToggle,
+      link: null,
+    },
     {
       label: "Logout",
       icon: "fa-solid fa-right-from-bracket",
       click: sigedOut,
+      link: "/",
     },
   ];
 
@@ -86,10 +108,12 @@ export default function HeaderBottom() {
       <div className="flex flex-col max-md:items-center md:items-end md:w-9/10 lg:w-5/6 m-auto">
         {toggle && (
           <div className="bg-linear-to-b from-zinc-600 via-gray-600 to-75% to-gray-400 text-white p-4 rounded-xl">
-            {microMenu.map(({ icon, label, click }) => (
+            {microMenu.map(({ icon, label, click, link }) => (
               <div className="flex items-center gap-2">
                 <l className={icon}></l>
-                <NavLink onClick={click}>{label}</NavLink>
+                <NavLink onClick={click} to={link}>
+                  {label}
+                </NavLink>
               </div>
             ))}
           </div>
