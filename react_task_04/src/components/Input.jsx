@@ -30,7 +30,7 @@ export default function Input({
             onChange={onChange}
             onBlur={onBlur}
             className={`
-              text-gray-900 placeholder:text-gray-400 focus:outline-none p-2`}
+              text-gray-900 placeholder:text-gray-400 focus:outline-none p-1 py-2`}
           />
           <div className="pr-2">{check}</div>
         </div>
