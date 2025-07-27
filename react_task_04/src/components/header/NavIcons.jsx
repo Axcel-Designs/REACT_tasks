@@ -2,13 +2,13 @@ import React from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-export default function NavIcons({ closeNav }) {
+export default function NavIcons({ closeNav,miniMenu }) {
   const location = useLocation();
   const isLoggedIn = useSelector((state) => state.authKey.isLoggedIn);
 
   return (
     <>
-      <ul className="flex gap-2 text-xl ">
+      <ul className="flex gap-2 text-xl items-center">
         <NavLink
           to="/wishlist"
           className={({ isActive }) => `${isActive ? "text-red-500" : ""}`}
@@ -24,12 +24,12 @@ export default function NavIcons({ closeNav }) {
           <li className="fa fa-cart-shopping"></li>
         </NavLink>
         <NavLink
-          className={({ isActive }) => `${isActive ? "text-red-500" : ""}`}
-          // to="/signup"
-          onClick={closeNav}
+          onClick={miniMenu}
         >
-          {location.pathname !== "/login" && location.pathname !== "/signup" ? (
-            <li className="fa-regular fa-user"></li>
+          {isLoggedIn &&
+          location.pathname !== "/login" &&
+          location.pathname !== "/signup" ? (
+            <li className="fa-regular fa-user text-white bg-red-400 p-2 text-sm rounded-full"></li>
           ) : (
             ""
           )}

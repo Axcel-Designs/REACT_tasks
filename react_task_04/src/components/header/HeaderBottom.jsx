@@ -2,12 +2,43 @@ import React, { useState } from "react";
 import Input from "../../components/Input";
 import DeskNav, { MobileNav } from "./Nav";
 import NavIcons from "./NavIcons";
+import { signOut } from "firebase/auth";
+import { auth } from "../../firebase/firebase";
+import { NavLink, useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { logout } from "../../redux/authSlice";
 
 export default function HeaderBottom() {
   const [nav, setNav] = useState(false);
   const [search, setSearch] = useState("");
+  const [toggle, setToggle] = useState(false);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
+
+  const onToggle = () => setToggle(!toggle);
   const toggleNav = () => setNav(!nav);
+
+  const sigedOut = async () => {
+    navigate("/");
+    onToggle();
+    dispatch(logout());
+   await signOut(auth)
+      .then(() => {
+        console.log('Sign-out successful')
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const microMenu = [
+    { label: "Manage My Account", icon: "fa-regular fa-user", click: onToggle },
+    { label: "My Order", icon: "fa-regular fa-user", click: onToggle },
+    { label: "My Cancellations", icon: "fa-regular fa-user", click: onToggle },
+    { label: "My Reviews", icon: "fa-regular fa-user", click: onToggle },
+    { label: "Logout", icon: "fa-regular fa-user", click: sigedOut },
+  ];
 
   return (
     <section className="sticky top-0 bg-white z-40">
@@ -31,7 +62,7 @@ export default function HeaderBottom() {
                 />
               </div>
               <div className="max-md:hidden">
-                <NavIcons />
+                <NavIcons closeNav={toggleNav} miniMenu={onToggle} />
               </div>
             </div>
           </div>
@@ -44,11 +75,22 @@ export default function HeaderBottom() {
         </div>
       </div>
       {nav && (
-        <div className="flex flex-col gap-2 items-center justify-center text-center my-4 transition-all delay-300 duration-500 ease-in-out">
+        <div className="md:hidden flex flex-col gap-2 items-center justify-center text-center my-4 transition-all delay-300 duration-500 ease-in-out">
           <MobileNav closeNav={toggleNav} />
-          <NavIcons closeNav={toggleNav} />
+          <NavIcons closeNav={toggleNav} miniMenu={onToggle} />
         </div>
       )}
+      <div className="flex flex-col max-md:items-center md:items-end md:w-9/10 lg:w-5/6 m-auto">
+        <div>
+          {toggle &&
+            microMenu.map((menu) => (
+              <div className="flex items-center gap-1">
+                <l className={menu.icon}></l>
+                <NavLink onClick={menu.click}>{menu.label}</NavLink>
+              </div>
+            ))}
+        </div>
+      </div>
     </section>
   );
 }
