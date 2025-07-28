@@ -7,7 +7,7 @@ export default function ScrollToTop() {
         className="flex justify-end p-2 cursor-pointer fixed bottom-20 right-10"
         onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
       >
-        <i className="fa-solid fa-arrow-up"></i>
+        <i className="fa-solid fa-arrow-up-long"></i>
       </div>
     </div>
   );

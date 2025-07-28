@@ -12,13 +12,13 @@ import ItemBox from "../components/ItemBox";
 import Button from "../components/Button";
 
 export default function ProductDetails() {
-  const { id } = useParams();
-  const { products, loading } = useSelector((state) => state.inventory);
-  const product = products.find((item) => item.id == id);
-  const dispatch = useDispatch();
   const [selectedSize, setSelectedSize] = useState(null);
   const [selectedColor, setSelectedColor] = useState(null);
   const [qty, setQty] = useState(1);
+  const dispatch = useDispatch();
+  const { id } = useParams();
+  const { products, loading } = useSelector((state) => state.inventory);
+  const product = products.find((item) => item.id == id);
 
   function minusQty() {
     if (qty <= 0) return setQty(0);

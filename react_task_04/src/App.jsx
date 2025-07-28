@@ -10,6 +10,7 @@ import SignUp from "./pages/SignUp";
 import LogIn from "./pages/LogIn";
 import Contact from "./pages/Contact";
 import About from "./pages/About";
+import Search from "./pages/Search";
 import "../public/style.css";
 import ProductDetails from "./pages/ProductDetails";
 import ScrollToTop from "./components/ScrollToTop";
@@ -42,6 +43,7 @@ function App() {
           <Route path="wishlist" element={<WishList />} />
           <Route path="signup" element={<SignUp />} />
           <Route path="login" element={<LogIn />} />
+          <Route path="search" element={<Search />} />"
           <Route
             path="details/:id"
             element={

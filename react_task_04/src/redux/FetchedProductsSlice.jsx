@@ -17,6 +17,7 @@ export const inventorySlice = createSlice({
     error: null,
     cart: [],
     wishlist: [],
+    search:'',
   },
   reducers: {
     addToCart: (state, action) => {
@@ -46,6 +47,9 @@ export const inventorySlice = createSlice({
     clearCart: (state) => {
       state.cart = [];
     },
+    setSearch:(state,action)=>{
+      state.search=action.payload
+    }
   },
   extraReducers: (builder) => {
     builder
@@ -68,5 +72,6 @@ export const {
   removeFromCart,
   clearCart,
   removeFromWishlist,
+  setSearch,
 } = inventorySlice.actions;
 export default inventorySlice.reducer;

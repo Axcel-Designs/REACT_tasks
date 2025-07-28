@@ -4,15 +4,18 @@ import DeskNav, { MobileNav } from "./Nav";
 import NavIcons from "./NavIcons";
 import { signOut } from "firebase/auth";
 import { auth } from "../../firebase/firebase";
-import { NavLink } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { Navigate, NavLink, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../redux/authSlice";
+import { setSearch } from "../../redux/FetchedProductsSlice";
 
 export default function HeaderBottom() {
   const [nav, setNav] = useState(false);
-  const [search, setSearch] = useState("");
+  // const [search, setSearch] = useState("");
   const [toggle, setToggle] = useState(false);
+  const search = useSelector((state) => state.inventory.search);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const onToggle = () => setToggle(!toggle);
   const toggleNav = () => {
@@ -31,6 +34,12 @@ export default function HeaderBottom() {
         console.log(error);
       });
   };
+ 
+  const onSearch = (e) => {
+    dispatch(setSearch(e.target.value));
+    navigate("/search");
+  };
+
 
   const microMenu = [
     {
@@ -80,7 +89,7 @@ export default function HeaderBottom() {
                   id="search"
                   type={"text"}
                   value={search}
-                  onChange={(e) => setSearch(e.target.value)}
+                  onChange={onSearch}
                   plhldr="what are you looking for"
                   // wdt={"w-3/5"}
                   check={<i className="fa fa-magnifying-glass"></i>}
@@ -108,9 +117,9 @@ export default function HeaderBottom() {
       <div className="flex flex-col max-md:items-center md:items-end md:w-9/10 lg:w-5/6 m-auto">
         {toggle && (
           <div className="bg-linear-to-b from-zinc-600 via-gray-600 to-75% to-gray-400 text-white p-4 rounded-xl">
-            {microMenu.map(({ icon, label, click, link }) => (
-              <div className="flex items-center gap-2">
-                <l className={icon}></l>
+            {microMenu.map(({ icon, label, click, link }, index) => (
+              <div className="flex items-center gap-2" key={index}>
+                <i className={icon}></i>
                 <NavLink onClick={click} to={link}>
                   {label}
                 </NavLink>
