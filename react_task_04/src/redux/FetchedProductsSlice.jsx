@@ -9,7 +9,7 @@ export const fetchProducts = createAsyncThunk(
   }
 );
 
- export const inventorySlice = createSlice({
+export const inventorySlice = createSlice({
   name: "inventory",
   initialState: {
     products: [],
@@ -20,17 +20,25 @@ export const fetchProducts = createAsyncThunk(
   },
   reducers: {
     addToCart: (state, action) => {
+      const itemInCart = state.cart.find((item) => item.id == action.payload);
+      if (itemInCart) return;
+
       const item = state.products.find((item) => item.id == action.payload);
       if (item) {
         state.cart.push(item);
       }
     },
     addToWishlist: (state, action) => {
+      const itemInWish  = state.wishlist.find(item=>item.id==action.payload)
+      if (itemInWish) return
+
       const item = state.products.find((item) => item.id == action.payload);
       if (item) state.wishlist.push(item);
     },
     removeFromWishlist: (state, action) => {
-      state.wishlist = state.wishlist.filter((item) => item.id !== action.payload);
+      state.wishlist = state.wishlist.filter(
+        (item) => item.id !== action.payload
+      );
     },
     removeFromCart: (state, action) => {
       state.cart = state.cart.filter((item) => item.id !== action.payload);
@@ -45,7 +53,7 @@ export const fetchProducts = createAsyncThunk(
         state.loading = "pending";
       })
       .addCase(fetchProducts.fulfilled, (state, action) => {
-        state.loading = "fufilled";
+        state.loading = "fulfilled";
         state.products = action.payload;
       })
       .addCase(fetchProducts.rejected, (state, action) => {
@@ -54,5 +62,11 @@ export const fetchProducts = createAsyncThunk(
       });
   },
 });
-export const {addToCart,addToWishlist,removeFromCart,clearCart,removeFromWishlist} = inventorySlice.actions;
+export const {
+  addToCart,
+  addToWishlist,
+  removeFromCart,
+  clearCart,
+  removeFromWishlist,
+} = inventorySlice.actions;
 export default inventorySlice.reducer;
