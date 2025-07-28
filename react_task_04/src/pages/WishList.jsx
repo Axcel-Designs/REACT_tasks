@@ -11,12 +11,23 @@ import { NavLink } from "react-router-dom";
 
 export default function WishList() {
   const { wishlist } = useSelector((state) => state.inventory);
-  const { products } = useSelector((state) => state.inventory);
+  const { products, loading } = useSelector((state) => state.inventory);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchProducts());
-  }, [dispatch]);
+    if (products.length === 0) {
+      dispatch(fetchProducts());
+    }
+  }, [dispatch, products.length]);
+
+   if (loading && !products) {
+     return <div className="text-center p-10">Loading...</div>;
+   }
+
+   if (!products) {
+     return <div className="text-center p-10">Product not found.</div>;
+   }
+
 
   return (
     <>

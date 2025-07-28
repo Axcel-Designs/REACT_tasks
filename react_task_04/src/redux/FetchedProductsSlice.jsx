@@ -54,5 +54,5 @@ export const fetchProducts = createAsyncThunk(
       });
   },
 });
-export const {addToCart,addToWishlist,removeFromCart,clearCart,removeFromWishlist}=inventorySlice.actions;
+export const {addToCart,addToWishlist,removeFromCart,clearCart,removeFromWishlist} = inventorySlice.actions;
 export default inventorySlice.reducer;
