@@ -17,7 +17,7 @@ export const inventorySlice = createSlice({
     error: null,
     cart: [],
     wishlist: [],
-    search:'',
+    search: "",
   },
   reducers: {
     addToCart: (state, action) => {
@@ -30,8 +30,10 @@ export const inventorySlice = createSlice({
       }
     },
     addToWishlist: (state, action) => {
-      const itemInWish  = state.wishlist.find(item=>item.id==action.payload)
-      if (itemInWish) return
+      const itemInWish = state.wishlist.find(
+        (item) => item.id == action.payload
+      );
+      if (itemInWish) return;
 
       const item = state.products.find((item) => item.id == action.payload);
       if (item) state.wishlist.push(item);
@@ -47,9 +49,9 @@ export const inventorySlice = createSlice({
     clearCart: (state) => {
       state.cart = [];
     },
-    setSearch:(state,action)=>{
-      state.search=action.payload
-    }
+    setSearch: (state, action) => {
+      state.search = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder
