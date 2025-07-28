@@ -31,7 +31,7 @@ export default function FlashSales() {
             .map((item) => (
               <li key={item.id}>
                 <ItemBox
-                  details={`details/${item.id}`}
+                  details={`/details/${item.id}`}
                   img={item.images}
                   label={item.title}
                   price={item.price}
