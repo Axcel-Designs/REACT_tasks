@@ -3,8 +3,7 @@ import SectionTitle from "./SectionTitle";
 import Button from "../Button";
 import { useDispatch, useSelector } from "react-redux";
 import ItemBox from "../ItemBox";
-import {addToCart} from '../../redux/FetchedProductsSlice'
-import { NavLink } from "react-router-dom";
+import { addToWishlist } from "../../redux/FetchedProductsSlice";
 
 export default function BestSelling() {
   const { products } = useSelector((state) => state.inventory);
@@ -24,14 +23,15 @@ export default function BestSelling() {
           <ul className="grid grid-cols-2 lg:grid-cols-4 w-full gap-2 my-10">
             {products
               .map((item) => (
-                <NavLink to={`/details/${item.id}`} key={item.id}>
+                <li key={item.id}>
                   <ItemBox
+                    details={`/details/${item.id}`}
                     img={item.images}
                     label={item.title}
                     price={item.price}
-                    click={() => dispatch(addToCart(item.id))}
+                    click={() => dispatch(addToWishlist(item.id))}
                   />
-                </NavLink>
+                </li>
               ))
               .sort(() => Math.random() - 0.5)
               .slice(0, 4)}

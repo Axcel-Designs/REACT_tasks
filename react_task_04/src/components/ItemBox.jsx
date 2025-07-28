@@ -1,7 +1,11 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-export default function ItemBox({ img, label, price, click }) {
+export default function ItemBox({ img, label, price, click, details }) {
+
+  const navigate = useNavigate();
+
+
   return (
     <div className="flex flex-col">
       <div
@@ -22,7 +26,7 @@ export default function ItemBox({ img, label, price, click }) {
           </button>
         </div>
       </div>
-      <div>
+      <div onClick={() => navigate(details)} className="cursor-pointer hover:text-md hover:underline hover:text-gray-500">
         <h1 className="text-sm">{label}</h1>
         <p className="text-xs text-[#db4444]">${price}</p>
       </div>
