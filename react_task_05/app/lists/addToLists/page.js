@@ -31,30 +31,32 @@ export default function AddToLists() {
           <InputBox
             type={"text"}
             holder={"Title"}
-            label={"Title "}
+            label={"Title"}
             value={target.newTitle}
             name={"newTitle"}
             change={(e) => onTarget(e)}
           />
-          <div className="flex gap-4">
+          <div className="flex gap-4 items-center">
+            <label>
+              <b>Compeleted:</b>
+            </label>
             <InputBox
               type={"radio"}
-              label={"True "}
-              value={target.newCompleted}
-              name={"completed"}
+              label={"True"}
+              value={"true"}
+              check={target.newCompleted == true}
+              name={"newCompleted"}
               change={(e) => onTarget(e)}
             />
             <InputBox
               type={"radio"}
-              label={"False "}
-              value={target.newCompleted}
-              name={"completed"}
+              label={"False"}
+              value={"false"}
+              check={target.newCompleted == false}
+              name={"newCompleted"}
               change={(e) => onTarget(e)}
             />
           </div>
-          <label>
-            <b>Compeleted:</b>
-          </label>
           <div className="flex justify-around items-center py-4">
             <button
               type="submit"

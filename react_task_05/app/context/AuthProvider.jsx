@@ -36,7 +36,7 @@ export default function AuthProvider({ children }) {
       userId: Number(target.newUserId),
       id: newId,
       title: target.newTitle,
-      completed: target.newCompleted ?? false,
+      completed: target.newCompleted,
     };
     setProducts([...products, newProduct]);
     setTarget({ newUserId: 0, newTitle: "", newCompleted: false });
