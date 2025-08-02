@@ -9,7 +9,7 @@ export default function Edit({ params }) {
   const { id } = use(params);
   const router = useRouter();
   const { updateProduct, products } = useTodo();
-  const product = products.find((item) => item.id == Number(id));
+//   const product = products.find((item) => item.id == Number(id));
 
   const [userId, setUserId] = useState(null);
   const [title, setTitle] = useState(null);
