@@ -8,7 +8,6 @@ export function useAuth() {
 
 export function AuthProvider({ children }) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-
   const [activeView, setActiveView] = useState("register");
 
   const [fullName, setFullName] = useState("");

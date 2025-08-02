@@ -21,7 +21,7 @@ export default function Page({ params }) {
 
   return (
     <section className="p-4 flex justify-around">
-      <div className="shadow-xl/20 p-4 bg-yellow-100 ">
+      <div className="shadow-xl/20 p-4 bg-yellow-100 w-9/12 lg:w-5/12">
         <h2 className="text-xl font-bold">Product Details</h2>
         <p>
           <b>ID:</b> {product.id}

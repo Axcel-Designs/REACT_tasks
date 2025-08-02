@@ -4,13 +4,13 @@ import React, { useState, createContext, useContext, useEffect } from "react";
 const todoContext = createContext();
 
 export default function AuthProvider({ children }) {
+  const [products, setProducts] = useState([]);
   const [target, setTarget] = useState({
     newUserId: 0,
     newTitle: "",
     newCompleted: false,
   });
 
-  const [products, setProducts] = useState([]);
   useEffect(() => {
     async function getData() {
       try {
@@ -24,7 +24,6 @@ export default function AuthProvider({ children }) {
     }
     getData();
   }, []);
-  console.log(products.length);
 
   function onTarget(e) {
     setTarget((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -58,8 +57,9 @@ export default function AuthProvider({ children }) {
   function filterProduct() {}
 
   const value = {
-    onTarget,
+    target,
     products,
+    onTarget,
     addProduct,
     delProduct,
     filterProduct,
