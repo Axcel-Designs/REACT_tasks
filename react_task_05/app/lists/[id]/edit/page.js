@@ -11,8 +11,8 @@ export default function Edit({ params }) {
   const { updateProduct, products } = useTodo();
 //   const product = products.find((item) => item.id == Number(id));
 
-  const [userId, setUserId] = useState(null);
-  const [title, setTitle] = useState(null);
+  const [userId, setUserId] = useState(undefined);
+  const [title, setTitle] = useState(undefined);
 
   function handleSubmit(e) {
     e.preventDefault();
