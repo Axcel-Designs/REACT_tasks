@@ -38,7 +38,7 @@ export default function Page({ params }) {
         <div className="flex justify-around items-center py-4">
           <Link
             href={"/lists"}
-            onClick={() => delProduct(product.id)}
+            onClick={() => deleteProduct(product.id)}
             className={`bg-[#db4444] border-2 px-8 border-[#db4444] hover:text-[#db4444] hover:bg-white rounded-sm my-2 p-2 text-white font-semibold`}
           >
             Delete
