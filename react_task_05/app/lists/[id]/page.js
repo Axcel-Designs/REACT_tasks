@@ -39,9 +39,16 @@ export default function Page({ params }) {
           <Link
             href={"/lists"}
             onClick={() => delProduct(product.id)}
-            className={`bg-[#db4444] border-2 px-8 border-[#db4444] rounded-sm my-2 p-2 text-white font-semibold`}
+            className={`bg-[#db4444] border-2 px-8 border-[#db4444] hover:text-[#db4444] hover:bg-white rounded-sm my-2 p-2 text-white font-semibold`}
           >
             Delete
+          </Link>
+          <Link
+            href={`/lists/${product.id}/edit`}
+            onClick={() => delProduct(product.id)}
+            className={`text-[#db4444] border-2 px-8 border-[#db4444] hover:text-white  hover:bg-[#db4444] rounded-sm my-2 p-2 bg-white font-semibold`}
+          >
+            Edit Product
           </Link>
         </div>
       </div>

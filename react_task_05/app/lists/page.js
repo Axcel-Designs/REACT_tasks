@@ -19,8 +19,8 @@ export default function List() {
               className="flex gap-2 bg-gray-800 text-white w-[100px] h-[100px] p-1"
             >
               <Link href={`/lists/${item.id}`}>
-                <p> {item.userId}</p>
-                <p>{item.title}</p>
+                <p>UserID:  {item.userId}</p>
+                <p>Title: {item.title}</p>
               </Link>
             </li>
           ))}

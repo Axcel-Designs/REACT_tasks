@@ -42,10 +42,10 @@ export default function AuthProvider({ children }) {
     setTarget({ newUserId: 0, newTitle: "", newCompleted: false });
   }
 
-  function updateProduct(id, newtitle) {
+  function updateProduct(id, newUserId, newtitle) {
     setProducts(
       products.map((item) =>
-        item.id == id ? { ...item, title: newtitle } : item
+        item.id == id ? { ...item, title: newtitle, userId: newUserId } : item
       )
     );
   }

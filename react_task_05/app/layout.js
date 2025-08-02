@@ -4,6 +4,7 @@ import Footer from "./components/Footer";
 import Header from "./components/Header";
 import "./globals.css";
 import AuthProvider from "./context/AuthProvider";
+import { Suspense } from "react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,11 +28,13 @@ export default function RootLayout({ children }) {
         className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen `}
       >
         <AuthProvider>
-          <main className="grid min-h-screen w-full overflow-x-hidden">
-            <Header />
-            {children}
-            <Footer />
-          </main>
+          <Suspense fallback='loading!!'>
+            <main className="grid min-h-screen w-full overflow-x-hidden">
+              <Header />
+              {children}
+              <Footer />
+            </main>
+          </Suspense>
         </AuthProvider>
       </body>
     </html>
