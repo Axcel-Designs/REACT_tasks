@@ -11,7 +11,7 @@ export default function Page({ params }) {
   const product = products.find((item) => item.id === Number(id));
 
   function deleteProduct(id) {
-    delProduct(product.id);
+    delProduct(id);
     navigate.push("/lists");
   }
 
@@ -38,17 +38,16 @@ export default function Page({ params }) {
         <div className="flex justify-around items-center py-4">
           <Link
             href={"/lists"}
-            onClick={() => deleteProduct(product.id)}
+            onClick={() => delProduct(product.id)}
             className={`bg-[#db4444] border-2 px-8 border-[#db4444] hover:text-[#db4444] hover:bg-white rounded-sm my-2 p-2 text-white font-semibold`}
           >
             Delete
           </Link>
           <Link
             href={`/lists/${product.id}/edit`}
-            onClick={() => delProduct(product.id)}
             className={`text-[#db4444] border-2 px-8 border-[#db4444] hover:text-white  hover:bg-[#db4444] rounded-sm my-2 p-2 bg-white font-semibold`}
           >
-            Edit Product
+            Edit
           </Link>
         </div>
       </div>
