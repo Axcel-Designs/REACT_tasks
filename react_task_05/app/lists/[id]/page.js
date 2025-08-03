@@ -3,17 +3,14 @@
 import React from "react";
 import { useTodo } from "@/app/context/AuthProvider";
 import Link from "next/link";
-// import { useRouter } from "next/navigation";
 
 export default function Page({ params }) {
   const { products, delProduct } = useTodo();
   const { id } = React.use(params);
-  // const router = useRouter();
   const product = products.find((item) => item.id === Number(id));
 
   function deleteProduct(id) {
     delProduct(id);
-    // router.push("/lists");
   }
 
   if (!product) {
