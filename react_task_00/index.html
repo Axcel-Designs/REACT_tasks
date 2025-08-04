@@ -1,60 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>World Countries Data</title>
-    <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-  </head>
-  <header>
-    <div class="headerContainer">
-      <div>
-        <h3>Where in the World?</h3>
-      </div>
-      <div class="themeToggle" id="themeToggle">
-        <i class="fa-solid fa-moon"></i>
-        <span for="darkMode">Dark Mode</span>
-        <!-- <input type="checkbox" id="darkMode" /> -->
-      </div>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>World Countries Data</title>
+  <link rel="icon" type="image/" href="../taskSamples/axcelimg.png" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+<header>
+  <div class="headerContainer">
+    <div>
+      <h3>Where in the World?</h3>
     </div>
-  </header>
-  <main>
-    <br />
-    <section id="countriesListContainer">
-      <div class="inputContainer">
-        <input
-        type="text"
-        id="searchbar"
-        placeholder="search for a country..."
-        />
-        <select name="region" id="regionSelect">
-          <option value="All">Select a region</option>
-          <option value="Africa">Africa</option>
-          <option value="Americas">Americas</option>
-          <option value="Asia">Asia</option>
-          <option value="Europe">Europe</option>
-          <option value="Oceania">Oceania</option>
-        </select>
-      </div>
-      <!-- countriesList visualization -->
-      <div id="countriesList"></div>
-    </section>
-  </main>
-  <br>
-  <footer>
-    <div id="footerInner">
-      <div>
-        <p>track 0  2025</p>
-      </div>
-      <div>
-        <a href="#countriesListContainer">
-          <i class="fa-solid fa-arrow-up fa-2xl"></i>
-        </a>
-      </div>
+    <div class="themeToggle" id="themeToggle">
+      <i class="fa-solid fa-moon"></i>
+      <span for="darkMode">Dark Mode</span>
+      <!-- <input type="checkbox" id="darkMode" /> -->
     </div>
-  </footer>
-  </body>
-  <script src="./data/countries_data.js"></script>
-  <script src="./scripts/main.js"></script>
+  </div>
+</header>
+<main>
+  <br />
+  <section id="countriesListContainer">
+    <div class="inputContainer">
+      <input type="text" id="searchbar" placeholder="search for a country..." />
+      <select name="region" id="regionSelect">
+        <option value="All">Select a region</option>
+        <option value="Africa">Africa</option>
+        <option value="Americas">Americas</option>
+        <option value="Asia">Asia</option>
+        <option value="Europe">Europe</option>
+        <option value="Oceania">Oceania</option>
+      </select>
+    </div>
+    <!-- countriesList visualization -->
+    <div id="countriesList"></div>
+  </section>
+</main>
+<br>
+<footer>
+  <div id="footerInner">
+    <div>
+      <p>track 0 2025</p>
+    </div>
+    <div>
+      <a href="#countriesListContainer">
+        <i class="fa-solid fa-arrow-up fa-2xl"></i>
+      </a>
+    </div>
+  </div>
+</footer>
+</body>
+<script src="./data/countries_data.js"></script>
+<script src="./scripts/main.js"></script>
+
 </html>
