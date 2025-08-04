@@ -24,12 +24,15 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/axcelimg.png" />
+      </head>
       <body
         suppressHydrationWarning={true}
         className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen `}
       >
         <AuthProvider>
-          <Suspense fallback='loading!!'>
+          <Suspense fallback="loading!!">
             <main className="grid min-h-screen w-full overflow-x-hidden">
               <Header />
               {children}
