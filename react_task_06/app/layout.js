@@ -19,6 +19,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <link rel="icon" href="/axcelimg.png" />
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
