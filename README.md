@@ -23,7 +23,7 @@ This contains all the react tasks for the React course.
   **[URL](https://crud-next-app-omega.vercel.app/)**
 
 - [Task 06](./react_task_06/)  
-  <!-- **[URL]()** -->
+  **[URL](https://full-stacktodo-tan.vercel.app/)**
 
 <!-- - [Task 07](./react_task_07/)
   **[ URL]()** -->
