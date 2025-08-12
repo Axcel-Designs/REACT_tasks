@@ -1,5 +1,7 @@
 # React Task 06
 
+## FULL STACK TODO LIST APP WITH NEXT.JS
+
 This is the sixth task for the React course.
 
 **Instructions:**
