@@ -10,9 +10,9 @@ This is the third task for the React course.
 
 https://task03-gules.vercel.app/
 
-## Instructions:
+### Instructions:
 
-```
+```markdown
 - Build out all the screens in the design.
 
 - Use Firebase API's to integrate your sign up process and your login process.
