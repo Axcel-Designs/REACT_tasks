@@ -6,7 +6,7 @@
 
 This is the third task for the React course.
 
-**Objective**: Replicate the design in this Figma link: https://www.figma.com/design/vUUpIZaDvoAtMDpUcMy3OI/-4.0-React-Task?node-id=0-1&t=MdeYAqdUGoDrFqcR-1
+**Objective**: Replicate the design in this [Figma link](https://www.figma.com/design/vUUpIZaDvoAtMDpUcMy3OI/-4.0-React-Task?node-id=0-1&t=MdeYAqdUGoDrFqcR-1)
 
 ### Deployment Link
 
