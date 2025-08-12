@@ -2,7 +2,7 @@
 
 ## FULL STACK TODO LIST APP WITH NEXT.JS
 
--**[URL](https://full-stacktodo-tan.vercel.app/)**
+- **[URL](https://full-stacktodo-tan.vercel.app/)**
 
 This is the sixth task for the React course.
 

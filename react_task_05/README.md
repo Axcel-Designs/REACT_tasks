@@ -2,7 +2,7 @@
 
 ## TODO LIST APP WITH NEXT.JS
 
--**[URL](https://crud-next-app-omega.vercel.app/)**
+- **[URL](https://crud-next-app-omega.vercel.app/)**
 
 This is the fifth task for the React course.
 first for Next.js
