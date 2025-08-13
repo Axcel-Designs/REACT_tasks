@@ -1,4 +1,6 @@
+import Header from "@/components/Header";
 import "./globals.css";
+import Footer from "@/components/Footer";
 
 export const metadata = {
   title: "FULL STACK TODO LIST APP WITH NEXT.JS",
@@ -10,7 +12,9 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <link rel="icon" href="/axcelimg.png" />
       <body className={`antialiased`}>
-        {children}
+        <Header />
+        <div className="container mx-auto min-h-140">{children}</div>
+        <Footer />
       </body>
     </html>
   );
