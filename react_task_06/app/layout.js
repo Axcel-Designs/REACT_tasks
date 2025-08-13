@@ -9,9 +9,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <link rel="icon" href="/axcelimg.png" />
-      <body
-        className={` antialiased`}
-      >
+      <body className={`antialiased`}>
         {children}
       </body>
     </html>
