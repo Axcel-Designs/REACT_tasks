@@ -1,4 +1,4 @@
-export default function loading() {
+export default function Loading() {
   return (
     <>
       <main className="w-full h-100 flex justify-around items-center">

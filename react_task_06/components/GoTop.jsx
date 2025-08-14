@@ -5,7 +5,7 @@ import React from "react";
 export default function GoTop() {
   const { active, handleHover } = useHoverHook();
   return (
-    <section className="sticky bottom-10 p-8 flex justify-end cursor-pointer">
+    <section className="fixed bottom-10 flex justify-end cursor-pointer right-8">
       <div  {...handleHover}
         onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
         className={active ? "text-red-800" : ""}

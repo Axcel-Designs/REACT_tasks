@@ -13,11 +13,10 @@ export default async function TodoIndex() {
       </div>
       <section className="flex flex-wrap justify-around items-center gap-4">
         {todoData.map((item) => (
-          <div
-            key={item.id}
-            className="ring ring-green-400 shadow-xl w-45 h-30 pl-2 rounded-xl bg-green-200 flex items-center "
-          >
-            <Link href={`/todo/${item.id}`}>
+          <Link key={item.id} href={`/todo/${item.id}`}>
+            <div
+              className="ring ring-green-400 shadow-xl w-45 h-30 pl-2 rounded-xl bg-green-200 flex items-center "
+            >
               <dl className="">
                 <dt>
                   <h4>{item.Dept}</h4>
@@ -25,8 +24,8 @@ export default async function TodoIndex() {
                 <dd>{item.courseCode}</dd>
                 <dd>{item.course}</dd>
               </dl>
-            </Link>
-          </div>
+            </div>
+          </Link>
         ))}
       </section>
     </main>
