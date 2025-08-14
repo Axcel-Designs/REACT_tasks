@@ -11,9 +11,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <link rel="icon" href="/axcelimg.png" />
-      <body className={`antialiased`}>
+      <body className={`antialiased `}>
         <Header />
-        <div className="container mx-auto min-h-140">{children}</div>
+        <div className="min-h-125">{children}</div>
         <Footer />
       </body>
     </html>
