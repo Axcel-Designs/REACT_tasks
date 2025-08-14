@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import "./globals.css";
 import Footer from "@/components/Footer";
+import GoTop from "@/components/GoTop";
 
 export const metadata = {
   title: "FULL STACK TODO LIST APP WITH NEXT.JS",
@@ -10,10 +11,20 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <link rel="icon" href="/axcelimg.png" />
+      <head>
+        <link rel="icon" href="/axcelimg.png" />
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+          integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
+          crossorigin="anonymous"
+          referrerpolicy="no-referrer"
+        />
+      </head>
       <body className={`antialiased `}>
         <Header />
         <div className="min-h-125">{children}</div>
+        <GoTop />
         <Footer />
       </body>
     </html>

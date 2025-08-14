@@ -8,7 +8,7 @@ export default function useHoverHook() {
     onMouseEnter: () => setActive(true),
     onMouseLeave: () => setActive(false),
     onTouchStart: () => setActive(true),
-    onTouchend: () => setActive(false),
+    onTouchEnd: () => setActive(false),
   };
   return { active, handleHover };
 }

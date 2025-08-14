@@ -17,7 +17,7 @@ export default async function TodoIndex() {
             key={item.id}
             className="ring ring-green-400 shadow-xl w-45 h-30 pl-2 rounded-xl bg-green-200 flex items-center "
           >
-            <Link href={"/"}>
+            <Link href={`/todo/${item.id}`}>
               <dl className="">
                 <dt>
                   <h4>{item.Dept}</h4>
