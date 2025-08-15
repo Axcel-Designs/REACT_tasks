@@ -21,13 +21,13 @@ export default function RootLayout({ children }) {
           referrerPolicy="no-referrer"
         />
       </head>
-      <body className="flex flex-col justify-between min-h-screen w-full">
-        {/* <div className="flex flex-col justify-between min-h-screen w-full"> */}
+      <body >
+        <div className="flex flex-col justify-between min-h-screen w-full">
           <Header />
           <div className="grow overflow-x-hidden">{children}</div>
           <GoTop />
           <Footer />
-        {/* </div> */}
+        </div>
       </body>
     </html>
   );

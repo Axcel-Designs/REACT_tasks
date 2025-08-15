@@ -1,0 +1,56 @@
+[
+  {
+    "id": 100,
+    "courseCode": 201,
+    "course": "Physics",
+    "dept": "Engineering"
+  },
+  {
+    "id": 101,
+    "courseCode": 202,
+    "course": "Mathematics",
+    "dept": "Science"
+  },
+  {
+    "id": 102,
+    "courseCode": 203,
+    "course": "Chemistry",
+    "dept": "Science"
+  },
+  {
+    "id": 103,
+    "courseCode": 204,
+    "course": "Computer Science",
+    "dept": "Technology"
+  },
+  {
+    "id": 104,
+    "courseCode": 205,
+    "course": "Economics",
+    "dept": "Social Science"
+  },
+  {
+    "id": 105,
+    "courseCode": 206,
+    "course": "Biology",
+    "dept": "Science"
+  },
+  {
+    "id": 106,
+    "courseCode": 207,
+    "course": "Mechanical Engineering",
+    "dept": "Engineering"
+  },
+  {
+    "id": 107,
+    "courseCode": 208,
+    "course": "Civil Engineering",
+    "dept": "Engineering"
+  },
+  {
+    "id": 108,
+    "courseCode": 209,
+    "course": "History",
+    "dept": "Arts"
+  }
+]
