@@ -12,13 +12,13 @@ export default async function Details({ params }) {
   });
   const item = await res.json();
 
-  // if (!res.ok) {
-  //   return (
-  //     <main className="container m-auto flex flex-col min-h-120 justify-around items-center">
-  //       <p className="text-red-600">Failed to fetch data.</p>
-  //     </main>
-  //   );
-  // }
+  if (!res.ok) {
+    return (
+      <main className="container m-auto flex flex-col min-h-120 justify-around items-center">
+        <p className="text-red-600">Failed to fetch data.</p>
+      </main>
+    );
+  }
 
   return (
     <main className="container m-auto w-full flex flex-col justify-center items-center">
