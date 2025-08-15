@@ -1,7 +1,7 @@
 "use client";
 import Button from "@/components/Buton";
 import Input from "@/components/Input";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import {  useState } from "react";
 
 export default function AddItem() {
@@ -11,31 +11,29 @@ export default function AddItem() {
     course: "",
     dept: "",
   });
-  const newTask = {
-    courseCode: formData.courseCode,
-    course: formData.course,
-    dept: formData.dept,
-  };
 
   function addValue(e) {
     setFormData((prev) => ({
       ...prev,
-     [e.target.name]:e.target.value
+      [e.target.name]: e.target.value,
     }));
   }
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
     const baseUrl = process.env.NEXT_PUBLIC_URL || "http://localhost:3000";
-    async function fetchData() {
+    try {
       const res = await fetch(`${baseUrl}/api/todo`, {
         method: "POST",
         headers: { "content-type": "application/json" },
-        body: JSON.stringify(newTask),
+        body: JSON.stringify(formData),
       });
+      if (res.ok) {
+        navigate.push("/");
+      }
+    } catch (error) {
+      console.error("Failed to add item:", error);
     }
-    fetchData();
-    navigate.push("/");
   }
   return (
     <main className="container m-auto w-full flex flex-col justify-center items-center my-4">
@@ -62,7 +60,7 @@ export default function AddItem() {
             value={formData.dept}
             change={addValue}
           />
-          <Button type={"sumbit"} label="Save" />
+          <Button type={"submit"} label="Save" />
         </section>
       </form>
     </main>

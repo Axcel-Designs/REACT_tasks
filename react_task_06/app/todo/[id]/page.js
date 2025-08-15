@@ -43,9 +43,7 @@ export default async function Details({ params }) {
               </dd>
             </dl>
             <div className="flex gap-4 justify-between">
-            <Link href={"/"}>
               <DelButton />
-            </Link>
             <Link href={`/${id}/editItem`}>
               <Button label='Edit' />
             </Link>

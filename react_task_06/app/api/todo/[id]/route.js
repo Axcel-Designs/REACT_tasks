@@ -12,7 +12,7 @@ export async function GET(req, { params }) {
 
 export async function PUT(req, { params }) {
   const  id  = await params.id;
-  const { courseCode, course, Dept } = await req.json();
+  const { courseCode, course, dept } = await req.json();
 
   const index = todoData.findIndex((todo) => todo.id === parseInt(id));
   if (index === -1) {
@@ -23,11 +23,11 @@ export async function PUT(req, { params }) {
     ...todoData[index],
     courseCode,
     course,
-    Dept,
+    dept,
   };
 
   return NextResponse.json(todoData[index], {
-    status: 400,
+    status: 200,
     headers: { "content-type": "application/json" },
   });
 }

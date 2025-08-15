@@ -7,12 +7,12 @@ export async function GET() {
 
 export async function POST(req) {
   try {
-    const { courseCode, course, Dept } = await req.json();
+    const { courseCode, course, dept } = await req.json();
     const newTodo = {
       id: todoData.length === 0 ? 1 : todoData[todoData.length - 1].id + 1,
       courseCode: courseCode,
       course: course,
-      Dept: Dept,
+      dept: dept,
     };
     todoData.push(newTodo);
     return NextResponse.json(newTodo, {
