@@ -1,7 +1,7 @@
 import Button from "@/components/Buton";
 import Link from "next/link";
 
-export default async function TodoIndex() {
+export default async function Index() {
   const baseUrl = process.env.NEXT_PUBLIC_URL || "http://localhost:3000";
   const res = await fetch(`${baseUrl}/api/todo`, {
     method: "GET",
@@ -15,7 +15,7 @@ export default async function TodoIndex() {
           <h3>No of courses {todoData.length}</h3>
         </div>
         <div className="flex p-4 justify-end">
-          <Button label={"Add Item"} />
+          <Link href={"/todo/addItem"}><Button label={"Add Item"} /></Link>
         </div>
       </div>
       <section className="flex flex-wrap justify-around items-center gap-4">

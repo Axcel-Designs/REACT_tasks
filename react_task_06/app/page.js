@@ -1,9 +1,9 @@
-import TodoIndex from "./todo/page";
+import Index from "./todo/page";
 
 export default async function Home() {
   return (
     <>
-      <TodoIndex />
+      <Index />
     </>
   );
 }

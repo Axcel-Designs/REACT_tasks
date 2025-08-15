@@ -1,9 +1,9 @@
-import { DelButton } from "@/components/Buton";
+import Button, { DelButton } from "@/components/Buton";
 import Link from "next/link";
 import React from "react";
 
 export default async function Details({ params }) {
-  const { id } = params;
+  const { id } = await params;
 
   const baseUrl = process.env.NEXT_PUBLIC_URL || "http://localhost:3000";
   const res = await fetch(`${baseUrl}/api/todo/${id}`, {
@@ -12,14 +12,13 @@ export default async function Details({ params }) {
   });
   const item = await res.json();
 
-  if (!res.ok) {
-    return (
-      <main className="container m-auto flex flex-col items-center">
-        <p className="text-red-600">Failed to fetch data.</p>
-      </main>
-    );
-  }
-
+  // if (!res.ok) {
+  //   return (
+  //     <main className="container m-auto flex flex-col min-h-120 justify-around items-center">
+  //       <p className="text-red-600">Failed to fetch data.</p>
+  //     </main>
+  //   );
+  // }
 
   return (
     <main className="container m-auto w-full flex flex-col justify-center items-center">
@@ -43,9 +42,14 @@ export default async function Details({ params }) {
                 <p>{item.course}</p>
               </dd>
             </dl>
+            <div className="flex gap-4 justify-between">
             <Link href={"/"}>
               <DelButton />
             </Link>
+            <Link href={`/${id}/editItem`}>
+              <Button label='Edit' />
+            </Link>
+            </div>
           </div>
         </section>
       </div>

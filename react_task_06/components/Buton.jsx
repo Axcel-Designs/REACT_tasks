@@ -20,9 +20,8 @@ export default function Button({ label, type, click }) {
   );
 }
 
-
-export  function DelButton() {
-  const { id } =  useParams();
+export function DelButton() {
+  const { id } = useParams();
   function itemDel() {
     const res = fetch(`http://localhost:3000/api/todo/${id}`, {
       method: "DELETE",

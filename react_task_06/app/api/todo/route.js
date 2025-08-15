@@ -15,9 +15,15 @@ export async function POST(req) {
       Dept: Dept,
     };
     todoData.push(newTodo);
-    return NextResponse.json(newTodo, { status: 201 });
+    return NextResponse.json(newTodo, {
+      status: 201,
+      headers: { "content-type": "application/json" },
+    });
   } catch (err) {
     console.log(err);
-    return NextResponse.json({ message: "Invalid" }, { status: 400 });
+    return NextResponse.json(
+      { message: "Invalid" },
+      { status: 400, headers: { "content-type": "application/json" } }
+    );
   }
 }

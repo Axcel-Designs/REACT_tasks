@@ -26,7 +26,10 @@ export async function PUT(req, { params }) {
     Dept,
   };
 
-  return NextResponse.json(todoData[index], { status: 200 });
+  return NextResponse.json(todoData[index], {
+    status: 400,
+    headers: { "content-type": "application/json" },
+  });
 }
 
 export async function DELETE(req, { params }) {

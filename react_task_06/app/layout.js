@@ -21,11 +21,13 @@ export default function RootLayout({ children }) {
           referrerPolicy="no-referrer"
         />
       </head>
-      <body className={`antialiased `}>
-        <Header />
-        <div className="min-h-100 overflow-hidden">{children}</div>
-        <GoTop />
-        <Footer />
+      <body className="flex flex-col justify-between min-h-screen w-full">
+        {/* <div className="flex flex-col justify-between min-h-screen w-full"> */}
+          <Header />
+          <div className="grow overflow-x-hidden">{children}</div>
+          <GoTop />
+          <Footer />
+        {/* </div> */}
       </body>
     </html>
   );
