@@ -1,13 +1,35 @@
+"use client";
 import Button from "@/components/Buton";
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import Loading from "../loading";
 
-export default async function Index() {
+export default function Index() {
+  const [todoData, setTodoData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
   const baseUrl = process.env.NEXT_PUBLIC_URL || "http://localhost:3000";
-  const res = await fetch(`${baseUrl}/api/todo`, {
-    method: "GET",
-    cache: "no-store",
-  });
-  const todoData = await res.json();
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const res = await fetch(`${baseUrl}/api/todo`, {
+          method: "GET",
+          cache: "no-store",
+        });
+        const data = await res.json();
+        setTodoData(data);
+      } catch (err) {
+        console.log(err);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchData();
+  }, [baseUrl]);
+
+  if (loading) return <Loading />;
+
   return (
     <main className="bg-blue-50 container mx-auto my-8">
       <div className="flex justify-between items-center">
@@ -15,7 +37,9 @@ export default async function Index() {
           <h3>No of courses {todoData.length}</h3>
         </div>
         <div className="flex p-4 justify-end">
-          <Link href={"/todo/addItem"}><Button label={"Add Item"} /></Link>
+          <Link href={"/todo/addItem"}>
+            <Button label={"Add Item"} />
+          </Link>
         </div>
       </div>
       <section className="flex flex-wrap justify-around items-center gap-4">

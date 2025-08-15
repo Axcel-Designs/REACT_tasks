@@ -31,7 +31,8 @@ export function DelButton() {
         method: "DELETE",
       });
       if (res.ok) {
-        router.push("/");
+        router.push("/todo");
+        router.refresh();
       }
     } catch (error) {
       console.error("Failed to delete item", error);

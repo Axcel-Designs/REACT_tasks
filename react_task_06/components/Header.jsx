@@ -3,11 +3,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
 
-const navBar = [
-  { label: "Home", path: "/" },
-  { label: "About", path: "about" },
-  { label: "Add", path: "work" },
-];
+const navBar = [{ label: "Home", path: "/" }];
 
 export default function Header() {
   const path = usePathname();

@@ -7,12 +7,11 @@ export default function Error({ error, reset }) {
   }, [error]);
   return (
     <div>
-      <main className="w-full h-100 flex justify-around items-center bg-gray-600 text-white">
+      <main className="w-full min-h-[83vh] flex justify-around items-center bg-gray-600 text-white">
         <section>
           <h2>Something went wrong!</h2>
           <button
             onClick={
-              // Attempt to recover by trying to re-render the segment
               () => reset()
             }
           >

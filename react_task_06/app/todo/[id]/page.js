@@ -1,26 +1,55 @@
+"use client";
+import Loading from "@/app/loading";
 import Button, { DelButton } from "@/components/Buton";
 import Link from "next/link";
-import React from "react";
+import { useParams } from "next/navigation";
+import React, { useEffect, useState } from "react";
 
-export default async function Details({ params }) {
-  const { id } = await params;
+export default function Details() {
+  const { id } = useParams();
+  const [item, setItem] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   const baseUrl = process.env.NEXT_PUBLIC_URL || "http://localhost:3000";
-  const res = await fetch(`${baseUrl}/api/todo/${id}`, {
-    method: "GET",
-    cache: "no-store", 
-  });
-  const item = await res.json();
 
-  if (!res.ok) {
+  useEffect(() => {
+    if (!id) return;
+
+    const fetchItem = async () => {
+      setLoading(true);
+      setError(null);
+      try {
+        const res = await fetch(`${baseUrl}/api/todo/${id}`, {
+          method: "GET",
+          cache: "no-store",
+        });
+        if (!res.ok) {
+          throw new Error(`Failed to fetch item. Status: ${res.status}`);
+        }
+        const data = await res.json();
+        setItem(data);
+      } catch (error) {
+        console.error("Failed to fetch item:", error);
+        setError(error.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchItem();
+  }, [id, baseUrl]);
+
+  if (loading) return <Loading />;
+
+  if (error) {
     return (
       <main className="container m-auto flex flex-col min-h-120 justify-around items-center">
-        <p className="text-red-600">Failed to fetch data.</p>
+        <p className="text-red-600">Error: {error}</p>
       </main>
     );
   }
 
-  return (
+  return item ? (
     <main className="container m-auto w-full flex flex-col justify-center items-center">
       <Link href={"/"} className="p-4 self-end">
         <li className="fa-solid fa-chevron-left fa-xl"></li>
@@ -44,13 +73,17 @@ export default async function Details({ params }) {
             </dl>
             <div className="flex gap-4 justify-between">
               <DelButton />
-            <Link href={`/${id}/editItem`}>
-              <Button label='Edit' />
-            </Link>
+              <Link href={`/todo/${id}/editItem`}>
+                <Button label="Edit" />
+              </Link>
             </div>
           </div>
         </section>
       </div>
+    </main>
+  ) : (
+    <main className="container m-auto flex flex-col min-h-120 justify-around items-center">
+      <p>Item not found.</p>
     </main>
   );
 }

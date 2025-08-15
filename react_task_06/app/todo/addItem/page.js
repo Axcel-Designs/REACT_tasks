@@ -29,7 +29,8 @@ export default function AddItem() {
         body: JSON.stringify(formData),
       });
       if (res.ok) {
-        navigate.push("/");
+        navigate.push("/todo");
+        navigate.refresh();
       }
     } catch (error) {
       console.error("Failed to add item:", error);
