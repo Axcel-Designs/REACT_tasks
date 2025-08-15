@@ -9,7 +9,7 @@ export default function Index() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const baseUrl = process.env.NEXT_PUBLIC_URL || "http://localhost:3000";
+  const baseUrl = process.env.NEXT_PUBLIC_URL;
   useEffect(() => {
     async function fetchData() {
       try {

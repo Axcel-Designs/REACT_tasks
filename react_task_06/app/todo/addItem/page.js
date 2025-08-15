@@ -21,7 +21,7 @@ export default function AddItem() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    const baseUrl = process.env.NEXT_PUBLIC_URL || "http://localhost:3000";
+    const baseUrl = process.env.NEXT_PUBLIC_URL;
     try {
       const res = await fetch(`${baseUrl}/api/todo`, {
         method: "POST",

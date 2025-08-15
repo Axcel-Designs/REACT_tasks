@@ -13,7 +13,7 @@ export default function EditItem() {
     dept: "",
   });
 
-  const baseUrl = process.env.NEXT_PUBLIC_URL || "http://localhost:3000";
+  const baseUrl = process.env.NEXT_PUBLIC_URL;
 
   useEffect(() => {
     const fetchItem = async () => {
