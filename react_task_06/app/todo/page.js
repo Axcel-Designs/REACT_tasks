@@ -2,8 +2,10 @@ import Button from "@/components/Buton";
 import Link from "next/link";
 
 export default async function TodoIndex() {
-  const res = await fetch("http://localhost:3000/api/todo", {
+  const baseUrl = process.env.NEXT_PUBLIC_URL || "http://localhost:3000";
+  const res = await fetch(`${baseUrl}/api/todo`, {
     method: "GET",
+    cache: "no-store",
   });
   const todoData = await res.json();
   return (
