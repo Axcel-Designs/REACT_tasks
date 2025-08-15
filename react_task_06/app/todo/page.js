@@ -29,6 +29,13 @@ export default function Index() {
   }, [baseUrl]);
 
   if (loading) return <Loading />;
+    if (error) {
+      return (
+        <main className="container m-auto flex flex-col min-h-120 justify-around items-center">
+          <p className="text-red-600">Error: {error}</p>
+        </main>
+      );
+    }
 
   return (
     <main className="bg-blue-50 container mx-auto my-8">

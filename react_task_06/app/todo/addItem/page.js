@@ -29,7 +29,7 @@ export default function AddItem() {
         body: JSON.stringify(formData),
       });
       if (res.ok) {
-        navigate.push("/todo");
+        navigate.push("/");
         navigate.refresh();
       }
     } catch (error) {

@@ -31,7 +31,7 @@ export function DelButton() {
         method: "DELETE",
       });
       if (res.ok) {
-        router.push("/todo");
+        router.push("/");
         router.refresh();
       }
     } catch (error) {
