@@ -8,18 +8,21 @@ export default async function TodoIndex() {
   const todoData = await res.json();
   return (
     <main className="bg-blue-50 container mx-auto my-8">
-      <div className="flex p-4 justify-end">
-        <Button label={"Add Item"} />
+      <div className="flex justify-between items-center">
+        <div>
+          <h3>No of courses {todoData.length}</h3>
+        </div>
+        <div className="flex p-4 justify-end">
+          <Button label={"Add Item"} />
+        </div>
       </div>
       <section className="flex flex-wrap justify-around items-center gap-4">
         {todoData.map((item) => (
           <Link key={item.id} href={`/todo/${item.id}`}>
-            <div
-              className="ring ring-green-400 shadow-xl w-45 h-30 pl-2 rounded-xl bg-green-200 flex items-center "
-            >
+            <div className="ring ring-green-400 shadow-xl w-45 h-30 pl-2 rounded-xl bg-green-200 flex items-center ">
               <dl className="">
                 <dt>
-                  <h4>{item.Dept}</h4>
+                  <h4>{item.dept}</h4>
                 </dt>
                 <dd>{item.courseCode}</dd>
                 <dd>{item.course}</dd>

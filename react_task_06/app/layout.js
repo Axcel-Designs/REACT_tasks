@@ -23,7 +23,7 @@ export default function RootLayout({ children }) {
       </head>
       <body className={`antialiased `}>
         <Header />
-        <div className="min-h-100">{children}</div>
+        <div className="min-h-100 overflow-hidden">{children}</div>
         <GoTop />
         <Footer />
       </body>
