@@ -22,7 +22,7 @@ export default function InputBox({
           name={name}
           checked={check}
           onChange={change}
-          className=""
+          className="w-full"
         />
       </label>
     </div>

@@ -35,7 +35,7 @@ export default function AddToLists() {
             name={"newTitle"}
             change={(e) => onTarget(e)}
           />
-          <div className="flex gap-4 items-center">
+          <div className="max-md:flex-col max-md:items-start flex gap-4 items-center">
             <label>
               <b>Compeleted:</b>
             </label>
@@ -43,7 +43,7 @@ export default function AddToLists() {
               type={"radio"}
               label={"True"}
               value={"true"}
-              check={target.newCompleted == 'true'}
+              check={target.newCompleted == "true"}
               name={"newCompleted"}
               change={(e) => onTarget(e)}
             />
@@ -51,7 +51,7 @@ export default function AddToLists() {
               type={"radio"}
               label={"False"}
               value={"false"}
-              check={target.newCompleted == 'false'}
+              check={target.newCompleted == "false"}
               name={"newCompleted"}
               change={(e) => onTarget(e)}
             />
