@@ -9,7 +9,7 @@ export default function AddToLists() {
   const { target, onTarget, addProduct } = useTodo();
 
   function handleSubmit(e) {
-    e.preventDefault();b
+    e.preventDefault();
     addProduct();
     router.push("/lists");
   }
