@@ -6,7 +6,8 @@ export default function Footer() {
       <section></section>
       <section className="text-center">
         <h5>
-          &copy; copyright {new Date().getFullYear()}. All rights reversed
+          &copy; Axcel Designs {new Date().getFullYear()}. All rights
+          reversed
         </h5>
       </section>
     </footer>
