@@ -10,7 +10,7 @@ This contains all the react tasks for the React course.
 - [Task 01](./react_task_01/) - ProfileCard Component  
   **[URL](https://react-task-one-ten.vercel.app/)**
 
-- [Task 02](./react_task_02/) -  Build out the pages  
+- [Task 02](./react_task_02/) -  Build out Web pages  
   **[URL](https://task02-nine.vercel.app/)**
 
 - [Task 03](./react_task_03/) - BUILDING A USER DASHBOARD INCLUDING USER AUTHENTICATION  
