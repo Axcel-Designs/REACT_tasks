@@ -1,5 +1,7 @@
 # React Task 01
 
+## ProfileCard Component
+
 This is the first task for the React course.
 
 - **[URL](https://react-task-one-ten.vercel.app/)**
