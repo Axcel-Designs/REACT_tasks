@@ -25,11 +25,8 @@ This contains all the react tasks for the React course.
 - [Task 06](./react_task_06/) - FULL STACK TODO LIST APP WITH NEXT.JS  
   **[URL](https://react-tasks-chi-orcin.vercel.app/)**
 
-<!-- - [Task 07](./react_task_07/)
-  **[ URL]()** -->
-
-<!-- - [Task 08](./react_task_08/)
-  **[ URL]()** -->
+- [Task 07](./react_task_07/) - FULL STACK TODO LIST APP WITH NEXT.JS AND SERVER SIDE RENDERING(SSR)
+  **[URL](https://fp-full-todo-with-server.vercel.app/)**
 
 ## Task design samples
 
