@@ -2,11 +2,11 @@
 
 ## FULL STACK TODO LIST APP WITH NEXT.JS AND SERVER SIDE RENDERING(SSR)
 
-[url]()
+- [url]()
 
+**Instructions:**
 
 ```md
-Instructions:
 - Create a todo list application to use custom API routes using Next.js
 
 - The todo app should utilise Server Side rendering (SSR)
