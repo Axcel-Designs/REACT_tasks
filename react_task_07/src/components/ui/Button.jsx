@@ -1,5 +1,6 @@
 import useHoverHook from "@/hooks/HoverHook";
-import { useParams, useRouter } from "next/navigation";
+// import { useParams, useRouter } from "next/navigation";
+import { useRouter } from "next/router";
 
 export default function Button({ label, type, click }) {
   const { active, handleHover } = useHoverHook();
@@ -20,7 +21,8 @@ export default function Button({ label, type, click }) {
 }
 
 export function DelButton() {
-  const { id } = useParams();
+  const { id } = useRouter().query;
+  // const params = useParams();
   const router = useRouter();
   const baseUrl = process.env.NEXT_PUBLIC_URL || "http://localhost:3000";
 
@@ -31,7 +33,7 @@ export function DelButton() {
       });
       if (res.ok) {
         router.push("/");
-        router.refresh();
+        // router.refresh();
       }
     } catch (error) {
       console.error("Failed to delete item", error);

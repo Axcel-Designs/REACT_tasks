@@ -1,5 +1,5 @@
-import Index from "./todo/index";
+import IndexPage from "./todo/index";
 
 export default function Home() {
-  return <Index />;
+  return <IndexPage />;
 }

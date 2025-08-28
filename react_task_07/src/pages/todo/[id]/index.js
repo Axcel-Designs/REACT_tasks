@@ -1,17 +1,18 @@
-// "use client";
+"use client";
 import Button, { DelButton } from "@/components/ui/Button";
 import Loading from "@/pages/loading";
 import Link from "next/link";
-import { useParams } from "next/navigation";
+import { useRouter } from "next/router";;
 import React, { useEffect, useState } from "react";
 
 export default function Details() {
-  const { id } = useParams();
+  const router = useRouter();
+  const { id } = router.query;
   const [item, setItem] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const baseUrl = process.env.NEXT_PUBLIC_URL;
+  const baseUrl = process.env.NEXT_PUBLIC_URL || "";
 
   useEffect(() => {
     if (!id) return;
@@ -52,24 +53,23 @@ export default function Details() {
   return item ? (
     <main className="container m-auto w-full flex flex-col justify-center items-center">
       <Link href={"/"} className="p-4 self-end">
-        <li className="fa-solid fa-chevron-left fa-xl"></li>
+        <i
+          className="fa-solid fa-chevron-left fa-xl"
+          aria-label="Back to list"
+        ></i>
       </Link>
       <div className="min-h-100 flex justify-around w-full">
         <section className="flex flex-wrap justify-around items-center gap-4">
           <div className="ring ring-green-400 shadow-lg min-w-fit p-6 rounded-lg bg-green-200">
             <dl className="my-4">
-              <dt>
-                <h2 className="text-purple-900">Dept:</h2>
-                <h3>{item.dept}</h3>
-              </dt>
-              <dd>
-                <h3>Course Code:</h3>
-                <p>{item.courseCode}</p>
-              </dd>
-              <dd>
-                <h3>Course:</h3>
-                <p>{item.course}</p>
-              </dd>
+              <dt className="font-bold text-purple-900">Dept:</dt>
+              <dd className="mb-2">{item.dept}</dd>
+
+              <dt className="font-bold">Course Code:</dt>
+              <dd className="mb-2">{item.courseCode}</dd>
+
+              <dt className="font-bold">Course:</dt>
+              <dd>{item.course}</dd>
             </dl>
             <div className="flex gap-4 justify-between">
               <DelButton />

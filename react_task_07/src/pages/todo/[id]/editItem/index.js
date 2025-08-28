@@ -1,12 +1,12 @@
-"use client";
 import Button from "@/components/ui/Button";
 import Input from "@/components/ui/Input";
-import { useParams, useRouter } from "next/navigation";
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+
 
 export default function EditItem() {
   const navigate = useRouter();
-  const { id } = useParams();
+  const { id } = useRouter().query;
   const [formData, setFormData] = useState({
     courseCode: "",
     course: "",
@@ -53,7 +53,6 @@ export default function EditItem() {
       });
       if (res.ok) {
         navigate.push(`/todo/${id}`);
-        navigate.refresh();
       } else {
         console.error("Failed to update item:", await res.text());
       }

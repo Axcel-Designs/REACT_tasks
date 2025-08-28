@@ -30,7 +30,6 @@ export default function AddItem() {
       });
       if (res.ok) {
         navigate.push("/");
-        navigate.refresh();
       }
     } catch (error) {
       console.error("Failed to add item:", error);
