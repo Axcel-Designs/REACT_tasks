@@ -60,7 +60,7 @@ export default function Details() {
       </Link>
       <div className="min-h-100 flex justify-around w-full">
         <section className="flex flex-wrap justify-around items-center gap-4">
-          <div className="ring ring-green-400 shadow-lg min-w-fit p-6 rounded-lg bg-green-200">
+          <div className="ring ring-blue-400 shadow-lg min-w-fit p-6 rounded-lg bg-blue-200">
             <dl className="my-4">
               <dt className="font-bold text-purple-900">Dept:</dt>
               <dd className="mb-2">{item.dept}</dd>

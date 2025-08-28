@@ -51,7 +51,7 @@ export default function Index() {
       <section className="flex flex-wrap justify-around items-center gap-4">
         {todoData.map((item) => (
           <Link key={item.id} href={`/todo/${item.id}`}>
-            <div className="ring ring-green-400 shadow-xl w-45 h-30 pl-2 rounded-xl bg-green-200 flex items-center ">
+            <div className="ring ring-blue-400 shadow-xl w-45 h-30 pl-2 rounded-xl bg-blue-200 flex items-center ">
               <dl className="">
                 <dt>
                   <h4>{item.dept}</h4>

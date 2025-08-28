@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <footer className="text-white bg-black p-4">
+    <footer className="text-white bg-blue-900 p-4">
       <section></section>
       <section className="text-center">
         <h5>

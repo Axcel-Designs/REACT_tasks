@@ -12,7 +12,7 @@ export default function Input({ type, holder, name, id, value,change, label }) {
         value={value}
         onChange={change}
         required
-        className="grow outline-none bg-amber-200 placeholder-gray-400"
+        className="grow outline-none placeholder-gray-400"
       />
     </div>
   );
