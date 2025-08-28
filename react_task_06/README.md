@@ -2,6 +2,8 @@
 
 ## FULL STACK TODO LIST APP WITH NEXT.JS
 
+using app based routing and server side rendering
+
 - **[URL](https://react-tasks-chi-orcin.vercel.app/)**
 
 This is the sixth task for the React course.
