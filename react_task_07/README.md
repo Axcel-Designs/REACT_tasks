@@ -2,6 +2,8 @@
 
 ## FULL STACK TODO LIST APP WITH NEXT.JS AND SERVER SIDE RENDERING(SSR)
 
+using pages based routing and server side rendering
+
 - **[url](https://fp-full-todo-with-server.vercel.app/)**
 
 **Instructions:**
