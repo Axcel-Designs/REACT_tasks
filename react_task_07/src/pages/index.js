@@ -1,5 +1,12 @@
-import IndexPage from "./todo/index";
+export default function HomePage() {
+  return <p>Redirecting to your to-do list...</p>;
+}
 
-export default function Home() {
-  return <IndexPage />;
+export async function getServerSideProps() {
+  return {
+    redirect: {
+      destination: "/todo",
+      permanent: false, 
+    },
+  };
 }

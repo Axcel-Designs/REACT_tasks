@@ -1,47 +1,62 @@
-"use client";
 import Button, { DelButton } from "@/components/ui/Button";
-import Loading from "@/pages/loading";
 import Link from "next/link";
-import { useRouter } from "next/router";;
-import React, { useEffect, useState } from "react";
 
-export default function Details() {
-  const router = useRouter();
-  const { id } = router.query;
-  const [item, setItem] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+export async function getServerSideProps(context) {
+  const { id } = context.params;
+  const baseUrl = process.env.NEXT_PUBLIC_URL;
 
-  const baseUrl = process.env.NEXT_PUBLIC_URL || "";
-
-  useEffect(() => {
-    if (!id) return;
-
-    const fetchItem = async () => {
-      setLoading(true);
-      setError(null);
+    if (context.req.method === "POST") {
       try {
-        const res = await fetch(`${baseUrl}/api/todo/${id}`, {
-          method: "GET",
-          cache: "no-store",
-        });
-        if (!res.ok) {
-          throw new Error(`Failed to fetch item. Status: ${res.status}`);
-        }
-        const data = await res.json();
-        setItem(data);
+       
+        await fetch(`${baseUrl}/api/todo/${id}`, { method: "DELETE" });
+
+        return {
+          redirect: {
+            destination: "/", // go back home after delete
+            permanent: false,
+          },
+        };
       } catch (error) {
-        console.error("Failed to fetch item:", error);
-        setError(error.message);
-      } finally {
-        setLoading(false);
+        return {
+          props: {
+            item: null,
+            error: `Failed to delete item: ${error.message}`,
+          },
+        };
       }
+    }
+
+  try {
+    const res = await fetch(`${baseUrl}/api/todo/${id}`, { method: "GET" });
+
+    if (!res.ok) {
+      return {
+        props: {
+          item: null,
+          error: `Failed to fetch item. Status: ${res.status}`,
+        },
+      };
+    }
+
+    const item = await res.json();
+
+    return {
+      props: {
+        item,
+        error: null,
+      },
     };
-    fetchItem();
-  }, [id, baseUrl]);
+  } catch (error) {
+    return {
+      props: {
+        item: null,
+        error: error.message,
+      },
+    };
+  }
+}
 
-  if (loading) return <Loading />;
-
+export default function Details({ item, error }) {
   if (error) {
     return (
       <main className="container m-auto flex flex-col min-h-120 justify-around items-center">
@@ -50,7 +65,15 @@ export default function Details() {
     );
   }
 
-  return item ? (
+  if (!item) {
+    return (
+      <main className="container m-auto flex flex-col min-h-120 justify-around items-center">
+        <p>Item not found.</p>
+      </main>
+    );
+  }
+
+  return (
     <main className="container m-auto w-full flex flex-col justify-center items-center">
       <Link href={"/"} className="p-4 self-end">
         <i
@@ -72,18 +95,16 @@ export default function Details() {
               <dd>{item.course}</dd>
             </dl>
             <div className="flex gap-4 justify-between">
+              <form method="POST">
               <DelButton />
-              <Link href={`/todo/${id}/editItem`}>
+              </form>
+              <Link href={`/todo/${item.id}/editItem`}>
                 <Button label="Edit" />
               </Link>
             </div>
           </div>
         </section>
       </div>
-    </main>
-  ) : (
-    <main className="container m-auto flex flex-col min-h-120 justify-around items-center">
-      <p>Item not found.</p>
     </main>
   );
 }

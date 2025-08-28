@@ -1,15 +1,29 @@
-"use client";
+// pages/todo/addItem.js
 import Button from "@/components/ui/Button";
 import Input from "@/components/ui/Input";
-import { useRouter } from "next/navigation";
-import {  useState } from "react";
+import { useRouter } from "next/router";
+import { useState } from "react";
 
-export default function AddItem() {
+export async function getServerSideProps() {
+  try {
+    const departments = ["Computer Science", "Mathematics", "Physics"];
+
+    return {
+      props: { departments },
+    };
+  } catch (err) {
+    return {
+      props: { departments: [] },
+    };
+  }
+}
+
+export default function AddItem({ departments }) {
   const navigate = useRouter();
   const [formData, setFormData] = useState({
     courseCode: "",
     course: "",
-    dept: "",
+    dept: departments.length > 0 ? departments[0] : "", // default dept
   });
 
   function addValue(e) {
@@ -22,12 +36,14 @@ export default function AddItem() {
   async function handleSubmit(e) {
     e.preventDefault();
     const baseUrl = process.env.NEXT_PUBLIC_URL;
+
     try {
       const res = await fetch(`${baseUrl}/api/todo`, {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify(formData),
       });
+
       if (res.ok) {
         navigate.push("/");
       }
@@ -35,6 +51,7 @@ export default function AddItem() {
       console.error("Failed to add item:", error);
     }
   }
+
   return (
     <main className="container m-auto w-full flex flex-col justify-center items-center my-4">
       <div className="my-4">
@@ -42,6 +59,21 @@ export default function AddItem() {
       </div>
       <form onSubmit={handleSubmit}>
         <section className="ring p-4 flex flex-col gap-4">
+          <label className="flex flex-col">
+            <span>Department</span>
+            <select
+              name="dept"
+              value={formData.dept}
+              onChange={addValue}
+              className="border rounded p-2"
+            >
+              {departments.map((d) => (
+                <option key={d} value={d}>
+                  {d}
+                </option>
+              ))}
+            </select>
+          </label>
           <Input
             label={"Course Code"}
             name="courseCode"
@@ -54,15 +86,11 @@ export default function AddItem() {
             value={formData.course}
             change={addValue}
           />
-          <Input
-            label={"Dept "}
-            name="dept"
-            value={formData.dept}
-            change={addValue}
-          />
-          <Button type={"submit"} label="Save" />
+          <Button type="submit" label="Save" />
         </section>
       </form>
     </main>
   );
 }
+
+

@@ -31,4 +31,4 @@ let todoData = [
   // { id: 129, courseCode: 230, course: "Artificial Intelligence", dept: "Technology",},
 ];
 
-export default todoData
+export default todoData;

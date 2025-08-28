@@ -1,5 +1,4 @@
 import useHoverHook from "@/hooks/HoverHook";
-// import { useParams, useRouter } from "next/navigation";
 import { useRouter } from "next/router";
 
 export default function Button({ label, type, click }) {
@@ -19,29 +18,10 @@ export default function Button({ label, type, click }) {
     </div>
   );
 }
-
 export function DelButton() {
-  const { id } = useRouter().query;
-  // const params = useParams();
-  const router = useRouter();
-  const baseUrl = process.env.NEXT_PUBLIC_URL || "http://localhost:3000";
-
-  async function itemDel() {
-    try {
-      const res = await fetch(`${baseUrl}/api/todo/${id}`, {
-        method: "DELETE",
-      });
-      if (res.ok) {
-        router.push("/");
-        // router.refresh();
-      }
-    } catch (error) {
-      console.error("Failed to delete item", error);
-    }
-  }
+  
   return (
     <button
-      onClick={() => itemDel()}
       className="bg-red-600 text-white py-1 px-2 hover:text-red-600 hover:bg-[#fff] ring ring-red-600 rounded-lg"
     >
       <h4>Delete</h4>

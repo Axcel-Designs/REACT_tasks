@@ -1,40 +1,55 @@
 import Link from "next/link";
-import { useEffect, useState } from "react";
 import Button from "@/components/ui/Button";
-import Loading from "../loading";
 
-export default function Index() {
-  const [todoData, setTodoData] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+export async function getServerSideProps() {
+  try {
+    const baseUrl = process.env.NEXT_PUBLIC_URL;
+    const res = await fetch(`${baseUrl}/api/todo`, {
+      method: "GET",
+    });
 
-  const baseUrl = process.env.NEXT_PUBLIC_URL;
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        const res = await fetch(`${baseUrl}/api/todo`, {
-          method: "GET",
-          cache: "no-store",
-        });
-        const data = await res.json();
-        setTodoData(data);
-      } catch (err) {
-        console.log(err);
-      } finally {
-        setLoading(false);
-      }
+    if (!res.ok) {
+      throw new Error(`Failed to fetch data with status: ${res.status}`);
     }
-    fetchData();
-  }, [baseUrl]);
 
-  if (loading) return <Loading />;
-    if (error) {
-      return (
-        <main className="container m-auto flex flex-col min-h-120 justify-around items-center">
-          <p className="text-red-600">Error: {error}</p>
-        </main>
+    const responseData = await res.json();
+
+    // It's common for APIs to wrap array data in an object, e.g., { data: [...] }
+    // We'll access the array, assuming it's in a 'data' property or is the response itself.
+    // You can console.log(responseData) here to see its structure and adjust if needed.
+    const todoData = responseData.data || responseData;
+
+    if (!Array.isArray(todoData)) {
+      throw new Error(
+        "API did not return an array. Received: " + JSON.stringify(responseData)
       );
     }
+
+    return {
+      props: {
+        todoData,
+        error: null,
+      },
+    };
+  } catch (error) {
+    console.error("Error fetching todo data in getServerSideProps:", error);
+    return {
+      props: {
+        todoData: [],
+        error: error.message,
+      },
+    };
+  }
+}
+
+export default function Index({ todoData = [], error }) {
+  if (error) {
+    return (
+      <main className="container m-auto flex flex-col min-h-120 justify-around items-center">
+        <p className="text-red-600">Error: {error}</p>
+      </main>
+    );
+  }
 
   return (
     <main className="bg-blue-50 container mx-auto my-8 p-4">
@@ -48,20 +63,22 @@ export default function Index() {
           </Link>
         </div>
       </div>
+
       <section className="flex flex-wrap justify-around items-center gap-4">
-        {todoData.map((item) => (
-          <Link key={item.id} href={`/todo/${item.id}`}>
-            <div className="ring ring-blue-400 shadow-xl w-45 h-30 pl-2 rounded-xl bg-blue-200 flex items-center ">
-              <dl className="">
-                <dt>
-                  <h4>{item.dept}</h4>
-                </dt>
-                <dd>{item.courseCode}</dd>
-                <dd>{item.course}</dd>
-              </dl>
-            </div>
-          </Link>
-        ))}
+        {Array.isArray(todoData) &&
+          todoData.map((item) => (
+            <Link key={item.id} href={`/todo/${item.id}`}>
+              <div className="ring ring-blue-400 shadow-xl w-45 h-30 pl-2 rounded-xl bg-blue-200 flex items-center ">
+                <dl>
+                  <dt>
+                    <h4>{item.dept}</h4>
+                  </dt>
+                  <dd>{item.courseCode}</dd>
+                  <dd>{item.course}</dd>
+                </dl>
+              </div>
+            </Link>
+          ))}
       </section>
     </main>
   );
